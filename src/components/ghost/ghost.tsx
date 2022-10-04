@@ -9,11 +9,14 @@ export default function Ghost({ slug }: GhostProps) {
 
   if (data === undefined) return null
 
-  const { name, evidences } = data
+  const { name, evidences, wiki } = data
 
   return (
     <p>
-      {name} {evidences.map((slug) => getEvidenceName(slug)).join(', ')}
+      <a href={wiki} target="_blank" rel="noopener noreferrer">
+        {name}
+      </a>{' '}
+      {evidences.map((slug) => getEvidenceName(slug)).join(', ')}
     </p>
   )
 }

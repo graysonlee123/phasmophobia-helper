@@ -5,6 +5,7 @@ declare global {
     slug: string
     name: string
     evidences: [string, string, string]
+    wiki: string
   }
 
   interface Evidence {
