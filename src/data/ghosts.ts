@@ -116,7 +116,7 @@ export const ghosts: Ghost[] = [
   {
     slug: 'mimic',
     name: 'The Mimic',
-    evidences: ['spirit', 'fingerprints', 'freezing'],
+    evidences: ['box', 'fingerprints', 'freezing'],
     wiki: 'https://phasmophobia.fandom.com/wiki/The_Mimic',
   },
   {
