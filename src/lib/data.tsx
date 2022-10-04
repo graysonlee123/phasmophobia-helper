@@ -63,3 +63,31 @@ export function getPossibleGhosts(
     })
     .map((ghost) => ghost.slug)
 }
+
+export function getImpossibleEvidences(checkedEvidences: string[]) {
+  const data: [string, string, string][] = []
+
+  /**
+   * Loop through each user's checked evidence and test for
+   * ghosts that have all checked evidences in their evidences list.
+   */
+  ghosts.forEach((ghost) => {
+    const check = checkedEvidences.every((evidence) =>
+      ghost.evidences.includes(evidence)
+    )
+
+    if (check) {
+      data.push(ghost.evidences)
+    }
+  })
+
+  /**
+   * Using a set here to make an array with unique values.
+   */
+  const flat = Array.from(new Set(data.flat()))
+  const result = evidences
+    .filter(({ slug }) => flat.indexOf(slug) < 0)
+    .map(({ slug }) => slug)
+
+  return result
+}

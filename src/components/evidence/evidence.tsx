@@ -5,6 +5,7 @@ interface CheckboxProps {
   setCheckedEvidences: (checkedEvidences: string[]) => void
   disabledEvidences: string[]
   setDisabledEvidences: (disabledEvidences: string[]) => void
+  impossibleEvidences: string[]
   slug: string
   name: string
 }
@@ -14,6 +15,7 @@ export default function Checkbox({
   setCheckedEvidences,
   disabledEvidences,
   setDisabledEvidences,
+  impossibleEvidences,
   slug,
   name,
 }: CheckboxProps) {
@@ -24,19 +26,22 @@ export default function Checkbox({
   useEffect(
     function () {
       /**
-       * Disable the evidence if 3 evidences have
-       * been selected and it isn't one of them.
+       * Disable the evidence if 3 evidences have been selected and
+       * it isn't one of them, or if it's listed as an impossible evidence.
        *
        * Otherwise, unlock it.
        */
-      if (checkedEvidences.length >= 3 && checkedEvidences.indexOf(slug) < 0) {
+      if (
+        (checkedEvidences.length >= 3 && checkedEvidences.indexOf(slug) < 0) ||
+        impossibleEvidences.indexOf(slug) > -1
+      ) {
         setLocked(true)
         return
       }
 
       setLocked(false)
     },
-    [checkedEvidences, slug]
+    [checkedEvidences, impossibleEvidences, slug]
   )
 
   function handleClick() {

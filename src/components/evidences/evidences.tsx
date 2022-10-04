@@ -7,6 +7,7 @@ interface CheckboxesProps {
   setCheckedEvidences: (checkedEvidences: string[]) => void
   disabledEvidences: string[]
   setDisabledEvidences: (disabledEvidences: string[]) => void
+  impossibleEvidences: string[]
 }
 
 export default function Checkboxes({
@@ -14,6 +15,7 @@ export default function Checkboxes({
   setCheckedEvidences,
   disabledEvidences,
   setDisabledEvidences,
+  impossibleEvidences,
 }: CheckboxesProps) {
   return (
     <div className={styles.flex}>
@@ -24,6 +26,7 @@ export default function Checkboxes({
           setCheckedEvidences={setCheckedEvidences}
           disabledEvidences={disabledEvidences}
           setDisabledEvidences={setDisabledEvidences}
+          impossibleEvidences={impossibleEvidences}
           slug={slug}
           name={name}
         />
