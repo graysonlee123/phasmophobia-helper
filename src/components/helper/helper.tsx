@@ -1,17 +1,23 @@
 import { useState } from 'react'
-import Checkboxes from '@components/checkboxes'
+import Evidences from '@components/evidences'
 import Ghosts from '@components/ghosts'
 
 export default function Helper() {
   const [checkedEvidences, setCheckedEvidences] = useState<string[]>([])
+  const [disabledEvidences, setDisabledEvidences] = useState<string[]>([])
 
   return (
     <>
-      <Checkboxes
+      <Evidences
         checkedEvidences={checkedEvidences}
         setCheckedEvidences={setCheckedEvidences}
+        disabledEvidences={disabledEvidences}
+        setDisabledEvidences={setDisabledEvidences}
       />
-      <Ghosts checkedEvidences={checkedEvidences} />
+      <Ghosts
+        checkedEvidences={checkedEvidences}
+        disabledEvidences={disabledEvidences}
+      />
     </>
   )
 }
