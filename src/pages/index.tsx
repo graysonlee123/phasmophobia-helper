@@ -1,5 +1,5 @@
-import Helper from '@components/helper'
+import Layout from '@components/layout'
 
 export default function Home() {
-  return <Helper />
+  return <Layout />
 }

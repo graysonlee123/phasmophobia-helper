@@ -1,4 +1,6 @@
-import { getGhostData, getEvidenceName } from '@lib/data'
+import Tags from '@components/tags'
+import { getGhostData } from '@lib/data'
+import styles from './index.module.css'
 
 interface GhostProps {
   slug: string
@@ -9,14 +11,13 @@ export default function Ghost({ slug }: GhostProps) {
 
   if (data === undefined) return null
 
-  const { name, evidences, wiki } = data
+  const { name, evidences, desc, wiki } = data
 
   return (
-    <p>
-      <a href={wiki} target="_blank" rel="noopener noreferrer">
-        {name}
-      </a>{' '}
-      {evidences.map((slug) => getEvidenceName(slug)).join(', ')}
-    </p>
+    <article className={styles.article}>
+      <header className="subtitle">{name}</header>
+      {desc}
+      <Tags tags={evidences} />
+    </article>
   )
 }

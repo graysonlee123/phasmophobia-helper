@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react'
 import Evidences from '@components/evidences'
 import Ghosts from '@components/ghosts'
 import { getImpossibleEvidences } from '@lib/data'
+import styles from './index.module.css'
 
-export default function Helper() {
+export default function Layout() {
   const [checkedEvidences, setCheckedEvidences] = useState<string[]>([])
   const [disabledEvidences, setDisabledEvidences] = useState<string[]>([])
   const [impossibleEvidences, setImpossibleEvidences] = useState<string[]>([])
@@ -16,7 +17,7 @@ export default function Helper() {
   )
 
   return (
-    <>
+    <main className={styles.main}>
       <Evidences
         checkedEvidences={checkedEvidences}
         setCheckedEvidences={setCheckedEvidences}
@@ -28,6 +29,6 @@ export default function Helper() {
         checkedEvidences={checkedEvidences}
         disabledEvidences={disabledEvidences}
       />
-    </>
+    </main>
   )
 }

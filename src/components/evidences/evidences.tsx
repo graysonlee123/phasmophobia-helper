@@ -18,7 +18,7 @@ export default function Checkboxes({
   impossibleEvidences,
 }: CheckboxesProps) {
   return (
-    <div className={styles.flex}>
+    <section className={styles.section}>
       {evidences.map(({ slug, name }) => (
         <Evidence
           key={slug}
@@ -31,6 +31,10 @@ export default function Checkboxes({
           name={name}
         />
       ))}
-    </div>
+      <p className={styles.instruction}>
+        As you update your findings, evidence that is not possible will be
+        locked, and invalid ghosts will be hidden.
+      </p>
+    </section>
   )
 }

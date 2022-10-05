@@ -1,0 +1,28 @@
+.section {
+  display: grid;
+  gap: 3rem;
+  padding: 2rem;
+  border-radius: 8px;
+  background-color: hsl(var(--clr--slate--700));
+  box-shadow: var(--shadow--lg);
+}
+
+@media (min-width: 48rem) {
+  .section {
+    align-self: start;
+    max-width: 45ch;
+    max-height: 85vh;
+    overflow: auto;
+  }
+
+  .section::-webkit-scrollbar {
+    width: 4px;
+    height: 8px;
+    background-color: transparent;
+  }
+
+  .section::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--clr--orbs--100));
+    border-radius: 2px;
+  }
+}

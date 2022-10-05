@@ -1,5 +1,16 @@
-.flex {
-  display: flex;
+.section {
+  display: grid;
   gap: 1rem;
-  flex-wrap: wra;
+  height: max-content;
+  padding: 2rem;
+  border-radius: 8px;
+  background-color: hsl(var(--clr--slate--700));
+  box-shadow: var(--shadow--lg);
+}
+
+.instruction {
+  margin-top: 1rem;
+  max-width: 26ch;
+  font-size: var(--fs--sm);
+  opacity: 60%;
 }

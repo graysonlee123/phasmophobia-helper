@@ -1,6 +1,7 @@
+import { useEffect, useState } from 'react'
 import { getPossibleGhosts } from '@lib/data'
 import Ghost from '@components/ghost'
-import { useEffect, useState } from 'react'
+import styles from './index.module.css'
 
 interface GhostsProps {
   checkedEvidences: string[]
@@ -21,13 +22,12 @@ export default function Ghosts({
   )
 
   return (
-    <>
-      <p>Ghosts:</p>
+    <section className={styles.section}>
       {possibleGhosts.length === 0 ? (
         <p>Sorry, no ghost types were found for those choices.</p>
       ) : (
         possibleGhosts.map((slug) => <Ghost key={slug} slug={slug} />)
       )}
-    </>
+    </section>
   )
 }

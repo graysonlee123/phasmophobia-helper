@@ -1,0 +1,17 @@
+.main {
+  max-width: 85vw;
+  height: 100%;
+  margin-inline: auto;
+  padding-block: 3rem;
+  display: grid;
+  gap: 3rem;
+}
+
+@media (min-width: 48rem) {
+  .main {
+    padding-block: 6rem;
+    grid-auto-flow: column;
+    justify-content: center;
+    align-content: start;
+  }
+}
