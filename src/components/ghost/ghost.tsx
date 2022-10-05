@@ -1,22 +1,25 @@
+import { useState } from 'react'
 import Tags from '@components/tags'
 import Sanity from '@components/sanity'
+import Minimize from '@components/minimize'
 import { getGhostData } from '@lib/data'
+import cn from 'classnames'
 import styles from './index.module.css'
 
 interface GhostProps {
   slug: GhostSlug
-  addCheckedEvidences: (evidences: EvidenceSlug[]) => void
 }
 
-export default function Ghost({ slug, addCheckedEvidences }: GhostProps) {
+export default function Ghost({ slug }: GhostProps) {
+  const [disabled, setDisabled] = useState<boolean>(false)
   const { label, evidences, hunt, desc, wiki } = getGhostData(slug)
 
-  function handleCheck() {
-    addCheckedEvidences(evidences)
+  function toggleDisabled() {
+    setDisabled(!disabled)
   }
 
   return (
-    <article className={styles.article}>
+    <article className={cn([styles.article], { [styles.disabled]: disabled })}>
       <header className={styles.header}>
         <a
           className={styles.anchor}
@@ -27,10 +30,12 @@ export default function Ghost({ slug, addCheckedEvidences }: GhostProps) {
         >
           {label}
         </a>
-        <p onClick={handleCheck}>Check</p>
         <Sanity int={hunt} />
+        <span className={styles.button}>
+          <Minimize callback={toggleDisabled} open={disabled} />
+        </span>
       </header>
-      {desc}
+      {!disabled && desc}
       <Tags tags={evidences} />
     </article>
   )

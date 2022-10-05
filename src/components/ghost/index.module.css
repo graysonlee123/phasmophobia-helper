@@ -1,13 +1,19 @@
 .article {
   display: grid;
   gap: 0.75rem;
+  transition-property: opacity;
+  transition-duration: var(--transition--duration--normal);
+  transition-timing-function: var(--transition--ease--quick);
 }
 
 .header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 0.75rem;
+}
+
+.button {
+  margin-left: auto;
 }
 
 .anchor {
@@ -32,4 +38,12 @@
   outline-style: solid;
   outline-color: currentColor;
   outline-offset: 4px;
+}
+
+.disabled {
+  opacity: 60%;
+}
+
+.disabled .anchor {
+  text-decoration: line-through;
 }

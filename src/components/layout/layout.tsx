@@ -212,10 +212,7 @@ export default function Layout() {
         evidenceIsDisabled={evidenceIsDisabled}
         evidenceIsPossible={evidenceIsPossible}
       />
-      <Ghosts
-        possibleGhosts={possibleGhosts}
-        addCheckedEvidences={addCheckedEvidences}
-      />
+      <Ghosts possibleGhosts={possibleGhosts} />
     </main>
   )
 }
