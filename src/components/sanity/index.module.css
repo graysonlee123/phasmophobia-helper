@@ -1,0 +1,20 @@
+.sanity {
+  --size: 2rem;
+
+  display: inline-block;
+  padding: 0.125rem 0.5rem;
+  white-space: nowrap;
+  font-size: var(--fs--xs);
+  font-weight: 700;
+  border-radius: 2px;
+}
+
+.red {
+  color: hsl(var(--clr--emf--700));
+  background-color: hsl(var(--clr--emf--100));
+}
+
+.green {
+  color: hsl(var(--clr--dots--700));
+  background-color: hsl(var(--clr--dots--100));
+}

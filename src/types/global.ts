@@ -35,6 +35,7 @@ declare global {
     slug: GhostSlug
     label: string
     evidences: GhostEvidences
+    hunt?: number
     desc: React.ReactElement
     wiki: string
   }

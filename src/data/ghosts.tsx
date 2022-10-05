@@ -16,6 +16,7 @@ export const ghosts: Ghost[] = [
     slug: 'demon',
     label: 'Demon',
     evidences: ['fingerprints', 'writing', 'freezing'],
+    hunt: 70,
     desc: (
       <p>
         Can start a hunt regardless of average sanity when using its ability.
@@ -28,6 +29,7 @@ export const ghosts: Ghost[] = [
     slug: 'deogen',
     label: 'Deogen',
     evidences: ['box', 'writing', 'dots'],
+    hunt: 40,
     desc: (
       <p>
         Always knows where the players are during a hunt. Slows down when close
@@ -139,6 +141,7 @@ export const ghosts: Ghost[] = [
     slug: 'onryo',
     label: 'Onryo',
     evidences: ['box', 'orbs', 'freezing'],
+    hunt: 60,
     desc: (
       <p>
         Chance to hunt at any sanity when blowing out flames. Blows out flames
@@ -179,6 +182,7 @@ export const ghosts: Ghost[] = [
     slug: 'raiju',
     label: 'Raiju',
     evidences: ['emf', 'orbs', 'dots'],
+    hunt: 65,
     desc: (
       <p>
         Active electronics boost its speed during hunts. Disrupts electronics
@@ -203,6 +207,7 @@ export const ghosts: Ghost[] = [
     slug: 'shade',
     label: 'Shade',
     evidences: ['emf', 'writing', 'freezing'],
+    hunt: 35,
     desc: (
       <p>
         Harder to find due to it being less active. Prefers hissing and shadowy
@@ -228,6 +233,7 @@ export const ghosts: Ghost[] = [
     slug: 'thaye',
     label: 'Thaye',
     evidences: ['orbs', 'writing', 'dots'],
+    hunt: 75,
     desc: (
       <p>
         Becomes very active the first time the player gets nearby. The more time
@@ -277,6 +283,7 @@ export const ghosts: Ghost[] = [
     slug: 'yokai',
     label: 'Yokai',
     evidences: ['box', 'orbs', 'dots'],
+    hunt: 80,
     desc: (
       <p>
         Talking near it will increase its chance of hunts and interactions. Can

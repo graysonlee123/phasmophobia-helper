@@ -9,6 +9,7 @@
 
 @media (min-width: 48rem) {
   .section {
+    gap: 3.5rem;
     align-self: start;
     max-width: 45ch;
     max-height: 100%;

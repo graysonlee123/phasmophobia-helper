@@ -1,4 +1,5 @@
 import Tags from '@components/tags'
+import Sanity from '@components/sanity'
 import { getGhostData } from '@lib/data'
 import styles from './index.module.css'
 
@@ -7,11 +8,11 @@ interface GhostProps {
 }
 
 export default function Ghost({ slug }: GhostProps) {
-  const { label, evidences, desc, wiki } = getGhostData(slug)
+  const { label, evidences, hunt, desc, wiki } = getGhostData(slug)
 
   return (
     <article className={styles.article}>
-      <header className="subtitle">
+      <header className={styles.header}>
         <a
           className={styles.anchor}
           href={wiki}
@@ -21,6 +22,7 @@ export default function Ghost({ slug }: GhostProps) {
         >
           {label}
         </a>
+        <Sanity int={hunt} />
       </header>
       {desc}
       <Tags tags={evidences} />
