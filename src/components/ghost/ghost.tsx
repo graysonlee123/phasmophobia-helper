@@ -5,10 +5,15 @@ import styles from './index.module.css'
 
 interface GhostProps {
   slug: GhostSlug
+  addCheckedEvidences: (evidences: EvidenceSlug[]) => void
 }
 
-export default function Ghost({ slug }: GhostProps) {
+export default function Ghost({ slug, addCheckedEvidences }: GhostProps) {
   const { label, evidences, hunt, desc, wiki } = getGhostData(slug)
+
+  function handleCheck() {
+    addCheckedEvidences(evidences)
+  }
 
   return (
     <article className={styles.article}>
@@ -22,6 +27,7 @@ export default function Ghost({ slug }: GhostProps) {
         >
           {label}
         </a>
+        <p onClick={handleCheck}>Check</p>
         <Sanity int={hunt} />
       </header>
       {desc}

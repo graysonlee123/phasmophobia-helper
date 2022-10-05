@@ -5,73 +5,89 @@ import styles from './index.module.css'
 import { getEvidenceData } from '@lib/data'
 
 interface EvidenceProps {
-  checkedEvidences: EvidenceSlug[]
-  setCheckedEvidences: (checkedEvidences: EvidenceSlug[]) => void
-  disabledEvidences: EvidenceSlug[]
-  setDisabledEvidences: (disabledEvidences: EvidenceSlug[]) => void
-  impossibleEvidences: EvidenceSlug[]
+  addCheckedEvidences: (evidences: EvidenceSlug[]) => void
+  removeCheckedEvidence: (evidence: EvidenceSlug) => void
+  addDisabledEvidences: (evidences: EvidenceSlug[]) => void
+  removeDisabledEvidence: (evidence: EvidenceSlug) => void
+  checkedEvidencesHasRoom: () => boolean
+  evidenceIsChecked: (evidence: EvidenceSlug) => boolean
+  evidenceIsDisabled: (evidence: EvidenceSlug) => boolean
+  evidenceIsPossible: (evidence: EvidenceSlug) => boolean
   slug: EvidenceSlug
 }
 
 export default function Evidence({
-  checkedEvidences,
-  setCheckedEvidences,
-  disabledEvidences,
-  setDisabledEvidences,
-  impossibleEvidences,
+  addCheckedEvidences,
+  removeCheckedEvidence,
+  addDisabledEvidences,
+  removeDisabledEvidence,
+  checkedEvidencesHasRoom,
+  evidenceIsChecked,
+  evidenceIsDisabled,
+  evidenceIsPossible,
   slug,
 }: EvidenceProps) {
   const [checked, setChecked] = useState<boolean>(false)
   const [disabled, setDisabled] = useState<boolean>(false)
   const [locked, setLocked] = useState<boolean>(false)
+  const [checkboxState, setCheckboxState] = useState<CheckboxState>('neutral')
 
-  const { label } = getEvidenceData(slug)
-
+  /**
+   * Update the local component state when the
+   * external state is modified.
+   */
   useEffect(
     function () {
-      /**
-       * Disable the evidence if 3 evidences have been selected and
-       * it isn't one of them, or if it's listed as an impossible evidence.
-       *
-       * Otherwise, unlock it.
-       */
-      if (
-        (checkedEvidences.length >= 3 && checkedEvidences.indexOf(slug) < 0) ||
-        impossibleEvidences.indexOf(slug) > -1
-      ) {
+      evidenceIsChecked(slug) ? setChecked(true) : setChecked(false)
+      evidenceIsDisabled(slug) ? setDisabled(true) : setDisabled(false)
+    },
+    [evidenceIsChecked, evidenceIsDisabled, slug]
+  )
+
+  /**
+   * Controls setting the checkbox state.
+   */
+  useEffect(
+    function () {
+      if (locked) setCheckboxState('locked')
+      else if (checked) setCheckboxState('checked')
+      else if (disabled) setCheckboxState('disabled')
+      else setCheckboxState('neutral')
+    },
+    [locked, checked, disabled]
+  )
+
+  /**
+   * Lock the evidence if 3 evidences have been selected or
+   * or if it's not a possible evidence. Otherwise, unlock it.
+   */
+  useEffect(
+    function () {
+      if (!checkedEvidencesHasRoom() || !evidenceIsPossible(slug)) {
         setLocked(true)
         return
       }
 
       setLocked(false)
     },
-    [checkedEvidences, impossibleEvidences, slug]
+    [checkedEvidencesHasRoom, evidenceIsPossible, slug]
   )
 
+  /**
+   * Handles the clicking through the three states.
+   */
   function handleClick() {
     if (checked) {
-      setCheckedEvidences(
-        checkedEvidences.filter((evidence) => evidence !== slug)
-      )
-      setDisabledEvidences([...disabledEvidences, slug])
-      setChecked(false)
-      setDisabled(true)
+      /** Move to disabled. */
+      removeCheckedEvidence(slug)
+      addDisabledEvidences([slug])
     } else if (disabled) {
-      setDisabledEvidences(
-        disabledEvidences.filter((evidence) => evidence !== slug)
-      )
-      setDisabled(false)
+      /** Move to neutral. */
+      removeDisabledEvidence(slug)
     } else {
-      setCheckedEvidences([...checkedEvidences, slug])
-      setChecked(true)
+      /** Move to checked. */
+      addCheckedEvidences([slug])
     }
-  }
-
-  function getCheckboxState(): CheckboxState {
-    if (locked) return 'locked'
-    else if (checked) return 'checked'
-    else if (disabled) return 'disabled'
-    else return 'neutral'
   }
 
   return (
@@ -85,8 +101,8 @@ export default function Evidence({
         onClick={handleClick}
         disabled={locked}
       >
-        <Checkboxes state={getCheckboxState()} />
-        <span className={styles.label}>{label}</span>
+        <Checkboxes state={checkboxState} />
+        <span className={styles.label}>{getEvidenceData(slug).label}</span>
       </button>
     </span>
   )

@@ -3,30 +3,39 @@ import { evidences } from '@data/evidences'
 import styles from './styles.module.css'
 
 interface CheckboxesProps {
-  checkedEvidences: EvidenceSlug[]
-  setCheckedEvidences: (checkedEvidences: EvidenceSlug[]) => void
-  disabledEvidences: EvidenceSlug[]
-  setDisabledEvidences: (disabledEvidences: EvidenceSlug[]) => void
-  impossibleEvidences: EvidenceSlug[]
+  addCheckedEvidences: (evidences: EvidenceSlug[]) => void
+  removeCheckedEvidence: (evidence: EvidenceSlug) => void
+  addDisabledEvidences: (evidences: EvidenceSlug[]) => void
+  removeDisabledEvidence: (evidence: EvidenceSlug) => void
+  checkedEvidencesHasRoom: () => boolean
+  evidenceIsChecked: (evidence: EvidenceSlug) => boolean
+  evidenceIsDisabled: (evidence: EvidenceSlug) => boolean
+  evidenceIsPossible: (evidence: EvidenceSlug) => boolean
 }
 
 export default function Checkboxes({
-  checkedEvidences,
-  setCheckedEvidences,
-  disabledEvidences,
-  setDisabledEvidences,
-  impossibleEvidences,
+  addCheckedEvidences,
+  removeCheckedEvidence,
+  addDisabledEvidences,
+  removeDisabledEvidence,
+  checkedEvidencesHasRoom,
+  evidenceIsChecked,
+  evidenceIsDisabled,
+  evidenceIsPossible,
 }: CheckboxesProps) {
   return (
     <section className={styles.section}>
       {evidences.map(({ slug }) => (
         <Evidence
           key={slug}
-          checkedEvidences={checkedEvidences}
-          setCheckedEvidences={setCheckedEvidences}
-          disabledEvidences={disabledEvidences}
-          setDisabledEvidences={setDisabledEvidences}
-          impossibleEvidences={impossibleEvidences}
+          addCheckedEvidences={addCheckedEvidences}
+          removeCheckedEvidence={removeCheckedEvidence}
+          addDisabledEvidences={addDisabledEvidences}
+          removeDisabledEvidence={removeDisabledEvidence}
+          checkedEvidencesHasRoom={checkedEvidencesHasRoom}
+          evidenceIsChecked={evidenceIsChecked}
+          evidenceIsDisabled={evidenceIsDisabled}
+          evidenceIsPossible={evidenceIsPossible}
           slug={slug}
         />
       ))}
