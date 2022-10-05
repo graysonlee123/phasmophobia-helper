@@ -1,39 +1,23 @@
 import { evidences } from '@data/evidences'
 import { ghosts } from '@data/ghosts'
 
-export function getEvidenceData(slug: string) {
-  return evidences.find((evidence) => slug === evidence.slug)
+export function getEvidenceData(slug: EvidenceSlug) {
+  return evidences.find((evidence) => slug === evidence.slug) as Evidence
 }
 
-export function getEvidenceName(slug: string) {
-  const data = getEvidenceData(slug)
-
-  if (undefined === data) {
-    return ''
-  }
-
-  const { name } = data
-
-  return name
-}
-
-export function ghostHasEvidence(ghost: string, evidence: string) {
-  const data = getGhostData(ghost)
-
-  if (undefined === data) return undefined
-
-  const { evidences } = data
+export function ghostHasEvidence(ghost: GhostSlug, evidence: EvidenceSlug) {
+  const { evidences } = getGhostData(ghost)
 
   return evidences.indexOf(evidence) > -1
 }
 
-export function getGhostData(slug: string) {
-  return ghosts.find((ghost) => ghost.slug === slug)
+export function getGhostData(slug: GhostSlug) {
+  return ghosts.find((ghost) => ghost.slug === slug) as Ghost
 }
 
 export function getPossibleGhosts(
-  checkedEvidences: string[],
-  disabledEvidences: string[]
+  checkedEvidences: EvidenceSlug[],
+  disabledEvidences: EvidenceSlug[]
 ) {
   return ghosts
     .filter(({ slug }) => {
@@ -64,8 +48,8 @@ export function getPossibleGhosts(
     .map((ghost) => ghost.slug)
 }
 
-export function getImpossibleEvidences(checkedEvidences: string[]) {
-  const data: [string, string, string][] = []
+export function getImpossibleEvidences(checkedEvidences: EvidenceSlug[]) {
+  const data: GhostEvidences[] = []
 
   /**
    * Loop through each user's checked evidence and test for

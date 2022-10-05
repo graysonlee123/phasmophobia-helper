@@ -4,15 +4,15 @@ import Ghost from '@components/ghost'
 import styles from './index.module.css'
 
 interface GhostsProps {
-  checkedEvidences: string[]
-  disabledEvidences: string[]
+  checkedEvidences: EvidenceSlug[]
+  disabledEvidences: EvidenceSlug[]
 }
 
 export default function Ghosts({
   checkedEvidences,
   disabledEvidences,
 }: GhostsProps) {
-  const [possibleGhosts, setPossibleGhosts] = useState<string[]>([])
+  const [possibleGhosts, setPossibleGhosts] = useState<GhostSlug[]>([])
 
   useEffect(
     function () {

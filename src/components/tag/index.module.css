@@ -1,0 +1,62 @@
+.tag {
+  display: block;
+  padding: 0.125rem 0.5rem;
+  border-radius: 2px;
+  white-space: nowrap;
+  text-decoration: none;
+
+  transition-property: transform;
+  transition-duration: var(--transition--duration--normal);
+  transition-timing-function: var(--transition--timing--quick);
+}
+
+.tag:focus {
+  outline: none;
+}
+
+.tag:hover,
+.tag:focus {
+  transform: scale(1.1);
+}
+
+.tag:focus-visible {
+  outline-width: 2px;
+  outline-style: solid;
+  outline-color: hsl(var(--clr--white));
+  outline-offset: 2px;
+}
+
+.dots {
+  color: hsl(var(--clr--dots--700));
+  background-color: hsl(var(--clr--dots--100));
+}
+
+.emf {
+  color: hsl(var(--clr--emf--700));
+  background-color: hsl(var(--clr--emf--100));
+}
+
+.fingerprints {
+  color: hsl(var(--clr--fingerprints--700));
+  background-color: hsl(var(--clr--fingerprints--100));
+}
+
+.freezing {
+  color: hsl(var(--clr--freezing--700));
+  background-color: hsl(var(--clr--freezing--100));
+}
+
+.orbs {
+  color: hsl(var(--clr--orbs--700));
+  background-color: hsl(var(--clr--orbs--100));
+}
+
+.writing {
+  color: hsl(var(--clr--writing--700));
+  background-color: hsl(var(--clr--writing--100));
+}
+
+.box {
+  color: hsl(var(--clr--box--700));
+  background-color: hsl(var(--clr--box--100));
+}

@@ -3,11 +3,11 @@ import { evidences } from '@data/evidences'
 import styles from './styles.module.css'
 
 interface CheckboxesProps {
-  checkedEvidences: string[]
-  setCheckedEvidences: (checkedEvidences: string[]) => void
-  disabledEvidences: string[]
-  setDisabledEvidences: (disabledEvidences: string[]) => void
-  impossibleEvidences: string[]
+  checkedEvidences: EvidenceSlug[]
+  setCheckedEvidences: (checkedEvidences: EvidenceSlug[]) => void
+  disabledEvidences: EvidenceSlug[]
+  setDisabledEvidences: (disabledEvidences: EvidenceSlug[]) => void
+  impossibleEvidences: EvidenceSlug[]
 }
 
 export default function Checkboxes({
@@ -19,7 +19,7 @@ export default function Checkboxes({
 }: CheckboxesProps) {
   return (
     <section className={styles.section}>
-      {evidences.map(({ slug, name }) => (
+      {evidences.map(({ slug }) => (
         <Evidence
           key={slug}
           checkedEvidences={checkedEvidences}
@@ -28,7 +28,6 @@ export default function Checkboxes({
           setDisabledEvidences={setDisabledEvidences}
           impossibleEvidences={impossibleEvidences}
           slug={slug}
-          name={name}
         />
       ))}
       <p className={styles.instruction}>

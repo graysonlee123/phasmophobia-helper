@@ -11,8 +11,9 @@
   .section {
     align-self: start;
     max-width: 45ch;
-    max-height: 85vh;
+    max-height: 100%;
     overflow: auto;
+    scroll-behavior: smooth;
   }
 
   .section::-webkit-scrollbar {

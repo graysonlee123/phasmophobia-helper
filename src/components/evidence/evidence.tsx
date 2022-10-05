@@ -1,27 +1,31 @@
 import { useEffect, useState } from 'react'
+import Checkboxes from '@components/checkbox'
+import cn from 'classnames'
+import styles from './index.module.css'
+import { getEvidenceData } from '@lib/data'
 
-interface CheckboxProps {
-  checkedEvidences: string[]
-  setCheckedEvidences: (checkedEvidences: string[]) => void
-  disabledEvidences: string[]
-  setDisabledEvidences: (disabledEvidences: string[]) => void
-  impossibleEvidences: string[]
-  slug: string
-  name: string
+interface EvidenceProps {
+  checkedEvidences: EvidenceSlug[]
+  setCheckedEvidences: (checkedEvidences: EvidenceSlug[]) => void
+  disabledEvidences: EvidenceSlug[]
+  setDisabledEvidences: (disabledEvidences: EvidenceSlug[]) => void
+  impossibleEvidences: EvidenceSlug[]
+  slug: EvidenceSlug
 }
 
-export default function Checkbox({
+export default function Evidence({
   checkedEvidences,
   setCheckedEvidences,
   disabledEvidences,
   setDisabledEvidences,
   impossibleEvidences,
   slug,
-  name,
-}: CheckboxProps) {
+}: EvidenceProps) {
   const [checked, setChecked] = useState<boolean>(false)
   const [disabled, setDisabled] = useState<boolean>(false)
   const [locked, setLocked] = useState<boolean>(false)
+
+  const { label } = getEvidenceData(slug)
 
   useEffect(
     function () {
@@ -63,22 +67,26 @@ export default function Checkbox({
     }
   }
 
+  function getCheckboxState(): CheckboxState {
+    if (locked) return 'locked'
+    else if (checked) return 'checked'
+    else if (disabled) return 'disabled'
+    else return 'neutral'
+  }
+
   return (
     <span>
       <button
+        className={cn([
+          'button-reset',
+          styles.button,
+          locked ? styles.locked : null,
+        ])}
         onClick={handleClick}
         disabled={locked}
-        style={{
-          color: locked
-            ? 'white'
-            : checked
-            ? 'green'
-            : disabled
-            ? 'red'
-            : 'gray',
-        }}
       >
-        {name}
+        <Checkboxes state={getCheckboxState()} />
+        <span className={styles.label}>{label}</span>
       </button>
     </span>
   )

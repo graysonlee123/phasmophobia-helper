@@ -3,10 +3,38 @@ import React from 'react'
 export {}
 
 declare global {
+  type GhostSlug =
+    | 'banshee'
+    | 'demon'
+    | 'deogen'
+    | 'goryo'
+    | 'hantu'
+    | 'jinn'
+    | 'mare'
+    | 'moroi'
+    | 'myling'
+    | 'obake'
+    | 'oni'
+    | 'onryo'
+    | 'phantom'
+    | 'poltergeist'
+    | 'raiju'
+    | 'revenant'
+    | 'shade'
+    | 'spirit'
+    | 'thaye'
+    | 'mimic'
+    | 'twins'
+    | 'wraith'
+    | 'yokai'
+    | 'yurei'
+
+  type GhostEvidences = [EvidenceSlug, EvidenceSlug, EvidenceSlug]
+
   interface Ghost {
-    slug: string
-    name: string
-    evidences: [EvidenceSlug, EvidenceSlug, EvidenceSlug]
+    slug: GhostSlug
+    label: string
+    evidences: GhostEvidences
     desc: React.ReactElement
     wiki: string
   }
@@ -22,6 +50,9 @@ declare global {
 
   interface Evidence {
     slug: EvidenceSlug
-    name: string
+    label: string
+    wiki: string
   }
+
+  type CheckboxState = 'neutral' | 'checked' | 'disabled' | 'locked'
 }

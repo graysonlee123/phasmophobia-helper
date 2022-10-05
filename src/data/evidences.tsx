@@ -1,30 +1,37 @@
 export const evidences: Evidence[] = [
   {
     slug: 'dots',
-    name: 'D.O.T.S. Projector',
+    label: 'D.O.T.S.',
+    wiki: 'https://phasmophobia.fandom.com/wiki/D.O.T.S_Projector_(Evidence)',
   },
   {
     slug: 'emf',
-    name: 'EMF Level 5',
+    label: 'EMF 5',
+    wiki: 'https://phasmophobia.fandom.com/wiki/EMF_Level_5',
   },
   {
     slug: 'fingerprints',
-    name: 'Fingerprints',
+    label: 'Fingerprints',
+    wiki: 'https://phasmophobia.fandom.com/wiki/Fingerprints',
   },
   {
     slug: 'freezing',
-    name: 'Freezing Temperatures',
+    label: 'Freezing',
+    wiki: 'https://phasmophobia.fandom.com/wiki/Freezing_Temperatures',
   },
   {
     slug: 'orbs',
-    name: 'Ghost Orbs',
+    label: 'Ghost Orbs',
+    wiki: 'https://phasmophobia.fandom.com/wiki/Ghost_Orb',
   },
   {
     slug: 'writing',
-    name: 'Ghost Writing',
+    label: 'Writing',
+    wiki: 'https://phasmophobia.fandom.com/wiki/Ghost_Writing',
   },
   {
     slug: 'box',
-    name: 'Spirit Box',
+    label: 'Spirit Box',
+    wiki: 'https://phasmophobia.fandom.com/wiki/Spirit_Box_(Evidence)',
   },
 ]

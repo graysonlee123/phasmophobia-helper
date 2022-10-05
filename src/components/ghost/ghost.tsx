@@ -3,19 +3,25 @@ import { getGhostData } from '@lib/data'
 import styles from './index.module.css'
 
 interface GhostProps {
-  slug: string
+  slug: GhostSlug
 }
 
 export default function Ghost({ slug }: GhostProps) {
-  const data = getGhostData(slug)
-
-  if (data === undefined) return null
-
-  const { name, evidences, desc, wiki } = data
+  const { label, evidences, desc, wiki } = getGhostData(slug)
 
   return (
     <article className={styles.article}>
-      <header className="subtitle">{name}</header>
+      <header className="subtitle">
+        <a
+          className={styles.anchor}
+          href={wiki}
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Visit Ghost Wiki Page"
+        >
+          {label}
+        </a>
+      </header>
       {desc}
       <Tags tags={evidences} />
     </article>

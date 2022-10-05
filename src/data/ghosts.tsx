@@ -1,7 +1,7 @@
 export const ghosts: Ghost[] = [
   {
     slug: 'banshee',
-    name: 'Banshee',
+    label: 'Banshee',
     evidences: ['fingerprints', 'orbs', 'dots'],
     desc: (
       <p>
@@ -14,7 +14,7 @@ export const ghosts: Ghost[] = [
   },
   {
     slug: 'demon',
-    name: 'Demon',
+    label: 'Demon',
     evidences: ['fingerprints', 'writing', 'freezing'],
     desc: (
       <p>
@@ -26,7 +26,7 @@ export const ghosts: Ghost[] = [
   },
   {
     slug: 'deogen',
-    name: 'Deogen',
+    label: 'Deogen',
     evidences: ['box', 'writing', 'dots'],
     desc: (
       <p>
@@ -38,7 +38,7 @@ export const ghosts: Ghost[] = [
   },
   {
     slug: 'goryo',
-    name: 'Goryo',
+    label: 'Goryo',
     evidences: ['emf', 'fingerprints', 'dots'],
     desc: (
       <p>
@@ -51,7 +51,7 @@ export const ghosts: Ghost[] = [
   },
   {
     slug: 'hantu',
-    name: 'Hantu',
+    label: 'Hantu',
     evidences: ['fingerprints', 'orbs', 'freezing'],
     desc: (
       <p>
@@ -63,7 +63,7 @@ export const ghosts: Ghost[] = [
   },
   {
     slug: 'jinn',
-    name: 'Jinn',
+    label: 'Jinn',
     evidences: ['emf', 'freezing', 'fingerprints'],
     desc: (
       <p>
@@ -76,7 +76,7 @@ export const ghosts: Ghost[] = [
   },
   {
     slug: 'mare',
-    name: 'Mare',
+    label: 'Mare',
     evidences: ['box', 'orbs', 'writing'],
     desc: (
       <p>
@@ -89,7 +89,7 @@ export const ghosts: Ghost[] = [
   },
   {
     slug: 'moroi',
-    name: 'Moroi',
+    label: 'Moroi',
     evidences: ['box', 'writing', 'freezing'],
     desc: (
       <p>
@@ -101,7 +101,7 @@ export const ghosts: Ghost[] = [
   },
   {
     slug: 'myling',
-    name: 'Myling',
+    label: 'Myling',
     evidences: ['emf', 'fingerprints', 'writing'],
     desc: (
       <p>
@@ -113,7 +113,7 @@ export const ghosts: Ghost[] = [
   },
   {
     slug: 'obake',
-    name: 'Obake',
+    label: 'Obake',
     evidences: ['emf', 'fingerprints', 'orbs'],
     desc: (
       <p>
@@ -124,8 +124,8 @@ export const ghosts: Ghost[] = [
     wiki: 'https://phasmophobia.fandom.com/wiki/Obake',
   },
   {
-    slug: '  oni',
-    name: 'Oni',
+    slug: 'oni',
+    label: 'Oni',
     evidences: ['emf', 'freezing', 'dots'],
     desc: (
       <p>
@@ -137,7 +137,7 @@ export const ghosts: Ghost[] = [
   },
   {
     slug: 'onryo',
-    name: 'Onryo',
+    label: 'Onryo',
     evidences: ['box', 'orbs', 'freezing'],
     desc: (
       <p>
@@ -150,7 +150,7 @@ export const ghosts: Ghost[] = [
   },
   {
     slug: 'phantom',
-    name: 'Phantom',
+    label: 'Phantom',
     evidences: ['box', 'fingerprints', 'dots'],
     desc: (
       <p>
@@ -164,7 +164,7 @@ export const ghosts: Ghost[] = [
   },
   {
     slug: 'poltergeist',
-    name: 'Poltergeist',
+    label: 'Poltergeist',
     evidences: ['box', 'writing', 'fingerprints'],
     desc: (
       <p>
@@ -177,7 +177,7 @@ export const ghosts: Ghost[] = [
   },
   {
     slug: 'raiju',
-    name: 'Raiju',
+    label: 'Raiju',
     evidences: ['emf', 'orbs', 'dots'],
     desc: (
       <p>
@@ -189,7 +189,7 @@ export const ghosts: Ghost[] = [
   },
   {
     slug: 'revenant',
-    name: 'Revenant',
+    label: 'Revenant',
     evidences: ['orbs', 'writing', 'freezing'],
     desc: (
       <p>
@@ -201,7 +201,7 @@ export const ghosts: Ghost[] = [
   },
   {
     slug: 'shade',
-    name: 'Shade',
+    label: 'Shade',
     evidences: ['emf', 'writing', 'freezing'],
     desc: (
       <p>
@@ -214,7 +214,7 @@ export const ghosts: Ghost[] = [
   },
   {
     slug: 'spirit',
-    name: 'Spirit',
+    label: 'Spirit',
     evidences: ['emf', 'box', 'writing'],
     desc: (
       <p>
@@ -226,7 +226,7 @@ export const ghosts: Ghost[] = [
   },
   {
     slug: 'thaye',
-    name: 'Thaye',
+    label: 'Thaye',
     evidences: ['orbs', 'writing', 'dots'],
     desc: (
       <p>
@@ -238,7 +238,7 @@ export const ghosts: Ghost[] = [
   },
   {
     slug: 'mimic',
-    name: 'The Mimic',
+    label: 'The Mimic',
     evidences: ['box', 'fingerprints', 'freezing'],
     desc: (
       <p>
@@ -250,7 +250,7 @@ export const ghosts: Ghost[] = [
   },
   {
     slug: 'twins',
-    name: 'The Twins',
+    label: 'The Twins',
     evidences: ['emf', 'box', 'freezing'],
     desc: (
       <p>
@@ -263,7 +263,7 @@ export const ghosts: Ghost[] = [
   },
   {
     slug: 'wraith',
-    name: 'Wraith',
+    label: 'Wraith',
     evidences: ['emf', 'box', 'dots'],
     desc: (
       <p>
@@ -275,7 +275,7 @@ export const ghosts: Ghost[] = [
   },
   {
     slug: 'yokai',
-    name: 'Yokai',
+    label: 'Yokai',
     evidences: ['box', 'orbs', 'dots'],
     desc: (
       <p>
@@ -287,7 +287,7 @@ export const ghosts: Ghost[] = [
   },
   {
     slug: 'yurei',
-    name: 'Yurei',
+    label: 'Yurei',
     evidences: ['orbs', 'freezing', 'dots'],
     desc: (
       <p>

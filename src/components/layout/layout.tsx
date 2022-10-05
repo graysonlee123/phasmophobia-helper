@@ -5,9 +5,11 @@ import { getImpossibleEvidences } from '@lib/data'
 import styles from './index.module.css'
 
 export default function Layout() {
-  const [checkedEvidences, setCheckedEvidences] = useState<string[]>([])
-  const [disabledEvidences, setDisabledEvidences] = useState<string[]>([])
-  const [impossibleEvidences, setImpossibleEvidences] = useState<string[]>([])
+  const [checkedEvidences, setCheckedEvidences] = useState<EvidenceSlug[]>([])
+  const [disabledEvidences, setDisabledEvidences] = useState<EvidenceSlug[]>([])
+  const [impossibleEvidences, setImpossibleEvidences] = useState<
+    EvidenceSlug[]
+  >([])
 
   useEffect(
     function () {
