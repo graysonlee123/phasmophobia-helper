@@ -11,7 +11,7 @@ export default function Sanity({ int }: SanityProps) {
   return (
     <span
       className={cn([styles.sanity, int >= 50 ? styles.red : styles.green])}
-      title="Hunt Sanity Average"
+      title="Sanity Average to Hunt"
     >
       {int}
       <small>%</small>

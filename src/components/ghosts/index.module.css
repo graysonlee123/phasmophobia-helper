@@ -11,7 +11,7 @@
   .section {
     gap: 3.5rem;
     align-self: start;
-    max-width: 45ch;
+    max-width: 52ch;
     max-height: 100%;
     overflow: auto;
     scroll-behavior: smooth;
