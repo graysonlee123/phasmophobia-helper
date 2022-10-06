@@ -49,7 +49,7 @@ export default function Checkboxes({
           className={cn(['button-reset', styles.reset])}
           onClick={resetEvidences}
         >
-          (clear)
+          (reset)
         </button>
       </p>
     </section>
