@@ -14,3 +14,10 @@
   font-size: var(--fs--sm);
   opacity: 60%;
 }
+
+.reset {
+  padding: 0;
+  opacity: 60%;
+  font-size: var(--fs--xs);
+  text-decoration: underline;
+}

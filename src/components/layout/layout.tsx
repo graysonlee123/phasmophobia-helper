@@ -107,6 +107,14 @@ export default function Layout() {
   }
 
   /**
+   * Resets the evidence state.
+   */
+  function resetEvidences() {
+    setCheckedEvidences([])
+    setDisabledEvidences([])
+  }
+
+  /**
    * Gets a list of the currently possible ghost types.
    *
    * @param checkedEvidences The currently checked evidence slugs.
@@ -207,6 +215,7 @@ export default function Layout() {
         removeCheckedEvidence={removeCheckedEvidence}
         addDisabledEvidences={addDisabledEvidences}
         removeDisabledEvidence={removeDisabledEvidence}
+        resetEvidences={resetEvidences}
         checkedEvidencesHasRoom={checkedEvidencesHasRoom}
         evidenceIsChecked={evidenceIsChecked}
         evidenceIsDisabled={evidenceIsDisabled}
