@@ -1,6 +1,6 @@
 import { getEvidenceData } from '@lib/evidences'
 import cn from 'classnames'
-import styles from './index.module.css'
+import styles from './tag.module.css'
 
 interface TagProps {
   slug: EvidenceSlug

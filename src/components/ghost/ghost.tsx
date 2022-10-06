@@ -5,7 +5,7 @@ import Minimize from '@components/minimize'
 import { getGhostData } from '@lib/ghosts'
 import { arrayContains, arrayAddUnique, arrayRemoveAll } from '@lib/arrays'
 import cn from 'classnames'
-import styles from './index.module.css'
+import styles from './ghost.module.css'
 
 interface GhostProps {
   minimizedGhosts: GhostSlug[]

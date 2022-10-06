@@ -1,7 +1,7 @@
 import Evidence from '@components/evidence'
 import { evidences } from '@data/evidences'
 import cn from 'classnames'
-import styles from './styles.module.css'
+import styles from './evidences.module.css'
 
 interface CheckboxesProps {
   checkedEvidences: EvidenceSlug[]

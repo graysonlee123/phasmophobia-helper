@@ -1,5 +1,5 @@
 import Ghost from '@components/ghost'
-import styles from './index.module.css'
+import styles from './ghosts.module.css'
 
 interface GhostsProps {
   minimizedGhosts: GhostSlug[]

@@ -3,7 +3,7 @@ import Checkboxes from '@components/checkbox'
 import { getEvidenceData } from '@lib/evidences'
 import { arrayAddUnique, arrayContains, arrayRemoveAll } from '@lib/arrays'
 import cn from 'classnames'
-import styles from './index.module.css'
+import styles from './evidence.module.css'
 
 interface EvidenceProps {
   checkedEvidences: EvidenceSlug[]

@@ -3,7 +3,7 @@ import Evidences from '@components/evidences'
 import Ghosts from '@components/ghosts'
 import { getPossibleGhosts } from '@lib/ghosts'
 import { getPossibleEvidences } from '@lib/evidences'
-import styles from './index.module.css'
+import styles from './layout.module.css'
 
 export default function Layout() {
   const [checkedEvidences, setCheckedEvidences] = useState<EvidenceSlug[]>([])

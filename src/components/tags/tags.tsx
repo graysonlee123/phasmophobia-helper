@@ -1,5 +1,5 @@
 import Tag from '@components/tag'
-import styles from './index.module.css'
+import styles from './tags.module.css'
 
 interface TagsProps {
   tags: EvidenceSlug[]
