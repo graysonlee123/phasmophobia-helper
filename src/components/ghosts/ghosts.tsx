@@ -2,15 +2,15 @@ import Ghost from '@components/ghost'
 import styles from './index.module.css'
 
 interface GhostsProps {
+  minimizedGhosts: GhostSlug[]
+  setMinimizedGhosts: (minimizedGhosts: GhostSlug[]) => void
   possibleGhosts: GhostSlug[]
-  toggleGhost: (slug: GhostSlug) => void
-  ghostIsMinimized: (slug: GhostSlug) => boolean
 }
 
 export default function Ghosts({
+  minimizedGhosts,
+  setMinimizedGhosts,
   possibleGhosts,
-  toggleGhost,
-  ghostIsMinimized,
 }: GhostsProps) {
   return (
     <section className={styles.section}>
@@ -19,8 +19,8 @@ export default function Ghosts({
       ) : (
         possibleGhosts.map((slug) => (
           <Ghost
-            toggleGhost={toggleGhost}
-            ghostIsMinimized={ghostIsMinimized}
+            minimizedGhosts={minimizedGhosts}
+            setMinimizedGhosts={setMinimizedGhosts}
             slug={slug}
             key={slug}
           />

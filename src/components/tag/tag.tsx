@@ -1,4 +1,4 @@
-import { getEvidenceData } from '@lib/data'
+import { getEvidenceData } from '@lib/evidences'
 import cn from 'classnames'
 import styles from './index.module.css'
 

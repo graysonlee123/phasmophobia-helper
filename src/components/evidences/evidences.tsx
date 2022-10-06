@@ -4,51 +4,48 @@ import cn from 'classnames'
 import styles from './styles.module.css'
 
 interface CheckboxesProps {
-  addCheckedEvidences: (evidences: EvidenceSlug[]) => void
-  removeCheckedEvidence: (evidence: EvidenceSlug) => void
-  addDisabledEvidences: (evidences: EvidenceSlug[]) => void
-  removeDisabledEvidence: (evidence: EvidenceSlug) => void
-  resetEvidences: () => void
-  checkedEvidencesHasRoom: () => boolean
-  evidenceIsChecked: (evidence: EvidenceSlug) => boolean
-  evidenceIsDisabled: (evidence: EvidenceSlug) => boolean
-  evidenceIsPossible: (evidence: EvidenceSlug) => boolean
+  checkedEvidences: EvidenceSlug[]
+  setCheckedEvidences: (checkedEvidences: EvidenceSlug[]) => void
+  disabledEvidences: EvidenceSlug[]
+  setDisabledEvidences: (disabledEvidences: EvidenceSlug[]) => void
+  possibleEvidences: EvidenceSlug[]
+  setMinimizedGhosts: (minimizedGhosts: GhostSlug[]) => void
 }
 
 export default function Checkboxes({
-  addCheckedEvidences,
-  removeCheckedEvidence,
-  addDisabledEvidences,
-  removeDisabledEvidence,
-  resetEvidences,
-  checkedEvidencesHasRoom,
-  evidenceIsChecked,
-  evidenceIsDisabled,
-  evidenceIsPossible,
+  checkedEvidences,
+  setCheckedEvidences,
+  disabledEvidences,
+  setDisabledEvidences,
+  possibleEvidences,
+  setMinimizedGhosts,
 }: CheckboxesProps) {
+  /**
+   * Resets the state of the application.
+   */
+  function reset() {
+    setCheckedEvidences([])
+    setDisabledEvidences([])
+    setMinimizedGhosts([])
+  }
+
   return (
     <section className={styles.section}>
       {evidences.map(({ slug }) => (
         <Evidence
-          key={slug}
-          addCheckedEvidences={addCheckedEvidences}
-          removeCheckedEvidence={removeCheckedEvidence}
-          addDisabledEvidences={addDisabledEvidences}
-          removeDisabledEvidence={removeDisabledEvidence}
-          checkedEvidencesHasRoom={checkedEvidencesHasRoom}
-          evidenceIsChecked={evidenceIsChecked}
-          evidenceIsDisabled={evidenceIsDisabled}
-          evidenceIsPossible={evidenceIsPossible}
+          checkedEvidences={checkedEvidences}
+          setCheckedEvidences={setCheckedEvidences}
+          disabledEvidences={disabledEvidences}
+          setDisabledEvidences={setDisabledEvidences}
+          possibleEvidences={possibleEvidences}
           slug={slug}
+          key={slug}
         />
       ))}
       <p className={styles.instruction}>
         As you update your findings, evidence that is not possible will be
         locked, and invalid ghosts will be hidden.{' '}
-        <button
-          className={cn(['button-reset', styles.reset])}
-          onClick={resetEvidences}
-        >
+        <button className={cn(['button-reset', styles.reset])} onClick={reset}>
           (reset)
         </button>
       </p>

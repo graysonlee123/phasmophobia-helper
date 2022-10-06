@@ -1,77 +1,66 @@
 import { useEffect, useState } from 'react'
 import Checkboxes from '@components/checkbox'
+import { getEvidenceData } from '@lib/evidences'
+import { arrayAddUnique, arrayContains, arrayRemoveAll } from '@lib/arrays'
 import cn from 'classnames'
 import styles from './index.module.css'
-import { getEvidenceData } from '@lib/data'
 
 interface EvidenceProps {
-  addCheckedEvidences: (evidences: EvidenceSlug[]) => void
-  removeCheckedEvidence: (evidence: EvidenceSlug) => void
-  addDisabledEvidences: (evidences: EvidenceSlug[]) => void
-  removeDisabledEvidence: (evidence: EvidenceSlug) => void
-  checkedEvidencesHasRoom: () => boolean
-  evidenceIsChecked: (evidence: EvidenceSlug) => boolean
-  evidenceIsDisabled: (evidence: EvidenceSlug) => boolean
-  evidenceIsPossible: (evidence: EvidenceSlug) => boolean
+  checkedEvidences: EvidenceSlug[]
+  setCheckedEvidences: (checkedEvidences: EvidenceSlug[]) => void
+  disabledEvidences: EvidenceSlug[]
+  setDisabledEvidences: (disabledEvidences: EvidenceSlug[]) => void
+  possibleEvidences: EvidenceSlug[]
   slug: EvidenceSlug
 }
 
 export default function Evidence({
-  addCheckedEvidences,
-  removeCheckedEvidence,
-  addDisabledEvidences,
-  removeDisabledEvidence,
-  checkedEvidencesHasRoom,
-  evidenceIsChecked,
-  evidenceIsDisabled,
-  evidenceIsPossible,
+  checkedEvidences,
+  setCheckedEvidences,
+  disabledEvidences,
+  setDisabledEvidences,
+  possibleEvidences,
   slug,
 }: EvidenceProps) {
-  const [checked, setChecked] = useState<boolean>(false)
-  const [disabled, setDisabled] = useState<boolean>(false)
-  const [locked, setLocked] = useState<boolean>(false)
-  const [checkboxState, setCheckboxState] = useState<CheckboxState>('neutral')
-
   /**
    * Update the local component state when the
    * external state is modified.
    */
-  useEffect(
-    function () {
-      evidenceIsChecked(slug) ? setChecked(true) : setChecked(false)
-      evidenceIsDisabled(slug) ? setDisabled(true) : setDisabled(false)
-    },
-    [evidenceIsChecked, evidenceIsDisabled, slug]
-  )
+  const [checked, setChecked] = useState<boolean>(false)
+  const [disabled, setDisabled] = useState<boolean>(false)
+  useEffect(() => {
+    setChecked(arrayContains(slug, checkedEvidences))
+    setDisabled(arrayContains(slug, disabledEvidences))
+  }, [checkedEvidences, disabledEvidences, slug])
 
   /**
-   * Controls setting the checkbox state.
+   * Lock the evidence if 3 evidences have been selected and
+   * `slug` isn't one of them, or if it's not a possible evidence.
    */
-  useEffect(
-    function () {
-      if (locked) setCheckboxState('locked')
-      else if (checked) setCheckboxState('checked')
-      else if (disabled) setCheckboxState('disabled')
-      else setCheckboxState('neutral')
-    },
-    [locked, checked, disabled]
-  )
+  const [locked, setLocked] = useState<boolean>(false)
+  useEffect(() => {
+    if (
+      (checkedEvidences.length >= 3 &&
+        !arrayContains(slug, checkedEvidences)) ||
+      !arrayContains(slug, possibleEvidences)
+    ) {
+      setLocked(true)
+      return
+    }
+
+    setLocked(false)
+  }, [checkedEvidences, possibleEvidences, slug])
 
   /**
-   * Lock the evidence if 3 evidences have been selected or
-   * or if it's not a possible evidence. Otherwise, unlock it.
+   * Controls the checkbox state.
    */
-  useEffect(
-    function () {
-      if (!checkedEvidencesHasRoom() || !evidenceIsPossible(slug)) {
-        setLocked(true)
-        return
-      }
-
-      setLocked(false)
-    },
-    [checkedEvidencesHasRoom, evidenceIsPossible, slug]
-  )
+  const [checkboxState, setCheckboxState] = useState<CheckboxState>('neutral')
+  useEffect(() => {
+    if (locked) setCheckboxState('locked')
+    else if (checked) setCheckboxState('checked')
+    else if (disabled) setCheckboxState('disabled')
+    else setCheckboxState('neutral')
+  }, [locked, checked, disabled])
 
   /**
    * Handles the clicking through the three states.
@@ -79,14 +68,22 @@ export default function Evidence({
   function handleClick() {
     if (checked) {
       /** Move to disabled. */
-      removeCheckedEvidence(slug)
-      addDisabledEvidences([slug])
+      setCheckedEvidences(
+        arrayRemoveAll(slug, checkedEvidences) as EvidenceSlug[]
+      )
+      setDisabledEvidences(
+        arrayAddUnique(slug, disabledEvidences) as EvidenceSlug[]
+      )
     } else if (disabled) {
       /** Move to neutral. */
-      removeDisabledEvidence(slug)
+      setDisabledEvidences(
+        arrayRemoveAll(slug, disabledEvidences) as EvidenceSlug[]
+      )
     } else {
       /** Move to checked. */
-      addCheckedEvidences([slug])
+      setCheckedEvidences(
+        arrayAddUnique(slug, checkedEvidences) as EvidenceSlug[]
+      )
     }
   }
 

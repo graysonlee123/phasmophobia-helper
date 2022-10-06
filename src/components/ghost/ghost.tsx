@@ -2,34 +2,45 @@ import { useEffect, useState } from 'react'
 import Tags from '@components/tags'
 import Sanity from '@components/sanity'
 import Minimize from '@components/minimize'
-import { getGhostData } from '@lib/data'
+import { getGhostData } from '@lib/ghosts'
+import { arrayContains, arrayAddUnique, arrayRemoveAll } from '@lib/arrays'
 import cn from 'classnames'
 import styles from './index.module.css'
 
 interface GhostProps {
-  toggleGhost: (slug: GhostSlug) => void
-  ghostIsMinimized: (slug: GhostSlug) => boolean
+  minimizedGhosts: GhostSlug[]
+  setMinimizedGhosts: (minimizedGhosts: GhostSlug[]) => void
   slug: GhostSlug
 }
 
 export default function Ghost({
-  toggleGhost,
-  ghostIsMinimized,
+  minimizedGhosts,
+  setMinimizedGhosts,
   slug,
 }: GhostProps) {
-  const [minimized, setMinimized] = useState<boolean>(false)
   const { label, evidences, hunt, desc, wiki } = getGhostData(slug)
 
   /**
    * Responsible for keeping the minimized state updated.
    */
+  const [minimized, setMinimized] = useState<boolean>(false)
   useEffect(
     function () {
-      if (ghostIsMinimized(slug)) setMinimized(true)
+      if (arrayContains(slug, minimizedGhosts)) setMinimized(true)
       else setMinimized(false)
     },
-    [ghostIsMinimized, slug]
+    [minimizedGhosts, slug]
   )
+
+  /**
+   * Handles the click logic for minimizing the ghost.
+   */
+  function handleClick() {
+    if (arrayContains(slug, minimizedGhosts))
+      setMinimizedGhosts(arrayRemoveAll(slug, minimizedGhosts) as GhostSlug[])
+    else
+      setMinimizedGhosts(arrayAddUnique(slug, minimizedGhosts) as GhostSlug[])
+  }
 
   return (
     <article
@@ -49,7 +60,7 @@ export default function Ghost({
         </a>
         <Sanity int={hunt} />
         <span className={styles.button}>
-          <Minimize callback={() => toggleGhost(slug)} open={minimized} />
+          <Minimize callback={handleClick} open={minimized} />
         </span>
       </header>
       {!minimized && desc}
