@@ -11,6 +11,7 @@ export default function Layout() {
   const [disabledEvidences, setDisabledEvidences] = useState<EvidenceSlug[]>([])
   const [possibleGhosts, setPossibleGhosts] = useState<GhostSlug[]>([])
   const [possibleEvidences, setPossibleEvidences] = useState<EvidenceSlug[]>([])
+  const [minimizedGhosts, setMinimizedGhosts] = useState<GhostSlug[]>([])
 
   /**
    * Checks to see if there is enough room in the `checkedEvidences` state.
@@ -22,6 +23,49 @@ export default function Layout() {
    */
   function checkedEvidencesHasRoom() {
     return checkedEvidences.length < 4
+  }
+
+  /**
+   * Gets the minimization status of a ghost.
+   *
+   * @param slug The slug of the ghost to check.
+   * @returns True if the ghost is minimized, false otherwise.
+   */
+  function ghostIsMinimized(slug: GhostSlug) {
+    return minimizedGhosts.indexOf(slug) > -1
+  }
+
+  /**
+   * Adds a ghost to the minimized state.
+   *
+   * @param slug The slug of a ghost to add.
+   */
+  function addMinimizedGhost(slug: GhostSlug) {
+    if (!ghostIsMinimized(slug)) {
+      setMinimizedGhosts([...minimizedGhosts, slug])
+    }
+  }
+
+  /**
+   * Removes a ghost from the minimized state.
+   *
+   * @param slug The slug of a ghost to remove.
+   */
+  function removeMinimizedGhost(slug: GhostSlug) {
+    setMinimizedGhosts(minimizedGhosts.filter((ghost) => slug !== ghost))
+  }
+
+  /**
+   * Toggles a ghost's minimization.
+   *
+   * @param slug The slug of the ghost to toggle.
+   */
+  function toggleGhost(slug: GhostSlug) {
+    if (ghostIsMinimized(slug)) {
+      removeMinimizedGhost(slug)
+    } else {
+      addMinimizedGhost(slug)
+    }
   }
 
   /**
@@ -112,6 +156,7 @@ export default function Layout() {
   function resetEvidences() {
     setCheckedEvidences([])
     setDisabledEvidences([])
+    setMinimizedGhosts([])
   }
 
   /**
@@ -221,7 +266,11 @@ export default function Layout() {
         evidenceIsDisabled={evidenceIsDisabled}
         evidenceIsPossible={evidenceIsPossible}
       />
-      <Ghosts possibleGhosts={possibleGhosts} />
+      <Ghosts
+        possibleGhosts={possibleGhosts}
+        toggleGhost={toggleGhost}
+        ghostIsMinimized={ghostIsMinimized}
+      />
     </main>
   )
 }

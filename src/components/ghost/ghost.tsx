@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Tags from '@components/tags'
 import Sanity from '@components/sanity'
 import Minimize from '@components/minimize'
@@ -7,19 +7,36 @@ import cn from 'classnames'
 import styles from './index.module.css'
 
 interface GhostProps {
+  toggleGhost: (slug: GhostSlug) => void
+  ghostIsMinimized: (slug: GhostSlug) => boolean
   slug: GhostSlug
 }
 
-export default function Ghost({ slug }: GhostProps) {
-  const [disabled, setDisabled] = useState<boolean>(false)
+export default function Ghost({
+  toggleGhost,
+  ghostIsMinimized,
+  slug,
+}: GhostProps) {
+  const [minimized, setMinimized] = useState<boolean>(false)
   const { label, evidences, hunt, desc, wiki } = getGhostData(slug)
 
-  function toggleDisabled() {
-    setDisabled(!disabled)
-  }
+  /**
+   * Responsible for keeping the minimized state updated.
+   */
+  useEffect(
+    function () {
+      if (ghostIsMinimized(slug)) setMinimized(true)
+      else setMinimized(false)
+    },
+    [ghostIsMinimized, slug]
+  )
 
   return (
-    <article className={cn([styles.article], { [styles.disabled]: disabled })}>
+    <article
+      className={cn([styles.article], {
+        [styles.disabled]: minimized,
+      })}
+    >
       <header className={styles.header}>
         <a
           className={styles.anchor}
@@ -32,10 +49,10 @@ export default function Ghost({ slug }: GhostProps) {
         </a>
         <Sanity int={hunt} />
         <span className={styles.button}>
-          <Minimize callback={toggleDisabled} open={disabled} />
+          <Minimize callback={() => toggleGhost(slug)} open={minimized} />
         </span>
       </header>
-      {!disabled && desc}
+      {!minimized && desc}
       <Tags tags={evidences} />
     </article>
   )
