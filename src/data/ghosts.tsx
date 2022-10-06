@@ -5,9 +5,9 @@ export const ghosts: Ghost[] = [
     evidences: ['fingerprints', 'orbs', 'dots'],
     desc: (
       <p>
-        Distinctive screech can be heard when using the Parabolic Microphone.
-        Targets one specific player during hunts, triggered by the target
-        player&apos;s sanity level instead of the average.
+        Targets one specific player until they are killed, ignoring others. Its
+        hunt threshold is based on the target&apos;s sanity. A distinctive
+        screech can be heard when using the Parabolic Microphone.
       </p>
     ),
     wiki: 'https://phasmophobia.fandom.com/wiki/Banshee',
@@ -19,8 +19,9 @@ export const ghosts: Ghost[] = [
     hunt: 70,
     desc: (
       <p>
-        Can start a hunt regardless of average sanity when using its ability.
-        Crucifix effectiveness has a larger range. Can hunt more often.
+        Has a rare chance to hunt at any time, regardless of the average sanity.
+        There is less time between hunts (20s). Smudging will prevent hunts for
+        less time (60s). Crucifixes have an increased effective range.
       </p>
     ),
     wiki: 'https://phasmophobia.fandom.com/wiki/Demon',
@@ -32,8 +33,9 @@ export const ghosts: Ghost[] = [
     hunt: 40,
     desc: (
       <p>
-        Always knows where the players are during a hunt. Slows down when close
-        to a player during a hunt.
+        Always knows player locations, making hiding useless during hunts. Slows
+        down when close to a player. Kiting this ghost is the best method to
+        survive a hunt. Can produce a unique Spirit Box response.
       </p>
     ),
     wiki: 'https://phasmophobia.fandom.com/wiki/Deogen',
@@ -44,9 +46,9 @@ export const ghosts: Ghost[] = [
     evidences: ['emf', 'fingerprints', 'dots'],
     desc: (
       <p>
-        Appears on D.O.T.S. only when viewed through a video camera with no
-        players nearby. When not hunting, its wandering distance will be
-        shorter.
+        Appears on D.O.T.S. only when viewed through a video camera and no
+        players are in the same room as it. When not hunting, its wandering
+        distance will be shorter.
       </p>
     ),
     wiki: 'https://phasmophobia.fandom.com/wiki/Goryo',
@@ -58,7 +60,8 @@ export const ghosts: Ghost[] = [
     desc: (
       <p>
         Increased speed in colder areas during hunts. Emits frosty breath in
-        freezing rooms. Moves slower in warmer areas during hunts.
+        freezing rooms. Moves slower in warmer areas during hunts. Twice as
+        likely to turn off the fuse box.
       </p>
     ),
     wiki: 'https://phasmophobia.fandom.com/wiki/Hantu',
@@ -69,9 +72,9 @@ export const ghosts: Ghost[] = [
     evidences: ['emf', 'freezing', 'fingerprints'],
     desc: (
       <p>
-        Travels faster if the target is far away. Has a chance to deduct nearby
-        players&apos; sanity. Turning off the breaker will prevent it from using
-        its ability.
+        Higher speed if the target is far away. Its ability will deduct nearby
+        players&apos; sanity (25%). Turning off the breaker will prevent it from
+        using its ability.
       </p>
     ),
     wiki: 'https://phasmophobia.fandom.com/wiki/Jinn',
@@ -80,11 +83,12 @@ export const ghosts: Ghost[] = [
     slug: 'mare',
     label: 'Mare',
     evidences: ['box', 'orbs', 'writing'],
+    hunt: 60,
     desc: (
       <p>
-        Hunts at higher sanity thresholds in the dark. Turns off lights, breaks
-        lightbulbs more often. Remains in unlit rooms more often. Hunts at lower
-        sanity levels when in a lit room.
+        Hunts at higher sanity thresholds in the dark (60%), and lower sanity
+        thresholds in the light (40%). Turns off lights and breaks lightbulbs
+        more often. Remains in unlit rooms more often.
       </p>
     ),
     wiki: 'https://phasmophobia.fandom.com/wiki/Mare',
@@ -95,8 +99,11 @@ export const ghosts: Ghost[] = [
     evidences: ['box', 'writing', 'freezing'],
     desc: (
       <p>
-        Moves faster at lower player sanity. Can curse players, making them lose
-        sanity faster. Smudge sticks blind the ghost for longer during hunts.
+        Higher speed depending on average sanity. Can curse players, making them
+        lose sanity faster, when obtaining a spirit box response or by hearing
+        ghost sounds through the Parabolic Microphone. Consuming sanity pills
+        removes the curse. Smudge sticks blind the ghost for longer during
+        hunts.
       </p>
     ),
     wiki: 'https://phasmophobia.fandom.com/wiki/Moroi',
@@ -107,8 +114,9 @@ export const ghosts: Ghost[] = [
     evidences: ['emf', 'fingerprints', 'writing'],
     desc: (
       <p>
-        Has quieter footsteps during hunts. Produces paranormal sounds more
-        frequently.
+        Has quieter footsteps and vocalizations during hunts that can only be
+        heard when closer to the ghost (12m). When using a Parabolic Microphone,
+        it produces paranormal sounds more frequently.
       </p>
     ),
     wiki: 'https://phasmophobia.fandom.com/wiki/Myling',
@@ -120,7 +128,8 @@ export const ghosts: Ghost[] = [
     desc: (
       <p>
         Fingerprints disappear faster than other ghost types. Does not always
-        leave fingerprints, and can leave unique fingerprints.
+        leave fingerprints (75%), and can leave unique fingerprints (1/6). It
+        can use its ability to half the lifespan of fingerprints on the map.
       </p>
     ),
     wiki: 'https://phasmophobia.fandom.com/wiki/Obake',
@@ -132,7 +141,8 @@ export const ghosts: Ghost[] = [
     desc: (
       <p>
         More active when people are nearby. Cannot produce “air ball” ghost
-        events. Stays visible for longer during hunts.
+        events. Stays visible for longer during hunts. Stays visible for longer
+        when hunting. Cannot produce the &quot;airball&quot; ghost event.
       </p>
     ),
     wiki: 'https://phasmophobia.fandom.com/wiki/Oni',
@@ -144,9 +154,9 @@ export const ghosts: Ghost[] = [
     hunt: 60,
     desc: (
       <p>
-        Chance to hunt at any sanity when blowing out flames. Blows out flames
-        more often than other ghost types. Presence of flames prevents the ghost
-        from hunting.
+        Chance to hunt at any sanity when blowing out flames (50%, +25% / dead
+        player). Blows out flames more often than other ghost types. Presence of
+        flames prevents the ghost from hunting (4m).
       </p>
     ),
     wiki: 'https://phasmophobia.fandom.com/wiki/Onryo',
@@ -158,9 +168,10 @@ export const ghosts: Ghost[] = [
     desc: (
       <p>
         Additional sanity drain from players within its line-of-sight during
-        manifestations and hunts. Can roam towards random players. Taking a
-        picture of the Phantom renders it temporarily invisible. While hunting,
-        will be visible for less time.
+        manifestations. Can roam towards random players. Taking a picture of the
+        Phantom renders it temporarily invisible during ghost events. While
+        hunting, the ghost will be invisible in photos and will be visible for
+        less time.
       </p>
     ),
     wiki: 'https://phasmophobia.fandom.com/wiki/Phantom',
@@ -171,9 +182,10 @@ export const ghosts: Ghost[] = [
     evidences: ['box', 'writing', 'fingerprints'],
     desc: (
       <p>
-        Can throw multiple objects at once. Using its ability reduces player
-        sanity faster. Prone to open more doors during a hunt. Ineffective in
-        empty rooms with no objects to throw.
+        Its ability can throw multiple objects at once with great force. Using
+        its ability reduces player sanity faster. During a hunt, it opens more
+        doors and throws everything it comes across. Ineffective in empty rooms
+        with no objects to throw.
       </p>
     ),
     wiki: 'https://phasmophobia.fandom.com/wiki/Poltergeist',
@@ -185,8 +197,9 @@ export const ghosts: Ghost[] = [
     hunt: 65,
     desc: (
       <p>
-        Active electronics boost its speed during hunts. Disrupts electronics
-        from further away when manifesting.{' '}
+        Being near active electronics boost its speed during hunts and allow it
+        to hunt at higher sanity thresholds. Disrupts electronics from further
+        away when manifesting.
       </p>
     ),
     wiki: 'https://phasmophobia.fandom.com/wiki/Raiju',
@@ -198,7 +211,8 @@ export const ghosts: Ghost[] = [
     desc: (
       <p>
         Travels at a faster speed when it has line-of-sight of a player during a
-        hunt. Travels very slowly when no line-of-sight established.
+        hunt, making it crucial to hide as soon as possible when a hunt starts.
+        Travels very slowly when no line-of-sight established.
       </p>
     ),
     wiki: 'https://phasmophobia.fandom.com/wiki/Revenant',
@@ -223,8 +237,8 @@ export const ghosts: Ghost[] = [
     evidences: ['emf', 'box', 'writing'],
     desc: (
       <p>
-        Using smudge sticks while nearby prevents it from hunting for much
-        longer.
+        Spirits have no special behavior, other than using smudge sticks while
+        nearby prevents it from hunting for much longer.
       </p>
     ),
     wiki: 'https://phasmophobia.fandom.com/wiki/Spirit',
@@ -237,7 +251,8 @@ export const ghosts: Ghost[] = [
     desc: (
       <p>
         Becomes very active the first time the player gets nearby. The more time
-        players spend near it, the quieter and slower it becomes.
+        players spend near it, the quieter and slower it becomes, and its hunt
+        chance decreases.
       </p>
     ),
     wiki: 'https://phasmophobia.fandom.com/wiki/Thaye',
@@ -249,7 +264,9 @@ export const ghosts: Ghost[] = [
     desc: (
       <p>
         Mimics other ghost types one after another for a brief period of time.
-        Includes Ghost Orbs as fourth evidence.
+        Includes Ghost Orbs as fourth false evidence. Can mimic evidence
+        properties if the ghost it is mimicing shares the evidence. For example,
+        the Obake&apos;s fingerprints.
       </p>
     ),
     wiki: 'https://phasmophobia.fandom.com/wiki/The_Mimic',
@@ -260,9 +277,9 @@ export const ghosts: Ghost[] = [
     evidences: ['emf', 'box', 'freezing'],
     desc: (
       <p>
-        Can hunt from a different place than expected. Differing speeds
-        depending on which twin hunts. Can interact with the environment
-        simultaneously.{' '}
+        It is actually one ghost, which behaves differently on a chance. Can
+        hunt from and interact with things in a different place than expected.
+        Can interact with the environment simultaneously.
       </p>
     ),
     wiki: 'https://phasmophobia.fandom.com/wiki/The_Twins',
@@ -274,7 +291,8 @@ export const ghosts: Ghost[] = [
     desc: (
       <p>
         Doesn&apos;t leave UV footprints after stepping in salt. Can teleport to
-        players randomly. Stepping in salt temporarily makes it more active.
+        players randomly. Stepping in salt temporarily makes it more active, and
+        salt piles it steps in will not provide photo evidence.
       </p>
     ),
     wiki: 'https://phasmophobia.fandom.com/wiki/Wraith',
@@ -286,8 +304,9 @@ export const ghosts: Ghost[] = [
     hunt: 80,
     desc: (
       <p>
-        Talking near it will increase its chance of hunts and interactions. Can
-        only hear and detect electronics within 2 meters of it.
+        When at least one player talks within a certain range of it, its hunt
+        sanity threshold is increased to 80%. During hunts, it can only hear or
+        sense electronics that are within 2m of it.
       </p>
     ),
     wiki: 'https://phasmophobia.fandom.com/wiki/Yokai',
@@ -299,7 +318,8 @@ export const ghosts: Ghost[] = [
     desc: (
       <p>
         May randomly shut a door and deduct nearby players&apos; sanity. Will be
-        temporarily confined to its room after smudging.
+        temporarily confined to its room after smudging. If a ghost shuts an
+        exit door fully without a manifestation, it is definitively a Yurei.
       </p>
     ),
     wiki: 'https://phasmophobia.fandom.com/wiki/Yurei',
