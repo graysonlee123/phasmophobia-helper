@@ -3,12 +3,39 @@ import Evidences from '@components/evidences'
 import Ghosts from '@components/ghosts'
 import { getPossibleGhosts } from '@lib/ghosts'
 import { getPossibleEvidences } from '@lib/evidences'
+import { getStorageItem, setStorageItem } from '@lib/storage'
 import styles from './layout.module.css'
 
 export default function Layout() {
-  const [checkedEvidences, setCheckedEvidences] = useState<EvidenceSlug[]>([])
-  const [disabledEvidences, setDisabledEvidences] = useState<EvidenceSlug[]>([])
-  const [minimizedGhosts, setMinimizedGhosts] = useState<GhostSlug[]>([])
+  /**
+   * Keeps state of checked evidences and saves updates to local storage.
+   */
+  const [checkedEvidences, setCheckedEvidences] = useState<EvidenceSlug[]>(
+    getStorageItem('checkedEvidences') || []
+  )
+  useEffect(() => {
+    setStorageItem('checkedEvidences', checkedEvidences)
+  }, [checkedEvidences])
+
+  /**
+   * Keeps state of disabled evidences and saves updates to local storage.
+   */
+  const [disabledEvidences, setDisabledEvidences] = useState<EvidenceSlug[]>(
+    getStorageItem('disabledEvidences') || []
+  )
+  useEffect(() => {
+    setStorageItem('disabledEvidences', disabledEvidences)
+  }, [disabledEvidences])
+
+  /**
+   * Keeps state of minimized ghosts and saves updates to local storage.
+   */
+  const [minimizedGhosts, setMinimizedGhosts] = useState<GhostSlug[]>(
+    getStorageItem('minimizedGhosts') || []
+  )
+  useEffect(() => {
+    setStorageItem('minimizedGhosts', minimizedGhosts)
+  }, [minimizedGhosts])
 
   /**
    * Updates the possible evidence when checked evidence changes.

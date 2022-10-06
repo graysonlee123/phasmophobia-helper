@@ -3,6 +3,11 @@ import React from 'react'
 export {}
 
 declare global {
+  type StorageKeys =
+    | 'checkedEvidences'
+    | 'disabledEvidences'
+    | 'minimizedGhosts'
+
   type GhostSlug =
     | 'banshee'
     | 'demon'
