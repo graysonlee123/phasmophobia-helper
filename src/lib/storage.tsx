@@ -8,7 +8,11 @@ export function setStorageItem(
   key: StorageKeys,
   value: GhostState | EvidenceState
 ) {
-  localStorage.setItem(key, JSON.stringify(value))
+  try {
+    localStorage.setItem(key, JSON.stringify(value))
+  } catch (error) {
+    console.error('There was an issue writing to the local storage.', error)
+  }
 }
 
 /**
@@ -19,11 +23,15 @@ export function setStorageItem(
  */
 export function getStorageItem(key: StorageKeys) {
   if (typeof window !== 'undefined') {
-    const storage = localStorage.getItem(key)
+    try {
+      const storage = localStorage.getItem(key)
 
-    if (null === storage) return null
+      if (null === storage) return null
 
-    return JSON.parse(storage)
+      return JSON.parse(storage)
+    } catch (error) {
+      console.error('There was an issue reading the local storage.', error)
+    }
   }
 
   return null
