@@ -20,7 +20,7 @@ export function arrayContains(value: string, array: string[]) {
  * @returns A possibly modified array.
  */
 export function arrayAddUnique(value: string, array: string[]) {
-  return [...array, value]
+  return arrayContains(value, array) ? array : [...array, value]
 }
 
 /**

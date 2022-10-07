@@ -3,14 +3,15 @@ import Checkbox from '@components/checkbox'
 import { getEvidenceData, getPossibleEvidences } from '@lib/evidences'
 import { arrayAddUnique, arrayContains, arrayRemoveAll } from '@lib/arrays'
 import { sendGtagEvent } from '@lib/analytics'
+import { ANALYTICS_DEBOUNCE, MAX_EVIDENCE } from '@lib/constants'
 import cn from 'classnames'
 import styles from './evidence.module.css'
 
 interface EvidenceProps {
-  checkedEvidences: EvidenceSlug[]
-  setCheckedEvidences: (checkedEvidences: EvidenceSlug[]) => void
-  disabledEvidences: EvidenceSlug[]
-  setDisabledEvidences: (disabledEvidences: EvidenceSlug[]) => void
+  checkedEvidences: EvidenceState
+  setCheckedEvidences: SetEvidenceState
+  disabledEvidences: EvidenceState
+  setDisabledEvidences: SetEvidenceState
   slug: EvidenceSlug
 }
 
@@ -23,11 +24,11 @@ export default function Evidence({
 }: EvidenceProps) {
   /**
    * Determines a state for the Checkbox component,
-   * based on the state of the evidence it is in.
+   * based on the state of the evidence.
    *
    * @returns The determined state for a Checkbox component.
    */
-  function determineCheckboxState(): CheckboxState {
+  function getCheckboxState(): CheckboxState {
     if (locked) return 'locked'
     else if (checked) return 'checked'
     else if (disabled) return 'disabled'
@@ -43,7 +44,7 @@ export default function Evidence({
     const possibleEvidences = getPossibleEvidences(checkedEvidences)
 
     return (
-      (checkedEvidences.length >= 3 &&
+      (checkedEvidences.length >= MAX_EVIDENCE &&
         !arrayContains(slug, checkedEvidences)) ||
       !arrayContains(slug, possibleEvidences)
     )
@@ -52,17 +53,18 @@ export default function Evidence({
   /**
    * Handles the clicking through the three states.
    */
+  const timeoutRef = useRef<null | ReturnType<typeof setTimeout>>(null)
   function handleClick() {
     if (timeoutRef.current) clearInterval(timeoutRef.current)
 
     if (checked) {
       /** Move to disabled. */
       setCheckedEvidences(
-        arrayRemoveAll(slug, checkedEvidences) as EvidenceSlug[]
+        arrayRemoveAll(slug, checkedEvidences) as EvidenceState
       )
 
       setDisabledEvidences(
-        arrayAddUnique(slug, disabledEvidences) as EvidenceSlug[]
+        arrayAddUnique(slug, disabledEvidences) as EvidenceState
       )
 
       timeoutRef.current = setTimeout(() => {
@@ -72,11 +74,11 @@ export default function Evidence({
             evidence_slug: slug,
           },
         })
-      }, delay)
+      }, ANALYTICS_DEBOUNCE)
     } else if (disabled) {
       /** Move to neutral. */
       setDisabledEvidences(
-        arrayRemoveAll(slug, disabledEvidences) as EvidenceSlug[]
+        arrayRemoveAll(slug, disabledEvidences) as EvidenceState
       )
 
       timeoutRef.current = setTimeout(() => {
@@ -86,11 +88,11 @@ export default function Evidence({
             evidence_slug: slug,
           },
         })
-      }, delay)
+      }, ANALYTICS_DEBOUNCE)
     } else {
       /** Move to checked. */
       setCheckedEvidences(
-        arrayAddUnique(slug, checkedEvidences) as EvidenceSlug[]
+        arrayAddUnique(slug, checkedEvidences) as EvidenceState
       )
 
       timeoutRef.current = setTimeout(() => {
@@ -100,12 +102,10 @@ export default function Evidence({
             evidence_slug: slug,
           },
         })
-      }, delay)
+      }, ANALYTICS_DEBOUNCE)
     }
   }
 
-  const timeoutRef = useRef<null | ReturnType<typeof setTimeout>>(null)
-  const delay = 1250
   const locked = isLocked()
   const checked = arrayContains(slug, checkedEvidences)
   const disabled = arrayContains(slug, disabledEvidences)
@@ -121,7 +121,7 @@ export default function Evidence({
         onClick={handleClick}
         disabled={locked}
       >
-        <Checkbox state={determineCheckboxState()} />
+        <Checkbox state={getCheckboxState()} />
         <span className={styles.label}>{getEvidenceData(slug).label}</span>
       </button>
     </span>

@@ -8,8 +8,8 @@ import cn from 'classnames'
 import styles from './ghost.module.css'
 
 interface GhostProps {
-  minimizedGhosts: GhostSlug[]
-  setMinimizedGhosts: (minimizedGhosts: GhostSlug[]) => void
+  minimizedGhosts: GhostState
+  setMinimizedGhosts: SetGhostState
   slug: GhostSlug
 }
 
@@ -23,7 +23,7 @@ export default function Ghost({
    */
   function handleClick() {
     if (arrayContains(slug, minimizedGhosts)) {
-      setMinimizedGhosts(arrayRemoveAll(slug, minimizedGhosts) as GhostSlug[])
+      setMinimizedGhosts(arrayRemoveAll(slug, minimizedGhosts) as GhostState)
 
       sendGtagEvent({
         name: 'ghost_maximized',
@@ -32,7 +32,7 @@ export default function Ghost({
         },
       })
     } else {
-      setMinimizedGhosts(arrayAddUnique(slug, minimizedGhosts) as GhostSlug[])
+      setMinimizedGhosts(arrayAddUnique(slug, minimizedGhosts) as GhostState)
 
       sendGtagEvent({
         name: 'ghost_minimized',

@@ -1,4 +1,5 @@
 import { ghosts } from '@data/ghosts'
+import { arrayContains } from './arrays'
 
 /**
  * Gets all data about a ghost.
@@ -19,8 +20,7 @@ export function getGhostData(slug: GhostSlug) {
  */
 export function ghostHasEvidence(ghost: GhostSlug, evidence: EvidenceSlug) {
   const { evidences } = getGhostData(ghost)
-
-  return evidences.indexOf(evidence) > -1
+  return arrayContains(evidence, evidences)
 }
 
 /**
@@ -34,8 +34,8 @@ export function ghostHasEvidence(ghost: GhostSlug, evidence: EvidenceSlug) {
  * @returns An array of ghost slugs.
  */
 export function getPossibleGhosts(
-  checkedEvidences: EvidenceSlug[],
-  disabledEvidences: EvidenceSlug[]
+  checkedEvidences: EvidenceState,
+  disabledEvidences: EvidenceState
 ) {
   return ghosts
     .filter(({ slug }) => {

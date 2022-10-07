@@ -4,11 +4,11 @@ import cn from 'classnames'
 import styles from './evidences.module.css'
 
 interface EvidencesProps {
-  checkedEvidences: EvidenceSlug[]
-  setCheckedEvidences: (checkedEvidences: EvidenceSlug[]) => void
-  disabledEvidences: EvidenceSlug[]
-  setDisabledEvidences: (disabledEvidences: EvidenceSlug[]) => void
-  setMinimizedGhosts: (minimizedGhosts: GhostSlug[]) => void
+  checkedEvidences: EvidenceState
+  setCheckedEvidences: SetEvidenceState
+  disabledEvidences: EvidenceState
+  setDisabledEvidences: SetEvidenceState
+  setMinimizedGhosts: SetGhostState
 }
 
 export default function Evidences({

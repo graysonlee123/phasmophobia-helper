@@ -2,7 +2,7 @@ import Tag from '@components/tag'
 import styles from './tags.module.css'
 
 interface TagsProps {
-  tags: EvidenceSlug[]
+  tags: EvidenceState
 }
 
 export default function Tags({ tags }: TagsProps) {

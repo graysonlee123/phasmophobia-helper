@@ -3,11 +3,7 @@ import React from 'react'
 export {}
 
 declare global {
-  type StorageKeys =
-    | 'checkedEvidences'
-    | 'disabledEvidences'
-    | 'minimizedGhosts'
-
+  /** Ghosts */
   type GhostSlug =
     | 'banshee'
     | 'demon'
@@ -45,6 +41,10 @@ declare global {
     wiki: string
   }
 
+  type GhostState = GhostSlug[]
+  type SetGhostState = (ghosts: GhostState) => void
+
+  /** Evidences */
   type EvidenceSlug =
     | 'dots'
     | 'emf'
@@ -59,6 +59,15 @@ declare global {
     label: string
     wiki: string
   }
+
+  type EvidenceState = EvidenceSlug[]
+  type SetEvidenceState = (evidences: EvidenceState) => void
+
+  /** Other */
+  type StorageKeys =
+    | 'checkedEvidences'
+    | 'disabledEvidences'
+    | 'minimizedGhosts'
 
   type CheckboxState = 'neutral' | 'checked' | 'disabled' | 'locked'
 

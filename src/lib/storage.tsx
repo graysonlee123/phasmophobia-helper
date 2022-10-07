@@ -6,7 +6,7 @@
  */
 export function setStorageItem(
   key: StorageKeys,
-  value: GhostSlug[] | EvidenceSlug[]
+  value: GhostState | EvidenceState
 ) {
   localStorage.setItem(key, JSON.stringify(value))
 }

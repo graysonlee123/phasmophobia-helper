@@ -20,7 +20,7 @@ export function getEvidenceData(slug: EvidenceSlug) {
  * @param checkedEvidences The currently checked evidence slugs.
  * @returns An array of possible evidence slugs.
  */
-export function getPossibleEvidences(checkedEvidences: EvidenceSlug[]) {
+export function getPossibleEvidences(checkedEvidences: EvidenceState) {
   const data: GhostEvidences[] = []
 
   /**

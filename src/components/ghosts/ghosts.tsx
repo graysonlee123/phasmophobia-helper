@@ -3,10 +3,10 @@ import { getPossibleGhosts } from '@lib/ghosts'
 import styles from './ghosts.module.css'
 
 interface GhostsProps {
-  checkedEvidences: EvidenceSlug[]
-  disabledEvidences: EvidenceSlug[]
-  minimizedGhosts: GhostSlug[]
-  setMinimizedGhosts: (minimizedGhosts: GhostSlug[]) => void
+  checkedEvidences: EvidenceState
+  disabledEvidences: EvidenceState
+  minimizedGhosts: GhostState
+  setMinimizedGhosts: SetGhostState
 }
 
 export default function Ghosts({

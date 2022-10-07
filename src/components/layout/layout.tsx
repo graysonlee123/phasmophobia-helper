@@ -3,8 +3,9 @@ import Evidences from '@components/evidences'
 import Ghosts from '@components/ghosts'
 import { getPossibleGhosts } from '@lib/ghosts'
 import { getStorageItem, setStorageItem } from '@lib/storage'
-import styles from './layout.module.css'
+import { ANALYTICS_DEBOUNCE } from '@lib/constants'
 import { sendGtagEvent } from '@lib/analytics'
+import styles from './layout.module.css'
 
 export default function Layout() {
   /**
@@ -19,7 +20,7 @@ export default function Layout() {
   /**
    * Keeps state of checked evidences and saves updates to local storage.
    */
-  const [checkedEvidences, setCheckedEvidences] = useState<EvidenceSlug[]>(
+  const [checkedEvidences, setCheckedEvidences] = useState<EvidenceState>(
     getStorageItem('checkedEvidences') || []
   )
   useEffect(() => {
@@ -29,7 +30,7 @@ export default function Layout() {
   /**
    * Keeps state of disabled evidences and saves updates to local storage.
    */
-  const [disabledEvidences, setDisabledEvidences] = useState<EvidenceSlug[]>(
+  const [disabledEvidences, setDisabledEvidences] = useState<EvidenceState>(
     getStorageItem('disabledEvidences') || []
   )
   useEffect(() => {
@@ -39,7 +40,7 @@ export default function Layout() {
   /**
    * Keeps state of minimized ghosts and saves updates to local storage.
    */
-  const [minimizedGhosts, setMinimizedGhosts] = useState<GhostSlug[]>(
+  const [minimizedGhosts, setMinimizedGhosts] = useState<GhostState>(
     getStorageItem('minimizedGhosts') || []
   )
   useEffect(() => {
@@ -50,6 +51,7 @@ export default function Layout() {
    * Listen for evidence changes and send a Gtag event
    * if there is only one possible ghost.
    */
+  const timeoutRef = useRef<null | ReturnType<typeof setTimeout>>(null)
   useEffect(() => {
     if (timeoutRef.current) clearInterval(timeoutRef.current)
 
@@ -65,12 +67,9 @@ export default function Layout() {
             ghost_slug: ghost,
           },
         })
-      }, delay)
+      }, ANALYTICS_DEBOUNCE)
     }
   }, [checkedEvidences, disabledEvidences])
-
-  const timeoutRef = useRef<null | ReturnType<typeof setTimeout>>(null)
-  const delay = 1250
 
   /**
    * Render something.
