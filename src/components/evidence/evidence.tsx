@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import Checkbox from '@components/checkbox'
 import { getEvidenceData } from '@lib/evidences'
 import { arrayAddUnique, arrayContains, arrayRemoveAll } from '@lib/arrays'
@@ -52,6 +53,8 @@ export default function Evidence({
    * Handles the clicking through the three states.
    */
   function handleClick() {
+    if (timeoutRef.current) clearInterval(timeoutRef.current)
+
     if (checked) {
       /** Move to disabled. */
       setCheckedEvidences(
@@ -62,39 +65,47 @@ export default function Evidence({
         arrayAddUnique(slug, disabledEvidences) as EvidenceSlug[]
       )
 
-      sendGtagEvent({
-        name: 'evidence_disabled',
-        params: {
-          evidence_slug: slug,
-        },
-      })
+      timeoutRef.current = setTimeout(() => {
+        sendGtagEvent({
+          name: 'evidence_disabled',
+          params: {
+            evidence_slug: slug,
+          },
+        })
+      }, delay)
     } else if (disabled) {
       /** Move to neutral. */
       setDisabledEvidences(
         arrayRemoveAll(slug, disabledEvidences) as EvidenceSlug[]
       )
 
-      sendGtagEvent({
-        name: 'evidence_unchecked',
-        params: {
-          evidence_slug: slug,
-        },
-      })
+      timeoutRef.current = setTimeout(() => {
+        sendGtagEvent({
+          name: 'evidence_unchecked',
+          params: {
+            evidence_slug: slug,
+          },
+        })
+      }, delay)
     } else {
       /** Move to checked. */
       setCheckedEvidences(
         arrayAddUnique(slug, checkedEvidences) as EvidenceSlug[]
       )
 
-      sendGtagEvent({
-        name: 'evidence_checked',
-        params: {
-          evidence_slug: slug,
-        },
-      })
+      timeoutRef.current = setTimeout(() => {
+        sendGtagEvent({
+          name: 'evidence_checked',
+          params: {
+            evidence_slug: slug,
+          },
+        })
+      }, delay)
     }
   }
 
+  const timeoutRef = useRef<null | ReturnType<typeof setTimeout>>(null)
+  const delay = 1250
   const locked = isLocked()
   const checked = arrayContains(slug, checkedEvidences)
   const disabled = arrayContains(slug, disabledEvidences)
