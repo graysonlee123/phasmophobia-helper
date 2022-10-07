@@ -8,6 +8,15 @@ import styles from './layout.module.css'
 
 export default function Layout() {
   /**
+   * Don't render anything until the component mounts.
+   * We do this to prevent hydration errors.
+   */
+  const [mounted, setMounted] = useState<boolean>(false)
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  /**
    * Keeps state of checked evidences and saves updates to local storage.
    */
   const [checkedEvidences, setCheckedEvidences] = useState<EvidenceSlug[]>(
@@ -38,22 +47,15 @@ export default function Layout() {
   }, [minimizedGhosts])
 
   /**
-   * Updates the possible evidence when checked evidence changes.
+   * Generate data on each re-render from state.
    */
-  const [possibleEvidences, setPossibleEvidences] = useState<EvidenceSlug[]>([])
-  useEffect(() => {
-    setPossibleEvidences(getPossibleEvidences(checkedEvidences))
-  }, [checkedEvidences])
+  const possibleEvidences = getPossibleEvidences(checkedEvidences)
+  const possibleGhosts = getPossibleGhosts(checkedEvidences, disabledEvidences)
 
   /**
-   * Updates the possible ghosts when evidence changes.
+   * Render something.
    */
-  const [possibleGhosts, setPossibleGhosts] = useState<GhostSlug[]>([])
-  useEffect(() => {
-    setPossibleGhosts(getPossibleGhosts(checkedEvidences, disabledEvidences))
-  }, [checkedEvidences, disabledEvidences])
-
-  return (
+  return !mounted ? null : (
     <main className={styles.main}>
       <Evidences
         checkedEvidences={checkedEvidences}
