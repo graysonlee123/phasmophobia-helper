@@ -20,14 +20,10 @@
   --fs--sm: 0.875rem;
   --fs--md: 1rem;
   --fs--lg: 1.125rem;
-  --shadow--lg: 25px 50px 62.9px -2.5px rgba(9, 9, 12, 0.34),
-    17px 33.9px 42.7px -2.1px rgba(9, 9, 12, 0.34),
-    11.2px 22.3px 28.1px -1.8px rgba(9, 9, 12, 0.34),
-    7.1px 14.3px 18px -1.4px rgba(9, 9, 12, 0.34),
-    4.5px 8.9px 11.2px -1.1px rgba(9, 9, 12, 0.34),
-    2.7px 5.4px 6.8px -0.7px rgba(9, 9, 12, 0.34),
-    1.5px 2.9px 3.7px -0.4px rgba(9, 9, 12, 0.34),
-    0.3px 0.5px 0.7px rgba(9, 9, 12, 0.34);
+  --shadow--lg: 25px 50px 62px -3px rgba(9, 9, 12, 0.34),
+    11px 22px 28px -2px rgba(9, 9, 12, 0.34),
+    4px 9px 11px -1px rgba(9, 9, 12, 0.34), 2px 3px 4px rgba(9, 9, 12, 0.34),
+    0px 1px 1px rgba(9, 9, 12, 0.34);
   --transition--duration--fast: 200ms;
   --transition--duration--normal: 400ms;
   --transition--timing--quick: cubic-bezier(0, 0.55, 0.45, 1);
