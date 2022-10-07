@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react'
-import Checkboxes from '@components/checkbox'
+import Checkbox from '@components/checkbox'
 import { getEvidenceData } from '@lib/evidences'
 import { arrayAddUnique, arrayContains, arrayRemoveAll } from '@lib/arrays'
 import cn from 'classnames'
@@ -23,44 +22,30 @@ export default function Evidence({
   slug,
 }: EvidenceProps) {
   /**
-   * Update the local component state when the
-   * external state is modified.
+   * Determines a state for the Checkbox component,
+   * based on the state of the evidence it is in.
+   *
+   * @returns The determined state for a Checkbox component.
    */
-  const [checked, setChecked] = useState<boolean>(false)
-  const [disabled, setDisabled] = useState<boolean>(false)
-  useEffect(() => {
-    setChecked(arrayContains(slug, checkedEvidences))
-    setDisabled(arrayContains(slug, disabledEvidences))
-  }, [checkedEvidences, disabledEvidences, slug])
+  function determineCheckboxState(): CheckboxState {
+    if (locked) return 'locked'
+    else if (checked) return 'checked'
+    else if (disabled) return 'disabled'
+    else return 'neutral'
+  }
 
   /**
-   * Lock the evidence if 3 evidences have been selected and
-   * `slug` isn't one of them, or if it's not a possible evidence.
+   * Determines if the evidence should appear as locked.
+   *
+   * @returns True if the evidence is locked, false otherwise.
    */
-  const [locked, setLocked] = useState<boolean>(false)
-  useEffect(() => {
-    if (
+  function isLocked() {
+    return (
       (checkedEvidences.length >= 3 &&
         !arrayContains(slug, checkedEvidences)) ||
       !arrayContains(slug, possibleEvidences)
-    ) {
-      setLocked(true)
-      return
-    }
-
-    setLocked(false)
-  }, [checkedEvidences, possibleEvidences, slug])
-
-  /**
-   * Controls the checkbox state.
-   */
-  const [checkboxState, setCheckboxState] = useState<CheckboxState>('neutral')
-  useEffect(() => {
-    if (locked) setCheckboxState('locked')
-    else if (checked) setCheckboxState('checked')
-    else if (disabled) setCheckboxState('disabled')
-    else setCheckboxState('neutral')
-  }, [locked, checked, disabled])
+    )
+  }
 
   /**
    * Handles the clicking through the three states.
@@ -87,6 +72,10 @@ export default function Evidence({
     }
   }
 
+  const locked = isLocked()
+  const checked = arrayContains(slug, checkedEvidences)
+  const disabled = arrayContains(slug, disabledEvidences)
+
   return (
     <span>
       <button
@@ -98,7 +87,7 @@ export default function Evidence({
         onClick={handleClick}
         disabled={locked}
       >
-        <Checkboxes state={checkboxState} />
+        <Checkbox state={determineCheckboxState()} />
         <span className={styles.label}>{getEvidenceData(slug).label}</span>
       </button>
     </span>
