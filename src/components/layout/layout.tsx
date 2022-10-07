@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import Evidences from '@components/evidences'
 import Ghosts from '@components/ghosts'
 import { getPossibleGhosts } from '@lib/ghosts'
@@ -52,23 +52,26 @@ export default function Layout() {
    * if there is only one possible ghost.
    */
   useEffect(() => {
+    if (timeoutRef.current) clearInterval(timeoutRef.current)
+
     const ghosts = getPossibleGhosts(checkedEvidences, disabledEvidences)
 
     if (ghosts.length === 1) {
       const ghost = ghosts[0]
 
-      sendGtagEvent({
-        name: 'ghost_solved',
-        params: {
-          ghost_slug: ghost,
-        },
-      })
+      timeoutRef.current = setTimeout(() => {
+        sendGtagEvent({
+          name: 'ghost_solved',
+          params: {
+            ghost_slug: ghost,
+          },
+        })
+      }, delay)
     }
   }, [checkedEvidences, disabledEvidences])
 
-  /**
-   * Generate data on each re-render from state.
-   */
+  const timeoutRef = useRef<null | ReturnType<typeof setTimeout>>(null)
+  const delay = 1250
   const possibleEvidences = getPossibleEvidences(checkedEvidences)
   const possibleGhosts = getPossibleGhosts(checkedEvidences, disabledEvidences)
 
