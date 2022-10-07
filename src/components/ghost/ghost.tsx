@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import Tags from '@components/tags'
 import Sanity from '@components/sanity'
 import Minimize from '@components/minimize'
@@ -18,20 +17,6 @@ export default function Ghost({
   setMinimizedGhosts,
   slug,
 }: GhostProps) {
-  const { label, evidences, hunt, desc, wiki } = getGhostData(slug)
-
-  /**
-   * Responsible for keeping the minimized state updated.
-   */
-  const [minimized, setMinimized] = useState<boolean>(false)
-  useEffect(
-    function () {
-      if (arrayContains(slug, minimizedGhosts)) setMinimized(true)
-      else setMinimized(false)
-    },
-    [minimizedGhosts, slug]
-  )
-
   /**
    * Handles the click logic for minimizing the ghost.
    */
@@ -41,6 +26,9 @@ export default function Ghost({
     else
       setMinimizedGhosts(arrayAddUnique(slug, minimizedGhosts) as GhostSlug[])
   }
+
+  const { label, evidences, hunt, desc, wiki } = getGhostData(slug)
+  const minimized = arrayContains(slug, minimizedGhosts)
 
   return (
     <article
