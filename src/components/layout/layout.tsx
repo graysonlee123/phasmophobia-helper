@@ -2,7 +2,6 @@ import { useEffect, useState, useRef } from 'react'
 import Evidences from '@components/evidences'
 import Ghosts from '@components/ghosts'
 import { getPossibleGhosts } from '@lib/ghosts'
-import { getPossibleEvidences } from '@lib/evidences'
 import { getStorageItem, setStorageItem } from '@lib/storage'
 import styles from './layout.module.css'
 import { sendGtagEvent } from '@lib/analytics'
@@ -72,8 +71,6 @@ export default function Layout() {
 
   const timeoutRef = useRef<null | ReturnType<typeof setTimeout>>(null)
   const delay = 1250
-  const possibleEvidences = getPossibleEvidences(checkedEvidences)
-  const possibleGhosts = getPossibleGhosts(checkedEvidences, disabledEvidences)
 
   /**
    * Render something.
@@ -85,12 +82,12 @@ export default function Layout() {
         setCheckedEvidences={setCheckedEvidences}
         disabledEvidences={disabledEvidences}
         setDisabledEvidences={setDisabledEvidences}
-        possibleEvidences={possibleEvidences}
         setMinimizedGhosts={setMinimizedGhosts}
       />
       <Ghosts
+        checkedEvidences={checkedEvidences}
+        disabledEvidences={disabledEvidences}
         minimizedGhosts={minimizedGhosts}
-        possibleGhosts={possibleGhosts}
         setMinimizedGhosts={setMinimizedGhosts}
       />
     </main>

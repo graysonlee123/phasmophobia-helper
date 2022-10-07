@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import Checkbox from '@components/checkbox'
-import { getEvidenceData } from '@lib/evidences'
+import { getEvidenceData, getPossibleEvidences } from '@lib/evidences'
 import { arrayAddUnique, arrayContains, arrayRemoveAll } from '@lib/arrays'
 import { sendGtagEvent } from '@lib/analytics'
 import cn from 'classnames'
@@ -11,7 +11,6 @@ interface EvidenceProps {
   setCheckedEvidences: (checkedEvidences: EvidenceSlug[]) => void
   disabledEvidences: EvidenceSlug[]
   setDisabledEvidences: (disabledEvidences: EvidenceSlug[]) => void
-  possibleEvidences: EvidenceSlug[]
   slug: EvidenceSlug
 }
 
@@ -20,7 +19,6 @@ export default function Evidence({
   setCheckedEvidences,
   disabledEvidences,
   setDisabledEvidences,
-  possibleEvidences,
   slug,
 }: EvidenceProps) {
   /**
@@ -42,6 +40,8 @@ export default function Evidence({
    * @returns True if the evidence is locked, false otherwise.
    */
   function isLocked() {
+    const possibleEvidences = getPossibleEvidences(checkedEvidences)
+
     return (
       (checkedEvidences.length >= 3 &&
         !arrayContains(slug, checkedEvidences)) ||

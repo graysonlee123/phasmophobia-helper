@@ -1,17 +1,22 @@
 import Ghost from '@components/ghost'
+import { getPossibleGhosts } from '@lib/ghosts'
 import styles from './ghosts.module.css'
 
 interface GhostsProps {
+  checkedEvidences: EvidenceSlug[]
+  disabledEvidences: EvidenceSlug[]
   minimizedGhosts: GhostSlug[]
   setMinimizedGhosts: (minimizedGhosts: GhostSlug[]) => void
-  possibleGhosts: GhostSlug[]
 }
 
 export default function Ghosts({
+  checkedEvidences,
+  disabledEvidences,
   minimizedGhosts,
   setMinimizedGhosts,
-  possibleGhosts,
 }: GhostsProps) {
+  const possibleGhosts = getPossibleGhosts(checkedEvidences, disabledEvidences)
+
   return (
     <section className={styles.section}>
       {possibleGhosts.length === 0 ? (

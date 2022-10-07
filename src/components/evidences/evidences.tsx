@@ -3,23 +3,21 @@ import { evidences } from '@data/evidences'
 import cn from 'classnames'
 import styles from './evidences.module.css'
 
-interface CheckboxesProps {
+interface EvidencesProps {
   checkedEvidences: EvidenceSlug[]
   setCheckedEvidences: (checkedEvidences: EvidenceSlug[]) => void
   disabledEvidences: EvidenceSlug[]
   setDisabledEvidences: (disabledEvidences: EvidenceSlug[]) => void
-  possibleEvidences: EvidenceSlug[]
   setMinimizedGhosts: (minimizedGhosts: GhostSlug[]) => void
 }
 
-export default function Checkboxes({
+export default function Evidences({
   checkedEvidences,
   setCheckedEvidences,
   disabledEvidences,
   setDisabledEvidences,
-  possibleEvidences,
   setMinimizedGhosts,
-}: CheckboxesProps) {
+}: EvidencesProps) {
   /**
    * Resets the state of the application.
    */
@@ -37,7 +35,6 @@ export default function Checkboxes({
           setCheckedEvidences={setCheckedEvidences}
           disabledEvidences={disabledEvidences}
           setDisabledEvidences={setDisabledEvidences}
-          possibleEvidences={possibleEvidences}
           slug={slug}
           key={slug}
         />
