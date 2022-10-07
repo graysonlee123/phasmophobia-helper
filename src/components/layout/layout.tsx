@@ -5,6 +5,7 @@ import { getPossibleGhosts } from '@lib/ghosts'
 import { getPossibleEvidences } from '@lib/evidences'
 import { getStorageItem, setStorageItem } from '@lib/storage'
 import styles from './layout.module.css'
+import { sendGtagEvent } from '@lib/analytics'
 
 export default function Layout() {
   /**
@@ -45,6 +46,25 @@ export default function Layout() {
   useEffect(() => {
     setStorageItem('minimizedGhosts', minimizedGhosts)
   }, [minimizedGhosts])
+
+  /**
+   * Listen for evidence changes and send a Gtag event
+   * if there is only one possible ghost.
+   */
+  useEffect(() => {
+    const ghosts = getPossibleGhosts(checkedEvidences, disabledEvidences)
+
+    if (ghosts.length === 1) {
+      const ghost = ghosts[0]
+
+      sendGtagEvent({
+        name: 'ghost_solved',
+        params: {
+          ghost_slug: ghost,
+        },
+      })
+    }
+  }, [checkedEvidences, disabledEvidences])
 
   /**
    * Generate data on each re-render from state.

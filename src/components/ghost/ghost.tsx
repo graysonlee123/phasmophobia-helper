@@ -3,6 +3,7 @@ import Sanity from '@components/sanity'
 import Minimize from '@components/minimize'
 import { getGhostData } from '@lib/ghosts'
 import { arrayContains, arrayAddUnique, arrayRemoveAll } from '@lib/arrays'
+import { sendGtagEvent } from '@lib/analytics'
 import cn from 'classnames'
 import styles from './ghost.module.css'
 
@@ -21,10 +22,25 @@ export default function Ghost({
    * Handles the click logic for minimizing the ghost.
    */
   function handleClick() {
-    if (arrayContains(slug, minimizedGhosts))
+    if (arrayContains(slug, minimizedGhosts)) {
       setMinimizedGhosts(arrayRemoveAll(slug, minimizedGhosts) as GhostSlug[])
-    else
+
+      sendGtagEvent({
+        name: 'ghost_maximized',
+        params: {
+          ghost_slug: slug,
+        },
+      })
+    } else {
       setMinimizedGhosts(arrayAddUnique(slug, minimizedGhosts) as GhostSlug[])
+
+      sendGtagEvent({
+        name: 'ghost_minimized',
+        params: {
+          ghost_slug: slug,
+        },
+      })
+    }
   }
 
   const { label, evidences, hunt, desc, wiki } = getGhostData(slug)

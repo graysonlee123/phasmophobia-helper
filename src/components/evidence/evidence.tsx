@@ -1,6 +1,7 @@
 import Checkbox from '@components/checkbox'
 import { getEvidenceData } from '@lib/evidences'
 import { arrayAddUnique, arrayContains, arrayRemoveAll } from '@lib/arrays'
+import { sendGtagEvent } from '@lib/analytics'
 import cn from 'classnames'
 import styles from './evidence.module.css'
 
@@ -56,19 +57,41 @@ export default function Evidence({
       setCheckedEvidences(
         arrayRemoveAll(slug, checkedEvidences) as EvidenceSlug[]
       )
+
       setDisabledEvidences(
         arrayAddUnique(slug, disabledEvidences) as EvidenceSlug[]
       )
+
+      sendGtagEvent({
+        name: 'evidence_disabled',
+        params: {
+          evidence_slug: slug,
+        },
+      })
     } else if (disabled) {
       /** Move to neutral. */
       setDisabledEvidences(
         arrayRemoveAll(slug, disabledEvidences) as EvidenceSlug[]
       )
+
+      sendGtagEvent({
+        name: 'evidence_unchecked',
+        params: {
+          evidence_slug: slug,
+        },
+      })
     } else {
       /** Move to checked. */
       setCheckedEvidences(
         arrayAddUnique(slug, checkedEvidences) as EvidenceSlug[]
       )
+
+      sendGtagEvent({
+        name: 'evidence_checked',
+        params: {
+          evidence_slug: slug,
+        },
+      })
     }
   }
 

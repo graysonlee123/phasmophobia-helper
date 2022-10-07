@@ -61,4 +61,11 @@ declare global {
   }
 
   type CheckboxState = 'neutral' | 'checked' | 'disabled' | 'locked'
+
+  interface GtagEvent {
+    name: string
+    params?: {
+      [index: string]: string
+    }
+  }
 }
