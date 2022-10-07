@@ -74,7 +74,7 @@ declare global {
   interface GtagEvent {
     name: string
     params?: {
-      [index: string]: string
+      [index: string]: string | number
     }
   }
 }
