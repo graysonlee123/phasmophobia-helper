@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import Checkbox from '@components/checkbox'
 import { getEvidenceData } from '@lib/evidences'
 import { arrayAddUnique, arrayContains, arrayRemoveAll } from '@lib/arrays'
