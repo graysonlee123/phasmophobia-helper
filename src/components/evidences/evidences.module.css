@@ -10,7 +10,6 @@
 
 .instruction {
   max-width: 48ch;
-  margin-top: 1rem;
   font-size: var(--fs--xs);
   opacity: 60%;
 }
