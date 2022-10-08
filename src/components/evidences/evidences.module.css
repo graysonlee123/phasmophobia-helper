@@ -9,10 +9,14 @@
 }
 
 .instruction {
+  max-width: 48ch;
   margin-top: 1rem;
-  max-width: 26ch;
-  font-size: var(--fs--sm);
+  font-size: var(--fs--xs);
   opacity: 60%;
+}
+
+.instruction p + p {
+  margin-top: 0.75rem;
 }
 
 .reset {
@@ -20,4 +24,10 @@
   opacity: 60%;
   font-size: var(--fs--xs);
   text-decoration: underline;
+}
+
+@media (min-width: 48rem) {
+  .instruction {
+    max-width: 32ch;
+  }
 }

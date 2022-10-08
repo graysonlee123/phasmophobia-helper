@@ -55,13 +55,21 @@ export default function Evidences({
           key={slug}
         />
       ))}
-      <p className={styles.instruction}>
-        As you update your findings, evidence that is not possible will be
-        locked, and invalid ghosts will be hidden.{' '}
-        <button className={cn(['button-reset', styles.reset])} onClick={reset}>
-          (reset)
-        </button>
-      </p>
+      <div className={styles.instruction}>
+        <p>
+          As you update your findings, evidence that is not possible will be
+          locked, and invalid ghosts will be hidden.
+        </p>
+        <p>
+          Evidences marked with a dot are guaranteed on Nightmare difficulty.{' '}
+          <button
+            className={cn(['button-reset', styles.reset])}
+            onClick={reset}
+          >
+            (reset)
+          </button>
+        </p>
+      </div>
     </section>
   )
 }
