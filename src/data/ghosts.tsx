@@ -141,8 +141,7 @@ export const ghosts: Ghost[] = [
     desc: (
       <p>
         More active when people are nearby. Cannot produce “air ball” ghost
-        events. Stays visible for longer during hunts. Stays visible for longer
-        when hunting. Cannot produce the &quot;airball&quot; ghost event.
+        events. Stays visible for longer during hunts.
       </p>
     ),
     wiki: 'https://phasmophobia.fandom.com/wiki/Oni',
