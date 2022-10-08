@@ -2,14 +2,14 @@ import Tag from '@components/tag'
 import styles from './tags.module.css'
 
 interface TagsProps {
-  tags: EvidenceState
+  tags: Tags
 }
 
 export default function Tags({ tags }: TagsProps) {
   return (
     <ul className={styles.tags}>
-      {tags.map((slug) => (
-        <Tag slug={slug} key={slug} />
+      {tags.map((tag) => (
+        <Tag tag={tag} key={tag.slug} />
       ))}
     </ul>
   )

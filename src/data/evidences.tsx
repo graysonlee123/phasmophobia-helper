@@ -2,6 +2,7 @@ export const evidences: Evidence[] = [
   {
     slug: 'dots',
     label: 'D.O.T.S.',
+    ghosts: ['goryo'],
     wiki: 'https://phasmophobia.fandom.com/wiki/D.O.T.S_Projector_(Evidence)',
   },
   {
@@ -12,11 +13,13 @@ export const evidences: Evidence[] = [
   {
     slug: 'fingerprints',
     label: 'Fingerprints',
+    ghosts: ['obake'],
     wiki: 'https://phasmophobia.fandom.com/wiki/Fingerprints',
   },
   {
     slug: 'freezing',
     label: 'Freezing',
+    ghosts: ['hantu'],
     wiki: 'https://phasmophobia.fandom.com/wiki/Freezing_Temperatures',
   },
   {
@@ -32,6 +35,7 @@ export const evidences: Evidence[] = [
   {
     slug: 'box',
     label: 'Spirit Box',
+    ghosts: ['deogen', 'moroi'],
     wiki: 'https://phasmophobia.fandom.com/wiki/Spirit_Box_(Evidence)',
   },
 ]

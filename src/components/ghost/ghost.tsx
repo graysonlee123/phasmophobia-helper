@@ -4,6 +4,7 @@ import Minimize from '@components/minimize'
 import { getGhostData } from '@lib/ghosts'
 import { arrayContains, arrayAddUnique, arrayRemoveAll } from '@lib/arrays'
 import { sendGtagEvent } from '@lib/analytics'
+import { getEvidenceTags } from '@lib/evidences'
 import cn from 'classnames'
 import styles from './ghost.module.css'
 
@@ -45,6 +46,7 @@ export default function Ghost({
 
   const { label, evidences, hunt, desc, wiki } = getGhostData(slug)
   const minimized = arrayContains(slug, minimizedGhosts)
+  const tags: Tags = getEvidenceTags(slug, evidences)
 
   return (
     <article
@@ -68,7 +70,7 @@ export default function Ghost({
         </span>
       </header>
       {!minimized && desc}
-      <Tags tags={evidences} />
+      <Tags tags={tags} />
     </article>
   )
 }

@@ -1,13 +1,29 @@
+.anchor {
+  text-decoration: none;
+}
+
 .tag {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   padding: 0.125rem 0.5rem;
   border-radius: 2px;
   white-space: nowrap;
-  text-decoration: none;
 
   transition-property: transform;
   transition-duration: var(--transition--duration--normal);
   transition-timing-function: var(--transition--timing--quick);
+}
+
+.important::before {
+  --size: 0.375rem;
+
+  content: '';
+  display: inline-block;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 100%;
+  background-color: currentColor;
 }
 
 .tag:focus {

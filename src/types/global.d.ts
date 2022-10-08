@@ -57,6 +57,7 @@ declare global {
   interface Evidence {
     slug: EvidenceSlug
     label: string
+    ghosts?: GhostSlug[]
     wiki: string
   }
 
@@ -77,4 +78,13 @@ declare global {
       [index: string]: string | number
     }
   }
+
+  interface Tag {
+    slug: string
+    label: string
+    link: string
+    important?: boolean
+  }
+
+  type Tags = Tag[]
 }

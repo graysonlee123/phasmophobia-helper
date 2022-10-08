@@ -1,24 +1,29 @@
-import { getEvidenceData } from '@lib/evidences'
 import cn from 'classnames'
 import styles from './tag.module.css'
 
 interface TagProps {
-  slug: EvidenceSlug
+  tag: Tag
 }
 
-export default function Tag({ slug }: TagProps) {
-  const { wiki, label } = getEvidenceData(slug)
+export default function Tag({ tag }: TagProps) {
+  const { slug, label, link, important } = tag
 
   return (
     <li>
       <a
-        className={cn([styles.tag, styles[slug]])}
-        href={wiki}
+        className={styles.anchor}
+        href={link}
         target="_blank"
         rel="noopener noreferrer"
         title="Visit Evidence Wiki Page"
       >
-        {label}
+        <span
+          className={cn([styles.tag, styles[slug]], {
+            [styles.important]: important,
+          })}
+        >
+          {label}
+        </span>
       </a>
     </li>
   )
