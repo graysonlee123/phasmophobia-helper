@@ -264,8 +264,8 @@ export const ghosts: Ghost[] = [
       <p>
         Mimics other ghost types one after another for a brief period of time.
         Includes Ghost Orbs as fourth false evidence. Can mimic evidence
-        properties if the ghost it is mimicing shares the evidence. For example,
-        the Obake&apos;s fingerprints.
+        properties if the ghost it is mimicking shares the evidence. For
+        example, the Obake&apos;s fingerprints.
       </p>
     ),
     wiki: 'https://phasmophobia.fandom.com/wiki/The_Mimic',

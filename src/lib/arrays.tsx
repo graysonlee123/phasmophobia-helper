@@ -13,7 +13,7 @@ export function arrayContains(value: string, array: string[]) {
  * Adds a unique value to an array.
  *
  * If the array already contains the value passed,
- * it will not be aded to the array.
+ * it will not be added to the array.
  *
  * @param value A value to add.
  * @param array The array to modify.
@@ -24,7 +24,7 @@ export function arrayAddUnique(value: string, array: string[]) {
 }
 
 /**
- * Removes all occuring values from an array.
+ * Removes all occurring values from an array.
  *
  * If nothing is found, it will just return unmodified array.
  *

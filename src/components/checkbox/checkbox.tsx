@@ -7,7 +7,7 @@ interface CheckboxProps {
 
 export default function Checkbox({ state = 'neutral' }: CheckboxProps) {
   /**
-   * Decide which icon to use, dependig on the state of the checkbox.
+   * Decide which icon to use, depending on the state of the checkbox.
    *
    * @param state The state of the checkbox.
    * @returns An SVG icon for the checkbox to display.
