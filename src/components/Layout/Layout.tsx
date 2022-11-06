@@ -1,11 +1,11 @@
 import { useEffect, useState, useRef } from 'react'
-import Evidences from '@components/evidences'
-import Ghosts from '@components/ghosts'
+import Evidences from '@components/Evidences'
+import Ghosts from '@components/Ghosts'
 import { getPossibleGhosts } from '@lib/ghosts'
 import { getStorageItem, setStorageItem } from '@lib/storage'
 import { ANALYTICS_DEBOUNCE } from '@lib/constants'
 import { sendGtagEvent } from '@lib/analytics'
-import styles from './layout.module.css'
+import styles from './Layout.module.css'
 
 export default function Layout() {
   /**

@@ -1,5 +1,5 @@
 import cn from 'classnames'
-import styles from './sanity.module.css'
+import styles from './Sanity.module.css'
 
 interface SanityProps {
   int?: number

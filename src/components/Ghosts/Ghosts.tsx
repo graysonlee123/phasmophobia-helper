@@ -1,6 +1,6 @@
-import Ghost from '@components/ghost'
+import Ghost from '@components/Ghost'
 import { getPossibleGhosts } from '@lib/ghosts'
-import styles from './ghosts.module.css'
+import styles from './Ghosts.module.css'
 
 interface GhostsProps {
   checkedEvidences: EvidenceState

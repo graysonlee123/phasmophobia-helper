@@ -1,11 +1,11 @@
 import { useRef } from 'react'
-import Checkbox from '@components/checkbox'
+import Checkbox from '@components/Checkbox'
 import { getEvidenceData, getPossibleEvidences } from '@lib/evidences'
 import { arrayAddUnique, arrayContains, arrayRemoveAll } from '@lib/arrays'
 import { sendGtagEvent } from '@lib/analytics'
 import { ANALYTICS_DEBOUNCE, MAX_EVIDENCE } from '@lib/constants'
 import cn from 'classnames'
-import styles from './evidence.module.css'
+import styles from './Evidence.module.css'
 
 interface EvidenceProps {
   checkedEvidences: EvidenceState

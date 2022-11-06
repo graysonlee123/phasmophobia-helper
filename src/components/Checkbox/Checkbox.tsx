@@ -1,5 +1,5 @@
 import cn from 'classnames'
-import styles from './checkbox.module.css'
+import styles from './Checkbox.module.css'
 
 interface CheckboxProps {
   state?: CheckboxState

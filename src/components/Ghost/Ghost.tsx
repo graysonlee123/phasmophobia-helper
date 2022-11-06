@@ -1,12 +1,12 @@
-import Tags from '@components/tags'
-import Sanity from '@components/sanity'
-import Minimize from '@components/minimize'
+import Tags from '@components/Tags'
+import Sanity from '@components/Sanity'
+import Minimize from '@components/Minimize'
 import { getGhostData } from '@lib/ghosts'
 import { arrayContains, arrayAddUnique, arrayRemoveAll } from '@lib/arrays'
 import { sendGtagEvent } from '@lib/analytics'
 import { getEvidenceTags } from '@lib/evidences'
 import cn from 'classnames'
-import styles from './ghost.module.css'
+import styles from './Ghost.module.css'
 
 interface GhostProps {
   minimizedGhosts: GhostState
