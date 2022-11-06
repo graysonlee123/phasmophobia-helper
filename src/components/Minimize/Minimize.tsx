@@ -1,5 +1,5 @@
-import cn from 'classnames'
 import styles from './Minimize.module.css'
+import cn from 'classnames'
 
 interface MinimizeProps {
   callback: () => void

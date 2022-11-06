@@ -1,5 +1,5 @@
-import Ghost from '@components/Ghost'
 import { getPossibleGhosts } from '@lib/ghosts'
+import Ghost from '@components/Ghost'
 import styles from './Ghosts.module.css'
 
 interface GhostsProps {

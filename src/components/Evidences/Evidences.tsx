@@ -1,10 +1,10 @@
+import { useRef } from 'react'
 import Evidence from '@components/Evidence'
 import { evidences } from '@data/evidences'
 import { ANALYTICS_DEBOUNCE } from '@lib/constants'
 import { sendGtagEvent } from '@lib/analytics'
-import cn from 'classnames'
-import { useRef } from 'react'
 import styles from './Evidences.module.css'
+import cn from 'classnames'
 
 interface EvidencesProps {
   checkedEvidences: EvidenceState

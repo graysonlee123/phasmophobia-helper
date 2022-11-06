@@ -1,5 +1,5 @@
-import cn from 'classnames'
 import styles from './Tag.module.css'
+import cn from 'classnames'
 
 interface TagProps {
   tag: Tag
