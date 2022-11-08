@@ -7,26 +7,3 @@
   background-color: hsl(var(--clr--slate--700));
   box-shadow: var(--shadow--lg);
 }
-
-.instruction {
-  max-width: 48ch;
-  font-size: var(--fs--xs);
-  opacity: 60%;
-}
-
-.instruction p + p {
-  margin-top: 0.75rem;
-}
-
-.reset {
-  padding: 0;
-  opacity: 60%;
-  font-size: var(--fs--xs);
-  text-decoration: underline;
-}
-
-@media (min-width: 48rem) {
-  .instruction {
-    max-width: 32ch;
-  }
-}

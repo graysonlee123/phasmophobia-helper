@@ -1,7 +1,6 @@
-import { getGhostData } from '@lib/ghosts'
+import useGhostEvidences from '@hooks/useGhostEvidences'
 import { arrayContains, arrayAddUnique, arrayRemoveAll } from '@lib/arrays'
 import { sendGtagEvent } from '@lib/analytics'
-import { getEvidenceTags } from '@lib/evidences'
 import Tags from '@components/Tags'
 import Sanity from '@components/Sanity'
 import Minimize from '@components/Minimize'
@@ -9,44 +8,50 @@ import styles from './Ghost.module.css'
 import cn from 'classnames'
 
 interface GhostProps {
+  ghost: Ghost
+  evidences: Evidence[]
   minimizedGhosts: GhostState
   setMinimizedGhosts: SetGhostState
-  slug: GhostSlug
 }
 
 export default function Ghost({
+  ghost,
+  evidences,
   minimizedGhosts,
   setMinimizedGhosts,
-  slug,
 }: GhostProps) {
   /**
    * Handles the click logic for minimizing the ghost.
    */
   function handleClick() {
-    if (arrayContains(slug, minimizedGhosts)) {
-      setMinimizedGhosts(arrayRemoveAll(slug, minimizedGhosts) as GhostState)
+    if (arrayContains(ghost.slug, minimizedGhosts)) {
+      setMinimizedGhosts(arrayRemoveAll(ghost.slug, minimizedGhosts))
 
       sendGtagEvent({
         name: 'ghost_maximized',
         params: {
-          ghost_slug: slug,
+          ghost_slug: ghost.slug,
         },
       })
     } else {
-      setMinimizedGhosts(arrayAddUnique(slug, minimizedGhosts) as GhostState)
+      setMinimizedGhosts(arrayAddUnique(ghost.slug, minimizedGhosts))
 
       sendGtagEvent({
         name: 'ghost_minimized',
         params: {
-          ghost_slug: slug,
+          ghost_slug: ghost.slug,
         },
       })
     }
   }
 
-  const { label, evidences, hunt, desc, wiki } = getGhostData(slug)
-  const minimized = arrayContains(slug, minimizedGhosts)
-  const tags: Tags = getEvidenceTags(slug, evidences)
+  const minimized = arrayContains(ghost.slug, minimizedGhosts)
+  const ghostEvidences = useGhostEvidences(ghost, evidences)
+  const tags = ghostEvidences.map<Tag>((evidence) => ({
+    slug: evidence.slug,
+    label: evidence.label,
+    link: evidence.wiki,
+  }))
 
   return (
     <article
@@ -57,19 +62,19 @@ export default function Ghost({
       <header className={styles.header}>
         <a
           className={styles.anchor}
-          href={wiki}
+          href={ghost.wiki}
           target="_blank"
           rel="noopener noreferrer"
           title="Visit Ghost Wiki Page"
         >
-          {label}
+          {ghost.label}
         </a>
-        <Sanity int={hunt} />
+        <Sanity int={ghost.hunt} />
         <span className={styles.button}>
           <Minimize callback={handleClick} open={minimized} />
         </span>
       </header>
-      {!minimized && desc}
+      {!minimized && ghost.desc}
       <Tags tags={tags} />
     </article>
   )

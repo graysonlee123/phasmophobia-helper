@@ -1,34 +1,34 @@
-import { getPossibleGhosts } from '@lib/ghosts'
 import Ghost from '@components/Ghost'
+import { Fragment } from 'react'
 import styles from './Ghosts.module.css'
 
 interface GhostsProps {
-  checkedEvidences: EvidenceState
-  disabledEvidences: EvidenceState
+  possibleGhosts: Ghost[]
+  evidences: Evidence[]
   minimizedGhosts: GhostState
   setMinimizedGhosts: SetGhostState
 }
 
 export default function Ghosts({
-  checkedEvidences,
-  disabledEvidences,
+  possibleGhosts,
+  evidences,
   minimizedGhosts,
   setMinimizedGhosts,
 }: GhostsProps) {
-  const possibleGhosts = getPossibleGhosts(checkedEvidences, disabledEvidences)
-
   return (
     <section className={styles.section}>
       {possibleGhosts.length === 0 ? (
         <p>Sorry, no ghost types were found for those choices.</p>
       ) : (
-        possibleGhosts.map((slug) => (
-          <Ghost
-            minimizedGhosts={minimizedGhosts}
-            setMinimizedGhosts={setMinimizedGhosts}
-            slug={slug}
-            key={slug}
-          />
+        possibleGhosts.map((ghost) => (
+          <Fragment key={ghost.slug}>
+            <Ghost
+              ghost={ghost}
+              evidences={evidences}
+              minimizedGhosts={minimizedGhosts}
+              setMinimizedGhosts={setMinimizedGhosts}
+            />
+          </Fragment>
         ))
       )}
     </section>

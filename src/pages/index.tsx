@@ -2,10 +2,10 @@ import path from 'path'
 import { promises as fs } from 'fs'
 import Head from 'next/head'
 import { InferGetStaticPropsType } from 'next'
-import Layout from '@components/Layout'
+import App from '@components/App'
 
 export const getStaticProps = async () => {
-  const dataDir = path.join(process.cwd(), 'src', 'data')
+  const dataDir = path.join(process.cwd(), 'data')
 
   return {
     props: {
@@ -35,18 +35,7 @@ const Home = ({
         <meta name="author" content="Grayson Gantek" />
         <meta name="color-scheme" content="dark" />
       </Head>
-      <Layout />
-      <ul>
-        {ghosts.map((ghost) => (
-          <li key={ghost.slug}>{ghost.label}</li>
-        ))}
-      </ul>
-      <hr />
-      <ul>
-        {evidences.map((evidence) => (
-          <li key={evidence.slug}>{evidence.label}</li>
-        ))}
-      </ul>
+      <App ghosts={ghosts} evidences={evidences} />
     </>
   )
 }

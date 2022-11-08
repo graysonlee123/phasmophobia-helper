@@ -5,7 +5,7 @@
  * @param array The array to search.
  * @returns True if `value` is found, false otherwise.
  */
-export function arrayContains(value: string, array: string[]) {
+export function arrayContains<T>(value: T, array: T[]) {
   return array.indexOf(value) > -1
 }
 
@@ -19,8 +19,8 @@ export function arrayContains(value: string, array: string[]) {
  * @param array The array to modify.
  * @returns A possibly modified array.
  */
-export function arrayAddUnique(value: string, array: string[]) {
-  return arrayContains(value, array) ? array : [...array, value]
+export function arrayAddUnique<T>(value: T, array: T[]) {
+  return arrayContains<T>(value, array) ? array : [...array, value]
 }
 
 /**
@@ -32,6 +32,6 @@ export function arrayAddUnique(value: string, array: string[]) {
  * @param array The array to modify.
  * @returns A possibly modified array.
  */
-export function arrayRemoveAll(value: string, array: string[]) {
+export function arrayRemoveAll<T>(value: T, array: T[]) {
   return array.filter((item) => item !== value)
 }

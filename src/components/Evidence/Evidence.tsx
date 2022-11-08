@@ -1,27 +1,39 @@
-import { useRef } from 'react'
-import { getEvidenceData, getPossibleEvidences } from '@lib/evidences'
 import { arrayAddUnique, arrayContains, arrayRemoveAll } from '@lib/arrays'
-import { sendGtagEvent } from '@lib/analytics'
-import { ANALYTICS_DEBOUNCE, MAX_EVIDENCE } from '@lib/constants'
+import { MAX_EVIDENCE } from '@lib/constants'
 import Checkbox from '@components/Checkbox'
 import styles from './Evidence.module.css'
 import cn from 'classnames'
+import usePossibleEvidences from '@hooks/usePossibleEvidences'
+import useAnalyticsDebounce from '@hooks/useAnalyticsDebounce'
 
 interface EvidenceProps {
+  evidence: Evidence
+  ghosts: Ghost[]
+  evidences: Evidence[]
   checkedEvidences: EvidenceState
   setCheckedEvidences: SetEvidenceState
   disabledEvidences: EvidenceState
   setDisabledEvidences: SetEvidenceState
-  slug: EvidenceSlug
 }
 
 export default function Evidence({
+  evidence,
+  ghosts,
+  evidences,
   checkedEvidences,
   setCheckedEvidences,
   disabledEvidences,
   setDisabledEvidences,
-  slug,
 }: EvidenceProps) {
+  /**
+   * Get the currently possible evidences.
+   */
+  const possibleEvidences = usePossibleEvidences(
+    ghosts,
+    evidences,
+    checkedEvidences
+  )
+
   /**
    * Determines a state for the Checkbox component,
    * based on the state of the evidence.
@@ -36,79 +48,59 @@ export default function Evidence({
   }
 
   /**
-   * Determines if the evidence should appear as locked.
-   *
-   * @returns True if the evidence is locked, false otherwise.
-   */
-  function isLocked() {
-    const possibleEvidences = getPossibleEvidences(checkedEvidences)
-
-    return (
-      (checkedEvidences.length >= MAX_EVIDENCE &&
-        !arrayContains(slug, checkedEvidences)) ||
-      !arrayContains(slug, possibleEvidences)
-    )
-  }
-
-  /**
    * Handles the clicking through the three states.
    */
-  const timeoutRef = useRef<null | ReturnType<typeof setTimeout>>(null)
+  const eventDebounce = useAnalyticsDebounce()
   function handleClick() {
-    if (timeoutRef.current) clearInterval(timeoutRef.current)
-
     if (checked) {
       /** Move to disabled. */
       setCheckedEvidences(
-        arrayRemoveAll(slug, checkedEvidences) as EvidenceState
+        arrayRemoveAll(evidence.slug, checkedEvidences) as EvidenceState
       )
 
       setDisabledEvidences(
-        arrayAddUnique(slug, disabledEvidences) as EvidenceState
+        arrayAddUnique(evidence.slug, disabledEvidences) as EvidenceState
       )
 
-      timeoutRef.current = setTimeout(() => {
-        sendGtagEvent({
-          name: 'evidence_disabled',
-          params: {
-            evidence_slug: slug,
-          },
-        })
-      }, ANALYTICS_DEBOUNCE)
+      eventDebounce({
+        name: 'evidence_disabled',
+        params: {
+          evidence_slug: evidence.slug,
+        },
+      })
     } else if (disabled) {
       /** Move to neutral. */
       setDisabledEvidences(
-        arrayRemoveAll(slug, disabledEvidences) as EvidenceState
+        arrayRemoveAll(evidence.slug, disabledEvidences) as EvidenceState
       )
 
-      timeoutRef.current = setTimeout(() => {
-        sendGtagEvent({
-          name: 'evidence_unchecked',
-          params: {
-            evidence_slug: slug,
-          },
-        })
-      }, ANALYTICS_DEBOUNCE)
+      eventDebounce({
+        name: 'evidence_unchecked',
+        params: {
+          evidence_slug: evidence.slug,
+        },
+      })
     } else {
       /** Move to checked. */
       setCheckedEvidences(
-        arrayAddUnique(slug, checkedEvidences) as EvidenceState
+        arrayAddUnique(evidence.slug, checkedEvidences) as EvidenceState
       )
 
-      timeoutRef.current = setTimeout(() => {
-        sendGtagEvent({
-          name: 'evidence_checked',
-          params: {
-            evidence_slug: slug,
-          },
-        })
-      }, ANALYTICS_DEBOUNCE)
+      eventDebounce({
+        name: 'evidence_checked',
+        params: {
+          evidence_slug: evidence.slug,
+        },
+      })
     }
   }
 
-  const locked = isLocked()
-  const checked = arrayContains(slug, checkedEvidences)
-  const disabled = arrayContains(slug, disabledEvidences)
+  const locked =
+    (checkedEvidences.length >= MAX_EVIDENCE &&
+      !arrayContains(evidence.slug, checkedEvidences)) ||
+    !arrayContains(evidence.slug, possibleEvidences)
+  const checked = arrayContains(evidence.slug, checkedEvidences)
+  const disabled = arrayContains(evidence.slug, disabledEvidences)
 
   return (
     <span>
@@ -122,7 +114,7 @@ export default function Evidence({
         disabled={locked}
       >
         <Checkbox state={getCheckboxState()} />
-        <span className={styles.label}>{getEvidenceData(slug).label}</span>
+        <span className={styles.label}>{evidence.label}</span>
       </button>
     </span>
   )
