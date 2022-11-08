@@ -1,6 +1,7 @@
 import Ghost from '@components/Ghost'
-import { Fragment } from 'react'
+import Grow from '@components/Grow/Grow'
 import styles from './Ghosts.module.css'
+import { TransitionGroup } from 'react-transition-group'
 
 interface GhostsProps {
   possibleGhosts: Ghost[]
@@ -20,16 +21,23 @@ export default function Ghosts({
       {possibleGhosts.length === 0 ? (
         <p>Sorry, no ghost types were found for those choices.</p>
       ) : (
-        possibleGhosts.map((ghost) => (
-          <Fragment key={ghost.slug}>
-            <Ghost
-              ghost={ghost}
-              evidences={evidences}
-              minimizedGhosts={minimizedGhosts}
-              setMinimizedGhosts={setMinimizedGhosts}
-            />
-          </Fragment>
-        ))
+        <TransitionGroup>
+          {possibleGhosts.map((ghost) => (
+            <Grow
+              timeout={300}
+              mountOnEnter
+              style={{ paddingBlock: '1.75rem' }}
+              key={ghost.slug}
+            >
+              <Ghost
+                ghost={ghost}
+                evidences={evidences}
+                minimizedGhosts={minimizedGhosts}
+                setMinimizedGhosts={setMinimizedGhosts}
+              />
+            </Grow>
+          ))}
+        </TransitionGroup>
       )}
     </section>
   )
