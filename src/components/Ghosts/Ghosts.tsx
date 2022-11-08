@@ -23,12 +23,7 @@ export default function Ghosts({
       ) : (
         <TransitionGroup>
           {possibleGhosts.map((ghost) => (
-            <Grow
-              timeout={300}
-              mountOnEnter
-              style={{ paddingBlock: '1.75rem' }}
-              key={ghost.slug}
-            >
+            <Grow timeout={300} mountOnEnter key={ghost.slug}>
               <Ghost
                 ghost={ghost}
                 evidences={evidences}
