@@ -1,36 +1,28 @@
-import Head from 'next/head'
-import Layout from '@components/Layout'
 import path from 'path'
 import { promises as fs } from 'fs'
+import Head from 'next/head'
+import { InferGetStaticPropsType } from 'next'
+import Layout from '@components/Layout'
 
-export async function getStaticProps() {
-  const workDir = path.join(process.cwd(), 'src', 'data')
-  const files = ['ghosts', 'evidences']
-  const props = {}
-
-  await Promise.all(
-    files.map(async (file) => {
-      const content = await fs.readFile(
-        path.join(workDir, `${file}.json`),
-        'utf-8'
-      )
-      props[file] = JSON.parse(content)
-    })
-  )
+export const getStaticProps = async () => {
+  const dataDir = path.join(process.cwd(), 'src', 'data')
 
   return {
-    props,
+    props: {
+      ghosts: JSON.parse(
+        await fs.readFile(path.join(dataDir, `ghosts.json`), 'utf-8')
+      ) as Ghost[],
+      evidences: JSON.parse(
+        await fs.readFile(path.join(dataDir, `evidences.json`), 'utf-8')
+      ) as Evidence[],
+    },
   }
 }
 
-interface HomeProps {
-  ghosts: []
-  evidences: []
-}
-
-export default function Home({ ghosts, evidences }: HomeProps) {
-  console.log({ ghosts, evidences })
-
+const Home = ({
+  ghosts,
+  evidences,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
       <Head>
@@ -58,3 +50,5 @@ export default function Home({ ghosts, evidences }: HomeProps) {
     </>
   )
 }
+
+export default Home
