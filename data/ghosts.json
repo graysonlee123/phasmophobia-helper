@@ -3,7 +3,7 @@
     "slug": "banshee",
     "label": "Banshee",
     "evidences": ["fingerprints", "orbs", "dots"],
-    "desc": "Targets one specific player until they are killed, ignoring others. Its hunt threshold is based on the target&apos;s sanity. A distinctive screech can be heard when using the Parabolic Microphone.",
+    "desc": "Targets one specific player until they are killed, ignoring others. Its hunt threshold is based on the target's sanity. A distinctive screech can be heard when using the Parabolic Microphone.",
     "wiki": "https://phasmophobia.fandom.com/wiki/Banshee"
   },
   {
@@ -40,7 +40,7 @@
     "slug": "jinn",
     "label": "Jinn",
     "evidences": ["emf", "freezing", "fingerprints"],
-    "desc": "Higher speed if the target is far away. Its ability will deduct nearby players&apos; sanity (25%). Turning off the breaker will prevent it from using its ability.",
+    "desc": "Higher speed if the target is far away. Its ability will deduct nearby players' sanity (25%). Turning off the breaker will prevent it from using its ability.",
     "wiki": "https://phasmophobia.fandom.com/wiki/Jinn"
   },
   {
@@ -143,7 +143,7 @@
     "slug": "mimic",
     "label": "The Mimic",
     "evidences": ["box", "fingerprints", "freezing"],
-    "desc": "Mimics other ghost types one after another for a brief period of time. Includes Ghost Orbs as fourth false evidence. Can mimic evidence properties if the ghost it is mimicking shares the evidence. For example, the Obake&apos;s fingerprints.",
+    "desc": "Mimics other ghost types one after another for a brief period of time. Includes Ghost Orbs as fourth false evidence. Can mimic evidence properties if the ghost it is mimicking shares the evidence. For example, the Obake's fingerprints.",
     "wiki": "https://phasmophobia.fandom.com/wiki/The_Mimic"
   },
   {
@@ -157,7 +157,7 @@
     "slug": "wraith",
     "label": "Wraith",
     "evidences": ["emf", "box", "dots"],
-    "desc": "Doesn&apos;t leave UV footprints after stepping in salt. Can teleport to players randomly. Stepping in salt temporarily makes it more active, and salt piles it steps in will not provide photo evidence.",
+    "desc": "Doesn't leave UV footprints after stepping in salt. Can teleport to players randomly. Stepping in salt temporarily makes it more active, and salt piles it steps in will not provide photo evidence.",
     "wiki": "https://phasmophobia.fandom.com/wiki/Wraith"
   },
   {
@@ -172,7 +172,7 @@
     "slug": "yurei",
     "label": "Yurei",
     "evidences": ["orbs", "freezing", "dots"],
-    "desc": "May randomly shut a door and deduct nearby players&apos; sanity. Will be temporarily confined to its room after smudging. If a ghost shuts an exit door fully without a manifestation, it is definitively a Yurei.",
+    "desc": "May randomly shut a door and deduct nearby players' sanity. Will be temporarily confined to its room after smudging. If a ghost shuts an exit door fully without a manifestation, it is definitively a Yurei.",
     "wiki": "https://phasmophobia.fandom.com/wiki/Yurei"
   }
 ]
