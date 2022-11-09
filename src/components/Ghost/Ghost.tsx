@@ -5,7 +5,7 @@ import Tags from '@components/Tags'
 import Sanity from '@components/Sanity'
 import Minimize from '@components/Minimize'
 import styles from './Ghost.module.css'
-import cn from 'classnames'
+import { motion } from 'framer-motion'
 
 interface GhostProps {
   ghost: Ghost
@@ -54,10 +54,13 @@ export default function Ghost({
   }))
 
   return (
-    <article
-      className={cn([styles.article], {
-        [styles.disabled]: minimized,
-      })}
+    <motion.article
+      className={styles.article}
+      initial={false}
+      animate={{
+        opacity: minimized ? 0.6 : 1,
+        gap: minimized ? '0.25rem' : '0.75rem',
+      }}
     >
       <header className={styles.header}>
         <a
@@ -74,8 +77,16 @@ export default function Ghost({
           <Minimize callback={handleClick} open={minimized} />
         </span>
       </header>
-      {!minimized && ghost.desc}
+      <motion.div
+        className={styles.description}
+        initial={false}
+        animate={{
+          height: minimized ? 0 : 'auto',
+        }}
+      >
+        {ghost.desc}
+      </motion.div>
       <Tags tags={tags} />
-    </article>
+    </motion.article>
   )
 }
