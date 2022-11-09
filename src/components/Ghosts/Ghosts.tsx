@@ -1,9 +1,9 @@
 import Ghost from '@components/Ghost'
-import Grow from '@components/Grow/Grow'
 import styles from './Ghosts.module.css'
-import { TransitionGroup } from 'react-transition-group'
+import { AnimatePresence, motion } from 'framer-motion'
 
 interface GhostsProps {
+  ghosts: Ghost[]
   possibleGhosts: Ghost[]
   evidences: Evidence[]
   minimizedGhosts: GhostState
@@ -11,6 +11,7 @@ interface GhostsProps {
 }
 
 export default function Ghosts({
+  ghosts,
   possibleGhosts,
   evidences,
   minimizedGhosts,
@@ -19,20 +20,32 @@ export default function Ghosts({
   return (
     <section className={styles.section}>
       {possibleGhosts.length === 0 ? (
-        <p>Sorry, no ghost types were found for those choices.</p>
+        <motion.p
+          className={styles.none}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+        >
+          Sorry, no ghost types were found for those choices.
+        </motion.p>
       ) : (
-        <TransitionGroup>
-          {possibleGhosts.map((ghost) => (
-            <Grow timeout={300} mountOnEnter key={ghost.slug}>
-              <Ghost
-                ghost={ghost}
-                evidences={evidences}
-                minimizedGhosts={minimizedGhosts}
-                setMinimizedGhosts={setMinimizedGhosts}
-              />
-            </Grow>
-          ))}
-        </TransitionGroup>
+        ghosts.map((ghost) => (
+          <AnimatePresence key={ghost.slug}>
+            {possibleGhosts.some(({ slug }) => slug === ghost.slug) && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+              >
+                <Ghost
+                  ghost={ghost}
+                  evidences={evidences}
+                  minimizedGhosts={minimizedGhosts}
+                  setMinimizedGhosts={setMinimizedGhosts}
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        ))
       )}
     </section>
   )

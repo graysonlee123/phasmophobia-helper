@@ -5,6 +5,10 @@
   box-shadow: var(--shadow--lg);
 }
 
+.none {
+  padding-block: 0.75rem;
+}
+
 @media (min-width: 48rem) {
   .section {
     align-self: start;
