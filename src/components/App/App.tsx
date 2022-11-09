@@ -72,7 +72,6 @@ const App = ({ ghosts, evidences }: AppProps) => {
         reset={reset}
       />
       <Ghosts
-        ghosts={ghosts}
         possibleGhosts={possibleGhosts}
         evidences={evidences}
         minimizedGhosts={minimizedGhostSlugs}

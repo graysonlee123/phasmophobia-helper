@@ -3,7 +3,6 @@ import styles from './Ghosts.module.css'
 import { AnimatePresence, motion } from 'framer-motion'
 
 interface GhostsProps {
-  ghosts: Ghost[]
   possibleGhosts: Ghost[]
   evidences: Evidence[]
   minimizedGhosts: GhostState
@@ -11,7 +10,6 @@ interface GhostsProps {
 }
 
 export default function Ghosts({
-  ghosts,
   possibleGhosts,
   evidences,
   minimizedGhosts,
@@ -28,24 +26,23 @@ export default function Ghosts({
           Sorry, no ghost types were found for those choices.
         </motion.p>
       ) : (
-        ghosts.map((ghost) => (
-          <AnimatePresence key={ghost.slug}>
-            {possibleGhosts.some(({ slug }) => slug === ghost.slug) && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-              >
-                <Ghost
-                  ghost={ghost}
-                  evidences={evidences}
-                  minimizedGhosts={minimizedGhosts}
-                  setMinimizedGhosts={setMinimizedGhosts}
-                />
-              </motion.div>
-            )}
-          </AnimatePresence>
-        ))
+        <AnimatePresence>
+          {possibleGhosts.map((ghost) => (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              key={ghost.slug}
+            >
+              <Ghost
+                ghost={ghost}
+                evidences={evidences}
+                minimizedGhosts={minimizedGhosts}
+                setMinimizedGhosts={setMinimizedGhosts}
+              />
+            </motion.div>
+          ))}
+        </AnimatePresence>
       )}
     </section>
   )
