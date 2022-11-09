@@ -1,0 +1,5 @@
+.header {
+  font-size: var(--fs--lg);
+  font-weight: 700;
+  line-height: 1.2;
+}

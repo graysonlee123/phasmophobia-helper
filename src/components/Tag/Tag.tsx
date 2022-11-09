@@ -1,5 +1,7 @@
 import styles from './Tag.module.css'
+import { motion } from 'framer-motion'
 import cn from 'classnames'
+import Anchor from '@components/Anchor'
 
 interface TagProps {
   tag: Tag
@@ -10,21 +12,23 @@ export default function Tag({ tag }: TagProps) {
 
   return (
     <li>
-      <a
-        className={styles.anchor}
+      <Anchor
         href={link}
         target="_blank"
         rel="noopener noreferrer"
-        title="Visit Evidence Wiki Page"
+        title={`Visit ${label} wiki page`}
       >
-        <span
+        <motion.span
+          whileHover={{
+            scale: 1.1,
+          }}
           className={cn([styles.tag, styles[slug]], {
             [styles.important]: important,
           })}
         >
           {label}
-        </span>
-      </a>
+        </motion.span>
+      </Anchor>
     </li>
   )
 }

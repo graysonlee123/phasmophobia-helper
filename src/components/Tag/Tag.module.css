@@ -1,18 +1,11 @@
-.anchor {
-  text-decoration: none;
-}
-
 .tag {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 0.25rem;
   padding: 0.125rem 0.5rem;
   border-radius: 2px;
   white-space: nowrap;
-
-  transition-property: transform;
-  transition-duration: var(--transition--duration--normal);
-  transition-timing-function: var(--transition--timing--quick);
 }
 
 .important::before {
@@ -24,22 +17,6 @@
   height: var(--size);
   border-radius: 100%;
   background-color: currentColor;
-}
-
-.tag:focus {
-  outline: none;
-}
-
-.tag:hover,
-.tag:focus {
-  transform: scale(1.1);
-}
-
-.tag:focus-visible {
-  outline-width: 2px;
-  outline-style: solid;
-  outline-color: hsl(var(--clr--white));
-  outline-offset: 2px;
 }
 
 .dots {

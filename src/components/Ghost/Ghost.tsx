@@ -4,6 +4,8 @@ import { sendGtagEvent } from '@lib/analytics'
 import Tags from '@components/Tags'
 import Sanity from '@components/Sanity'
 import Minimize from '@components/Minimize'
+import HoverLink from '@components/HoverLink'
+import Header from '@components/Header'
 import styles from './Ghost.module.css'
 import { motion } from 'framer-motion'
 
@@ -63,15 +65,16 @@ export default function Ghost({
       }}
     >
       <header className={styles.header}>
-        <a
-          className={styles.anchor}
-          href={ghost.wiki}
-          target="_blank"
-          rel="noopener noreferrer"
-          title="Visit Ghost Wiki Page"
-        >
-          {ghost.label}
-        </a>
+        <Header>
+          <HoverLink
+            href={ghost.wiki}
+            target="_blank"
+            rel="noopener noreferrer"
+            title={`View ${ghost.label} wiki page`}
+          >
+            {ghost.label}
+          </HoverLink>
+        </Header>
         <Sanity int={ghost.hunt} />
         <span className={styles.button}>
           <Minimize callback={handleClick} open={minimized} />
