@@ -1,11 +1,13 @@
+import { useContext, useMemo } from 'react'
+import { GhostsContext } from '@contexts/Ghosts'
+import { useCheckedEvidences, useDisabledEvidences } from '@store/index'
 import { arrayContains } from '@lib/arrays'
-import { useMemo } from 'react'
 
-const usePossibleGhosts = (
-  ghosts: Ghost[],
-  checkedEvidenceSlugs: EvidenceState,
-  disabledEvidenceSlugs: EvidenceState
-) => {
+const usePossibleGhosts = () => {
+  const ghosts = useContext(GhostsContext)
+  const checkedEvidences = useCheckedEvidences()
+  const disabledEvidences = useDisabledEvidences()
+
   return useMemo(() => {
     return ghosts.filter((ghost) => {
       let passed = true
@@ -14,7 +16,7 @@ const usePossibleGhosts = (
        * Don't show the ghost if it doesn't
        * have a checked evidence as a possibility.
        */
-      checkedEvidenceSlugs.forEach((evidence) => {
+      checkedEvidences.forEach((evidence) => {
         if (!arrayContains(evidence, ghost.evidences)) {
           passed = false
         }
@@ -24,7 +26,7 @@ const usePossibleGhosts = (
        * Don't show the ghost if it does
        * have a disabled evidence as a possibility.
        */
-      disabledEvidenceSlugs.forEach((evidence) => {
+      disabledEvidences.forEach((evidence) => {
         if (arrayContains(evidence, ghost.evidences)) {
           passed = false
         }
@@ -32,7 +34,7 @@ const usePossibleGhosts = (
 
       return passed
     })
-  }, [ghosts, checkedEvidenceSlugs, disabledEvidenceSlugs])
+  }, [ghosts, checkedEvidences, disabledEvidences])
 }
 
 export default usePossibleGhosts

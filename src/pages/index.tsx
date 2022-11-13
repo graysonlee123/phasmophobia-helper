@@ -1,7 +1,9 @@
 import path from 'path'
 import { promises as fs } from 'fs'
-import Head from 'next/head'
 import { InferGetStaticPropsType } from 'next'
+import Head from 'next/head'
+import { GhostsContextProvider } from '@contexts/Ghosts'
+import { EvidencesContextProvider } from '@contexts/Evidences'
 import App from '@components/App'
 
 export const getStaticProps = async () => {
@@ -35,7 +37,11 @@ const Home = ({
         <meta name="author" content="Grayson Gantek" />
         <meta name="color-scheme" content="dark" />
       </Head>
-      <App ghosts={ghosts} evidences={evidences} />
+      <GhostsContextProvider ghosts={ghosts}>
+        <EvidencesContextProvider evidences={evidences}>
+          <App />
+        </EvidencesContextProvider>
+      </GhostsContextProvider>
     </>
   )
 }

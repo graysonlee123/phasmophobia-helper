@@ -8,13 +8,6 @@
   margin-top: 0.75rem;
 }
 
-.reset {
-  padding: 0;
-  opacity: 60%;
-  font-size: var(--fs--xs);
-  text-decoration: underline;
-}
-
 @media (min-width: 48rem) {
   .instruction {
     max-width: 32ch;

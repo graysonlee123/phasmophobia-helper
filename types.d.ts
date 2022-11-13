@@ -1,5 +1,5 @@
 /** Evidence */
-type EvidenceSlug =
+type EvidenceId =
   | 'dots'
   | 'emf'
   | 'fingerprints'
@@ -7,20 +7,20 @@ type EvidenceSlug =
   | 'orbs'
   | 'writing'
   | 'box'
-type EvidenceState = EvidenceSlug[]
-type SetEvidenceState = (evidences: EvidenceState) => void
+type EvidenceIds = EvidenceId[]
+type SetEvidenceState = (evidences: EvidenceIds) => void
 
 interface Evidence {
-  slug: EvidenceSlug
-  label: string
-  ghosts?: GhostSlug[]
-  wiki: string
+  id: EvidenceId
+  name: string
+  ghosts?: GhostId[]
+  url: string
 }
+type Evidences = Evidence[]
 
 /** Ghosts */
 
-type GhostEvidences = [EvidenceSlug, EvidenceSlug, EvidenceSlug]
-type GhostSlug =
+type GhostId =
   | 'banshee'
   | 'demon'
   | 'deogen'
@@ -45,17 +45,19 @@ type GhostSlug =
   | 'wraith'
   | 'yokai'
   | 'yurei'
-type GhostState = GhostSlug[]
+type GhostIds = GhostId[]
 type SetGhostState = (ghosts: GhostState) => void
+type GhostEvidences = [EvidenceId, EvidenceId, EvidenceId]
 
 interface Ghost {
-  slug: GhostSlug
-  label: string
+  id: GhostId
+  name: string
   evidences: GhostEvidences
   hunt?: number
-  desc: React.ReactElement
-  wiki: string
+  desc: string
+  url: string
 }
+type Ghosts = Ghost[]
 
 /** Other */
 

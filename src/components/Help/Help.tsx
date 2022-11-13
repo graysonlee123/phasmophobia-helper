@@ -1,17 +1,11 @@
+import ResetButton from '@components/ResetButton'
 import styles from './Help.module.css'
-import cn from 'classnames'
 
-interface HelpProps {
-  reset: () => void
-}
-
-export default function Help({ reset }: HelpProps) {
+export default function Help() {
   return (
     <div className={styles.instruction}>
       <p>
-        <button className={cn(['button-reset', styles.reset])} onClick={reset}>
-          (reset all)
-        </button>
+        <ResetButton />
       </p>
       <p>
         As you update your findings, evidence that is not possible will be

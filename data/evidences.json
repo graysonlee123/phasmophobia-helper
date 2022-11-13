@@ -1,41 +1,41 @@
 [
   {
-    "slug": "dots",
-    "label": "D.O.T.S.",
+    "id": "dots",
+    "name": "D.O.T.S.",
     "ghosts": ["goryo"],
-    "wiki": "https://phasmophobia.fandom.com/wiki/D.O.T.S_Projector_(Evidence)"
+    "url": "https://phasmophobia.fandom.com/wiki/D.O.T.S_Projector_(Evidence)"
   },
   {
-    "slug": "emf",
-    "label": "EMF 5",
-    "wiki": "https://phasmophobia.fandom.com/wiki/EMF_Level_5"
+    "id": "emf",
+    "name": "EMF 5",
+    "url": "https://phasmophobia.fandom.com/wiki/EMF_Level_5"
   },
   {
-    "slug": "fingerprints",
-    "label": "Fingerprints",
+    "id": "fingerprints",
+    "name": "Fingerprints",
     "ghosts": ["obake"],
-    "wiki": "https://phasmophobia.fandom.com/wiki/Fingerprints"
+    "url": "https://phasmophobia.fandom.com/wiki/Fingerprints"
   },
   {
-    "slug": "freezing",
-    "label": "Freezing",
+    "id": "freezing",
+    "name": "Freezing",
     "ghosts": ["hantu"],
-    "wiki": "https://phasmophobia.fandom.com/wiki/Freezing_Temperatures"
+    "url": "https://phasmophobia.fandom.com/wiki/Freezing_Temperatures"
   },
   {
-    "slug": "orbs",
-    "label": "Ghost Orbs",
-    "wiki": "https://phasmophobia.fandom.com/wiki/Ghost_Orb"
+    "id": "orbs",
+    "name": "Ghost Orbs",
+    "url": "https://phasmophobia.fandom.com/wiki/Ghost_Orb"
   },
   {
-    "slug": "writing",
-    "label": "Writing",
-    "wiki": "https://phasmophobia.fandom.com/wiki/Ghost_Writing"
+    "id": "writing",
+    "name": "Writing",
+    "url": "https://phasmophobia.fandom.com/wiki/Ghost_Writing"
   },
   {
-    "slug": "box",
-    "label": "Spirit Box",
+    "id": "box",
+    "name": "Spirit Box",
     "ghosts": ["deogen", "moroi"],
-    "wiki": "https://phasmophobia.fandom.com/wiki/Spirit_Box_(Evidence)"
+    "url": "https://phasmophobia.fandom.com/wiki/Spirit_Box_(Evidence)"
   }
 ]

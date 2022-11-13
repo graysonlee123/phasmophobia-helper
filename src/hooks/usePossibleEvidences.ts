@@ -1,10 +1,13 @@
-import { useMemo } from 'react'
+import { useContext, useMemo } from 'react'
+import { EvidencesContext } from '@contexts/Evidences'
+import { GhostsContext } from '@contexts/Ghosts'
+import { useCheckedEvidences } from '@store/index'
 
-const usePossibleEvidences = (
-  ghosts: Ghost[],
-  evidences: Evidence[],
-  checkedEvidences: EvidenceState
-) => {
+const usePossibleEvidences = () => {
+  const ghosts = useContext(GhostsContext)
+  const evidences = useContext(EvidencesContext)
+  const checkedEvidences = useCheckedEvidences()
+
   return useMemo(() => {
     const data: GhostEvidences[] = []
 
@@ -25,8 +28,8 @@ const usePossibleEvidences = (
     /** Use a set here to make an array with unique values. */
     const flat = Array.from(new Set(data.flat()))
     return evidences
-      .filter(({ slug }) => flat.indexOf(slug) > -1)
-      .map(({ slug }) => slug)
+      .filter(({ id: slug }) => flat.indexOf(slug) > -1)
+      .map(({ id: slug }) => slug)
   }, [ghosts, evidences, checkedEvidences])
 }
 

@@ -1,0 +1,6 @@
+.reset {
+  padding: 0;
+  opacity: 60%;
+  font-size: var(--fs--xs);
+  text-decoration: underline;
+}

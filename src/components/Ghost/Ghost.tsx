@@ -1,58 +1,54 @@
+import { useEliminatedGhosts, useSetEliminatedGhosts } from '@store/index'
 import useGhostEvidences from '@hooks/useGhostEvidences'
 import { arrayContains, arrayAddUnique, arrayRemoveAll } from '@lib/arrays'
-import { sendGtagEvent } from '@lib/analytics'
 import Tags from '@components/Tags'
 import Sanity from '@components/Sanity'
 import Minimize from '@components/Minimize'
 import HoverLink from '@components/HoverLink'
 import Header from '@components/Header'
+import { sendGtagEvent } from '@lib/analytics'
 import styles from './Ghost.module.css'
 import { motion } from 'framer-motion'
 
 interface GhostProps {
   ghost: Ghost
-  evidences: Evidence[]
-  minimizedGhosts: GhostState
-  setMinimizedGhosts: SetGhostState
 }
 
-export default function Ghost({
-  ghost,
-  evidences,
-  minimizedGhosts,
-  setMinimizedGhosts,
-}: GhostProps) {
+export default function Ghost({ ghost }: GhostProps) {
+  const eliminatedGhosts = useEliminatedGhosts()
+  const setEliminatedGhosts = useSetEliminatedGhosts()
+
   /**
    * Handles the click logic for minimizing the ghost.
    */
   function handleClick() {
-    if (arrayContains(ghost.slug, minimizedGhosts)) {
-      setMinimizedGhosts(arrayRemoveAll(ghost.slug, minimizedGhosts))
+    if (arrayContains(ghost.id, eliminatedGhosts)) {
+      setEliminatedGhosts(arrayRemoveAll(ghost.id, eliminatedGhosts))
 
       sendGtagEvent({
         name: 'ghost_maximized',
         params: {
-          ghost_slug: ghost.slug,
+          ghost_slug: ghost.id,
         },
       })
     } else {
-      setMinimizedGhosts(arrayAddUnique(ghost.slug, minimizedGhosts))
+      setEliminatedGhosts(arrayAddUnique(ghost.id, eliminatedGhosts))
 
       sendGtagEvent({
         name: 'ghost_minimized',
         params: {
-          ghost_slug: ghost.slug,
+          ghost_slug: ghost.id,
         },
       })
     }
   }
 
-  const minimized = arrayContains(ghost.slug, minimizedGhosts)
-  const ghostEvidences = useGhostEvidences(ghost, evidences)
+  const minimized = arrayContains(ghost.id, eliminatedGhosts)
+  const ghostEvidences = useGhostEvidences(ghost)
   const tags = ghostEvidences.map<Tag>((evidence) => ({
-    slug: evidence.slug,
-    label: evidence.label,
-    link: evidence.wiki,
+    slug: evidence.id,
+    label: evidence.name,
+    link: evidence.url,
   }))
 
   return (
@@ -67,12 +63,12 @@ export default function Ghost({
       <header className={styles.header}>
         <Header>
           <HoverLink
-            href={ghost.wiki}
+            href={ghost.url}
             target="_blank"
             rel="noopener noreferrer"
-            title={`View ${ghost.label} wiki page`}
+            title={`View ${ghost.name} wiki page`}
           >
-            {ghost.label}
+            {ghost.name}
           </HoverLink>
         </Header>
         <Sanity int={ghost.hunt} />

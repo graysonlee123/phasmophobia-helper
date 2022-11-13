@@ -1,38 +1,27 @@
+import {
+  useCheckedEvidences,
+  useDisabledEvidences,
+  useSetCheckedEvidences,
+  useSetDisabledEvidences,
+} from '@store/index'
+import usePossibleEvidences from '@hooks/usePossibleEvidences'
+import useAnalyticsDebounce from '@hooks/useAnalyticsDebounce'
 import { arrayAddUnique, arrayContains, arrayRemoveAll } from '@lib/arrays'
 import { MAX_EVIDENCE } from '@lib/constants'
 import Checkbox from '@components/Checkbox'
 import styles from './Evidence.module.css'
 import cn from 'classnames'
-import usePossibleEvidences from '@hooks/usePossibleEvidences'
-import useAnalyticsDebounce from '@hooks/useAnalyticsDebounce'
 
 interface EvidenceProps {
   evidence: Evidence
-  ghosts: Ghost[]
-  evidences: Evidence[]
-  checkedEvidences: EvidenceState
-  setCheckedEvidences: SetEvidenceState
-  disabledEvidences: EvidenceState
-  setDisabledEvidences: SetEvidenceState
 }
 
-export default function Evidence({
-  evidence,
-  ghosts,
-  evidences,
-  checkedEvidences,
-  setCheckedEvidences,
-  disabledEvidences,
-  setDisabledEvidences,
-}: EvidenceProps) {
-  /**
-   * Get the currently possible evidences.
-   */
-  const possibleEvidences = usePossibleEvidences(
-    ghosts,
-    evidences,
-    checkedEvidences
-  )
+export default function Evidence({ evidence }: EvidenceProps) {
+  const checkedEvidences = useCheckedEvidences()
+  const setCheckedEvidences = useSetCheckedEvidences()
+  const disabledEvidences = useDisabledEvidences()
+  const setDisabledEvidences = useSetDisabledEvidences()
+  const possibleEvidences = usePossibleEvidences()
 
   /**
    * Determines a state for the Checkbox component,
@@ -55,41 +44,41 @@ export default function Evidence({
     if (checked) {
       /** Move to disabled. */
       setCheckedEvidences(
-        arrayRemoveAll(evidence.slug, checkedEvidences) as EvidenceState
+        arrayRemoveAll(evidence.id, checkedEvidences) as EvidenceIds
       )
 
       setDisabledEvidences(
-        arrayAddUnique(evidence.slug, disabledEvidences) as EvidenceState
+        arrayAddUnique(evidence.id, disabledEvidences) as EvidenceIds
       )
 
       eventDebounce({
         name: 'evidence_disabled',
         params: {
-          evidence_slug: evidence.slug,
+          evidence_slug: evidence.id,
         },
       })
     } else if (disabled) {
       /** Move to neutral. */
       setDisabledEvidences(
-        arrayRemoveAll(evidence.slug, disabledEvidences) as EvidenceState
+        arrayRemoveAll(evidence.id, disabledEvidences) as EvidenceIds
       )
 
       eventDebounce({
         name: 'evidence_unchecked',
         params: {
-          evidence_slug: evidence.slug,
+          evidence_slug: evidence.id,
         },
       })
     } else {
       /** Move to checked. */
       setCheckedEvidences(
-        arrayAddUnique(evidence.slug, checkedEvidences) as EvidenceState
+        arrayAddUnique(evidence.id, checkedEvidences) as EvidenceIds
       )
 
       eventDebounce({
         name: 'evidence_checked',
         params: {
-          evidence_slug: evidence.slug,
+          evidence_slug: evidence.id,
         },
       })
     }
@@ -97,10 +86,10 @@ export default function Evidence({
 
   const locked =
     (checkedEvidences.length >= MAX_EVIDENCE &&
-      !arrayContains(evidence.slug, checkedEvidences)) ||
-    !arrayContains(evidence.slug, possibleEvidences)
-  const checked = arrayContains(evidence.slug, checkedEvidences)
-  const disabled = arrayContains(evidence.slug, disabledEvidences)
+      !arrayContains(evidence.id, checkedEvidences)) ||
+    !arrayContains(evidence.id, possibleEvidences)
+  const checked = arrayContains(evidence.id, checkedEvidences)
+  const disabled = arrayContains(evidence.id, disabledEvidences)
 
   return (
     <span>
@@ -114,7 +103,7 @@ export default function Evidence({
         disabled={locked}
       >
         <Checkbox state={getCheckboxState()} />
-        <span className={styles.label}>{evidence.label}</span>
+        <span className={styles.label}>{evidence.name}</span>
       </button>
     </span>
   )

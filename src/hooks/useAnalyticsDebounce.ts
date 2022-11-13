@@ -7,6 +7,7 @@ const useAnalyticsDebounce = () => {
 
   return (data: GtagEvent) => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current)
+
     timeoutRef.current = setTimeout(() => {
       sendGtagEvent(data)
     }, ANALYTICS_DEBOUNCE)
