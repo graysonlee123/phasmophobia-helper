@@ -37,7 +37,7 @@ export default function Ghosts({}: GhostsProps) {
           Sorry, no ghost types were found for those choices.
         </motion.p>
       ) : (
-        <AnimatePresence>
+        <AnimatePresence initial={false}>
           {possibleGhosts.map((ghost) => (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
