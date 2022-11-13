@@ -4,7 +4,8 @@ import { InferGetStaticPropsType } from 'next'
 import Head from 'next/head'
 import { GhostsContextProvider } from '@contexts/Ghosts'
 import { EvidencesContextProvider } from '@contexts/Evidences'
-import App from '@components/App'
+import Game from '@components/Game'
+import Navbar from '@components/Navbar'
 
 export const getStaticProps = async () => {
   const dataDir = path.join(process.cwd(), 'data')
@@ -39,7 +40,8 @@ const Home = ({
       </Head>
       <GhostsContextProvider ghosts={ghosts}>
         <EvidencesContextProvider evidences={evidences}>
-          <App />
+          <Navbar />
+          <Game />
         </EvidencesContextProvider>
       </GhostsContextProvider>
     </>
