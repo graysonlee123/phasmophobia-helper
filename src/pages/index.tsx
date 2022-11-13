@@ -12,9 +12,7 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      ghosts: JSON.parse(
-        await fs.readFile(path.join(dataDir, `ghosts.json`), 'utf-8')
-      ) as Ghost[],
+      ghosts: JSON.parse(await fs.readFile(path.join(dataDir, `ghosts.json`), 'utf-8')) as Ghost[],
       evidences: JSON.parse(
         await fs.readFile(path.join(dataDir, `evidences.json`), 'utf-8')
       ) as Evidence[],
@@ -22,10 +20,7 @@ export const getStaticProps = async () => {
   }
 }
 
-const Home = ({
-  ghosts,
-  evidences,
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
+const Home = ({ ghosts, evidences }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
       <DocumentHead />

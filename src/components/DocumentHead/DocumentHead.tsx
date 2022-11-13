@@ -7,9 +7,7 @@ interface DocumentHeadProps {
 export default function DocumentHead({ pageTitle }: DocumentHeadProps) {
   return (
     <Head>
-      <title>{`Phasmophobia Helper${
-        pageTitle ? ` | ${pageTitle}` : ''
-      }`}</title>
+      <title>{`Phasmophobia Helper${pageTitle ? ` | ${pageTitle}` : ''}`}</title>
       <meta
         name="description"
         content="A web app that helps you narrow down your ghost type in the video game Phasmophobia."

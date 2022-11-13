@@ -43,13 +43,9 @@ export default function Evidence({ evidence }: EvidenceProps) {
   function handleClick() {
     if (checked) {
       /** Move to disabled. */
-      setCheckedEvidences(
-        arrayRemoveAll(evidence.id, checkedEvidences) as EvidenceIds
-      )
+      setCheckedEvidences(arrayRemoveAll(evidence.id, checkedEvidences) as EvidenceIds)
 
-      setDisabledEvidences(
-        arrayAddUnique(evidence.id, disabledEvidences) as EvidenceIds
-      )
+      setDisabledEvidences(arrayAddUnique(evidence.id, disabledEvidences) as EvidenceIds)
 
       eventDebounce({
         name: 'evidence_disabled',
@@ -59,9 +55,7 @@ export default function Evidence({ evidence }: EvidenceProps) {
       })
     } else if (disabled) {
       /** Move to neutral. */
-      setDisabledEvidences(
-        arrayRemoveAll(evidence.id, disabledEvidences) as EvidenceIds
-      )
+      setDisabledEvidences(arrayRemoveAll(evidence.id, disabledEvidences) as EvidenceIds)
 
       eventDebounce({
         name: 'evidence_unchecked',
@@ -71,9 +65,7 @@ export default function Evidence({ evidence }: EvidenceProps) {
       })
     } else {
       /** Move to checked. */
-      setCheckedEvidences(
-        arrayAddUnique(evidence.id, checkedEvidences) as EvidenceIds
-      )
+      setCheckedEvidences(arrayAddUnique(evidence.id, checkedEvidences) as EvidenceIds)
 
       eventDebounce({
         name: 'evidence_checked',
@@ -85,8 +77,7 @@ export default function Evidence({ evidence }: EvidenceProps) {
   }
 
   const locked =
-    (checkedEvidences.length >= MAX_EVIDENCE &&
-      !arrayContains(evidence.id, checkedEvidences)) ||
+    (checkedEvidences.length >= MAX_EVIDENCE && !arrayContains(evidence.id, checkedEvidences)) ||
     !arrayContains(evidence.id, possibleEvidences)
   const checked = arrayContains(evidence.id, checkedEvidences)
   const disabled = arrayContains(evidence.id, disabledEvidences)
@@ -94,11 +85,7 @@ export default function Evidence({ evidence }: EvidenceProps) {
   return (
     <span>
       <button
-        className={cn([
-          'button-reset',
-          styles.button,
-          locked ? styles.locked : null,
-        ])}
+        className={cn(['button-reset', styles.button, locked ? styles.locked : null])}
         onClick={handleClick}
         disabled={locked}
       >

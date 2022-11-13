@@ -7,6 +7,5 @@ export interface GhostsSlice {
 
 export const createGhostsSlice: StateCreator<GhostsSlice> = (set) => ({
   eliminatedGhosts: [],
-  setEliminatedGhosts: (minimizedGhosts) =>
-    set({ eliminatedGhosts: minimizedGhosts }),
+  setEliminatedGhosts: (minimizedGhosts) => set({ eliminatedGhosts: minimizedGhosts }),
 })

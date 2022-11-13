@@ -7,13 +7,6 @@ interface EvidencesContextProviderProps {
   children: ReactNode
 }
 
-export function EvidencesContextProvider({
-  evidences,
-  children,
-}: EvidencesContextProviderProps) {
-  return (
-    <EvidencesContext.Provider value={evidences}>
-      {children}
-    </EvidencesContext.Provider>
-  )
+export function EvidencesContextProvider({ evidences, children }: EvidencesContextProviderProps) {
+  return <EvidencesContext.Provider value={evidences}>{children}</EvidencesContext.Provider>
 }

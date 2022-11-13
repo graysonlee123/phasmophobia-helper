@@ -29,11 +29,7 @@ export default function Ghosts({}: GhostsProps) {
   return (
     <section className={styles.section}>
       {possibleGhosts.length === 0 ? (
-        <motion.p
-          className={styles.none}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-        >
+        <motion.p className={styles.none} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
           Sorry, no ghost types were found for those choices.
         </motion.p>
       ) : (
@@ -45,11 +41,7 @@ export default function Ghosts({}: GhostsProps) {
               exit={{ opacity: 0, height: 0 }}
               key={ghost.id}
             >
-              <Ghost
-                ghost={ghost}
-                first={index === 0}
-                last={index === possibleGhosts.length - 1}
-              />
+              <Ghost ghost={ghost} first={index === 0} last={index === possibleGhosts.length - 1} />
             </motion.div>
           ))}
         </AnimatePresence>

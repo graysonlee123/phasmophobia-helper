@@ -17,11 +17,7 @@ interface GhostProps extends ComponentPropsWithoutRef<'article'> {
   last?: boolean
 }
 
-export default function Ghost({
-  ghost,
-  first = false,
-  last = false,
-}: GhostProps) {
+export default function Ghost({ ghost, first = false, last = false }: GhostProps) {
   const eliminatedGhosts = useEliminatedGhosts()
   const setEliminatedGhosts = useSetEliminatedGhosts()
 

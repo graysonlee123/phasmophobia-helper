@@ -7,11 +7,6 @@ interface GhostContextProviderProps {
   children: ReactNode
 }
 
-export function GhostsContextProvider({
-  ghosts,
-  children,
-}: GhostContextProviderProps) {
-  return (
-    <GhostsContext.Provider value={ghosts}>{children}</GhostsContext.Provider>
-  )
+export function GhostsContextProvider({ ghosts, children }: GhostContextProviderProps) {
+  return <GhostsContext.Provider value={ghosts}>{children}</GhostsContext.Provider>
 }

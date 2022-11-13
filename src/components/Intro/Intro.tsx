@@ -18,10 +18,7 @@ export default function Intro({
   ...props
 }: IntroProps) {
   return (
-    <div
-      className={cn([styles.block, nogap && styles.nogap, className])}
-      {...props}
-    >
+    <div className={cn([styles.block, nogap && styles.nogap, className])} {...props}>
       <Subtitle>{primary}</Subtitle>
       {secondary && <Hint>{secondary}</Hint>}
     </div>
