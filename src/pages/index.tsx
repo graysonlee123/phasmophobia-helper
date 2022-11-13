@@ -5,7 +5,7 @@ import Head from 'next/head'
 import { GhostsContextProvider } from '@contexts/Ghosts'
 import { EvidencesContextProvider } from '@contexts/Evidences'
 import Game from '@components/Game'
-import Layout from '@components/Layout/Layout'
+import Layout from '@components/Layout'
 
 export const getStaticProps = async () => {
   const dataDir = path.join(process.cwd(), 'data')
