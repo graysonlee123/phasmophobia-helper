@@ -1,10 +1,14 @@
+import DocumentHead from '@components/DocumentHead'
 import Layout from '@components/Layout'
 
 const About = () => {
   return (
-    <Layout>
-      <p>About</p>
-    </Layout>
+    <>
+      <DocumentHead pageTitle="About" />
+      <Layout>
+        <p>About</p>
+      </Layout>
+    </>
   )
 }
 

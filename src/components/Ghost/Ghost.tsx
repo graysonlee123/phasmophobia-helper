@@ -9,12 +9,19 @@ import Header from '@components/Header'
 import { sendGtagEvent } from '@lib/analytics'
 import styles from './Ghost.module.css'
 import { motion } from 'framer-motion'
+import { ComponentPropsWithoutRef } from 'react'
 
-interface GhostProps {
+interface GhostProps extends ComponentPropsWithoutRef<'article'> {
   ghost: Ghost
+  first?: boolean
+  last?: boolean
 }
 
-export default function Ghost({ ghost }: GhostProps) {
+export default function Ghost({
+  ghost,
+  first = false,
+  last = false,
+}: GhostProps) {
   const eliminatedGhosts = useEliminatedGhosts()
   const setEliminatedGhosts = useSetEliminatedGhosts()
 
@@ -58,6 +65,10 @@ export default function Ghost({ ghost }: GhostProps) {
       animate={{
         opacity: minimized ? 0.6 : 1,
         gap: minimized ? '0.25rem' : '0.75rem',
+      }}
+      style={{
+        paddingTop: first ? 0 : undefined,
+        paddingBottom: last ? 0 : undefined,
       }}
     >
       <header className={styles.header}>

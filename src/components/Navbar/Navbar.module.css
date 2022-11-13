@@ -1,4 +1,14 @@
 .bar {
   display: grid;
-  grid-auto-flow: column;
+
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+  padding: 1.5rem;
+}
+
+@media (min-width: 62rem) {
+  .bar {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }

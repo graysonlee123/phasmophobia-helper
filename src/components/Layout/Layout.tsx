@@ -21,6 +21,7 @@ export default function Layout({ children }: LayoutProps) {
         animate="enter"
         exit="exit"
         transition={{ type: 'spring' }}
+        className={styles.motion}
       >
         {children}
       </motion.div>

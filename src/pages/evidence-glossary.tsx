@@ -1,10 +1,14 @@
+import DocumentHead from '@components/DocumentHead'
 import Layout from '@components/Layout'
 
 const EvidenceGlossary = () => {
   return (
-    <Layout>
-      <p>Glossary</p>
-    </Layout>
+    <>
+      <DocumentHead pageTitle="Evidence Glossary" />
+      <Layout>
+        <p>Glossary</p>
+      </Layout>
+    </>
   )
 }
 

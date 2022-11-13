@@ -1,10 +1,14 @@
+import DocumentHead from '@components/DocumentHead'
 import Layout from '@components/Layout'
 
 const Preferences = () => {
   return (
-    <Layout>
-      <p>Preferences</p>
-    </Layout>
+    <>
+      <DocumentHead pageTitle="Preferences" />
+      <Layout>
+        <p>Preferences</p>
+      </Layout>
+    </>
   )
 }
 

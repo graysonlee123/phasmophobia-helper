@@ -1,0 +1,7 @@
+.card {
+  border-radius: 8px;
+  box-shadow: var(--shadow--lg);
+  background-color: hsl(var(--clr--slate--700));
+  color: hsl(var(--clr--white));
+  padding: 2rem;
+}

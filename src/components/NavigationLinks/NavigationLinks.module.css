@@ -1,0 +1,37 @@
+.list {
+  --gap: 1rem;
+
+  padding: 0;
+  white-space: nowrap;
+  list-style: none;
+}
+
+.anchor {
+  text-decoration: none;
+  color: inherit;
+}
+
+@media (min-width: 62rem) {
+  .list {
+    display: flex;
+    gap: var(--gap);
+  }
+
+  .item:not(:last-child) {
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    gap: var(--gap);
+  }
+
+  .item:not(:last-child)::after {
+    --size: 4px;
+
+    content: '';
+    display: block;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    background-color: hsl(var(--clr--white));
+  }
+}

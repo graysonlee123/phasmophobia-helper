@@ -1,7 +1,10 @@
 :root {
   --clr--white: 0 0% 100%;
+  --clr--black: 0 0% 0%;
   --clr--slate--900: 227 9% 14%;
   --clr--slate--700: 227 8% 20%;
+  --clr--hint: 0 0% 70%;
+  --clr--divider: 0 0% 40%;
   --clr--dots--100: 112 62% 90%;
   --clr--dots--700: 112 82% 17%;
   --clr--emf--100: 360 62% 90%;
@@ -20,6 +23,8 @@
   --fs--sm: 0.875rem;
   --fs--md: 1rem;
   --fs--lg: 1.125rem;
+  --leading--tight: 1.3;
+  --leading--normal: 1.6;
   --shadow--lg: 25px 50px 62px -3px rgba(9, 9, 12, 0.34),
     11px 22px 28px -2px rgba(9, 9, 12, 0.34),
     4px 9px 11px -1px rgba(9, 9, 12, 0.34), 2px 3px 4px rgba(9, 9, 12, 0.34),

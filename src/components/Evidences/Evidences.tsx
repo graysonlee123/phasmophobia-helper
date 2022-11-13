@@ -1,7 +1,6 @@
 import { Fragment, useContext } from 'react'
 import { EvidencesContext } from '@contexts/Evidences'
 import Evidence from '@components/Evidence'
-import Help from '@components/Help'
 import styles from './Evidences.module.css'
 
 export default function Evidences() {
@@ -14,7 +13,6 @@ export default function Evidences() {
           <Evidence evidence={evidence} />
         </Fragment>
       ))}
-      <Help />
     </section>
   )
 }
