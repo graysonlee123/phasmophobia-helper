@@ -1,11 +1,10 @@
-import Navbar from '@components/Navbar'
+import Layout from '@components/Layout/Layout'
 
 const About = () => {
   return (
-    <>
-      <Navbar />
+    <Layout>
       <p>About</p>
-    </>
+    </Layout>
   )
 }
 

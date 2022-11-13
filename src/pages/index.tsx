@@ -5,7 +5,7 @@ import Head from 'next/head'
 import { GhostsContextProvider } from '@contexts/Ghosts'
 import { EvidencesContextProvider } from '@contexts/Evidences'
 import Game from '@components/Game'
-import Navbar from '@components/Navbar'
+import Layout from '@components/Layout/Layout'
 
 export const getStaticProps = async () => {
   const dataDir = path.join(process.cwd(), 'data')
@@ -40,8 +40,9 @@ const Home = ({
       </Head>
       <GhostsContextProvider ghosts={ghosts}>
         <EvidencesContextProvider evidences={evidences}>
-          <Navbar />
-          <Game />
+          <Layout>
+            <Game />
+          </Layout>
         </EvidencesContextProvider>
       </GhostsContextProvider>
     </>

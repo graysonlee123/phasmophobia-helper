@@ -1,11 +1,10 @@
-import Navbar from '@components/Navbar'
+import Layout from '@components/Layout/Layout'
 
 const Preferences = () => {
   return (
-    <>
-      <Navbar />
+    <Layout>
       <p>Preferences</p>
-    </>
+    </Layout>
   )
 }
 
