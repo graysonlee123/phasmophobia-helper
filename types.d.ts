@@ -6,10 +6,10 @@ type SetEvidenceState = (evidences: EvidenceIds) => void
 interface Evidence {
   id: EvidenceId
   name: string
+  url: string
   shortName?: string
   tip?: string
   ghosts?: GhostId[]
-  url: string
   about?: string
 }
 type Evidences = Evidence[]
@@ -49,9 +49,9 @@ interface Ghost {
   id: GhostId
   name: string
   evidences: GhostEvidences
-  hunt?: number
-  desc: string
   url: string
+  hunt?: number
+  about?: string
 }
 type Ghosts = Ghost[]
 

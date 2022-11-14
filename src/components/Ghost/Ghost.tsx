@@ -93,7 +93,10 @@ export default function Ghost({ ghost, first = false, last = false }: GhostProps
           height: minimized ? 0 : 'auto',
         }}
       >
-        <Writing markdown>{ghost.desc}</Writing>
+        <Writing markdown>
+          {ghost.about ??
+            `There is no description for this ghost. But, you can visit its [Wiki page](${ghost.url}).`}
+        </Writing>
       </motion.div>
       <Tags tags={tags} />
     </motion.article>
