@@ -15,6 +15,7 @@
   .list {
     display: flex;
     gap: var(--gap);
+    justify-self: center;
   }
 
   .item:not(:last-child) {
