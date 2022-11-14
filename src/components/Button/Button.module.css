@@ -1,0 +1,23 @@
+.base {
+  padding: 0.5rem 1rem;
+  display: inline-flex;
+  align-items: center;
+  font: inherit;
+  font-size: var(--fs--small);
+  color: inherit;
+  border: none;
+  background-color: transparent;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.contained {
+  background-color: hsl(var(--clr--white));
+  color: hsl(var(--clr--slate--900));
+}
+
+.outlined {
+  border-width: 1px;
+  border-style: solid;
+  border-color: hsl(var(--clr--white));
+}
