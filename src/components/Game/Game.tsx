@@ -14,6 +14,7 @@ const Game = () => {
           secondary="As you play through a contract, mark the evidence you find (or rule out) here."
           style={{ marginBottom: '2rem' }}
         />
+        <Divider />
         <Evidences />
         <Divider />
         <Intro
@@ -25,6 +26,7 @@ const Game = () => {
         <Intro
           primary="Possible ghosts"
           secondary="All of the possible ghost types you could be encountering, based on the evidence you've selected to the left. You can elimate ghost types as well."
+          style={{ marginBottom: 0 }}
         />
         <Divider />
         <Ghosts />

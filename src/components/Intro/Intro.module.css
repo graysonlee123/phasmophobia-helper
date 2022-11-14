@@ -1,6 +1,7 @@
 .block {
   display: grid;
   gap: 0.25rem;
+  margin-bottom: 2rem;
 }
 
 .nogap {
