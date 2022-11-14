@@ -58,7 +58,7 @@ type Ghosts = Ghost[]
 /** Other */
 
 type StorageKeys = 'checkedEvidences' | 'disabledEvidences' | 'minimizedGhosts'
-type CheckboxState = 'neutral' | 'checked' | 'disabled' | 'locked'
+type CheckboxState = boolean | null
 type Tags = Tag[]
 
 interface GtagEvent {

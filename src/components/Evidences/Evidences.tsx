@@ -1,7 +1,7 @@
 import { Fragment, useContext } from 'react'
 import { EvidencesContext } from '@contexts/Evidences'
-import Evidence from '@components/Evidence'
 import styles from './Evidences.module.css'
+import EvidenceCheckbox from '@components/EvidenceCheckbox'
 
 export default function Evidences() {
   const evidences = useContext(EvidencesContext)
@@ -10,7 +10,7 @@ export default function Evidences() {
     <section className={styles.section}>
       {evidences.map((evidence) => (
         <Fragment key={evidence.id}>
-          <Evidence evidence={evidence} />
+          <EvidenceCheckbox evidence={evidence} />
         </Fragment>
       ))}
     </section>
