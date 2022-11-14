@@ -10,6 +10,7 @@ import { arrayContains, arrayAddUnique, arrayRemoveAll } from '@lib/arrays'
 import { sendGtagEvent } from '@lib/analytics'
 import styles from './Ghost.module.css'
 import { motion } from 'framer-motion'
+import Writing from '@components/Writing'
 
 interface GhostProps extends ComponentPropsWithoutRef<'article'> {
   ghost: Ghost
@@ -92,7 +93,7 @@ export default function Ghost({ ghost, first = false, last = false }: GhostProps
           height: minimized ? 0 : 'auto',
         }}
       >
-        {ghost.desc}
+        <Writing markdown>{ghost.desc}</Writing>
       </motion.div>
       <Tags tags={tags} />
     </motion.article>
