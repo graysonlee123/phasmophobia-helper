@@ -50,7 +50,7 @@ export default function Ghost({ ghost, first = false, last = false }: GhostProps
   const ghostEvidences = useGhostEvidences(ghost)
   const tags = ghostEvidences.map<Tag>((evidence) => ({
     slug: evidence.id,
-    label: evidence.name,
+    label: evidence.shortName ?? evidence.name,
     link: evidence.url,
   }))
 
