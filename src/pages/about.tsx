@@ -1,14 +1,14 @@
 import DocumentHead from '@components/DocumentHead'
-import Layout from '@components/Layout'
-import About from '@components/About'
+import PageTransition from '@components/PageTransition'
+import AboutCard from '@components/AboutCard'
 
 const AboutPage = () => {
   return (
     <>
       <DocumentHead pageTitle="About" />
-      <Layout>
-        <About />
-      </Layout>
+      <PageTransition>
+        <AboutCard />
+      </PageTransition>
     </>
   )
 }

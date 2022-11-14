@@ -8,7 +8,12 @@ export default function Identity() {
       <div className={styles.logo}>
         <Logo />
       </div>
-      <Intro primary="Phasmophobia Helper" secondary="Could it be a Myling?" nogap />
+      <Intro
+        primary="Phasmophobia Helper"
+        secondary="Could it be a Myling?"
+        nogap
+        style={{ marginBottom: 0 }}
+      />
     </div>
   )
 }

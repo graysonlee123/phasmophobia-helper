@@ -3,9 +3,11 @@ import { promises as fs } from 'fs'
 import { InferGetStaticPropsType } from 'next'
 import { GhostsContextProvider } from '@contexts/Ghosts'
 import { EvidencesContextProvider } from '@contexts/Evidences'
-import Game from '@components/Game'
-import Layout from '@components/Layout'
+import PageTransition from '@components/PageTransition'
 import DocumentHead from '@components/DocumentHead'
+import CardLayout from '@components/CardLayout'
+import EvidenceCard from '@components/EvidenceCard'
+import GhostsCard from '@components/GhostsCard'
 
 export const getStaticProps = async () => {
   const dataDir = path.join(process.cwd(), 'data')
@@ -26,9 +28,12 @@ const Home = ({ ghosts, evidences }: InferGetStaticPropsType<typeof getStaticPro
       <DocumentHead />
       <GhostsContextProvider ghosts={ghosts}>
         <EvidencesContextProvider evidences={evidences}>
-          <Layout>
-            <Game />
-          </Layout>
+          <PageTransition>
+            <CardLayout>
+              <EvidenceCard />
+              <GhostsCard />
+            </CardLayout>
+          </PageTransition>
         </EvidencesContextProvider>
       </GhostsContextProvider>
     </>

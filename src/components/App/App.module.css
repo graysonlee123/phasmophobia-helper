@@ -1,8 +1,0 @@
-@media (min-width: 62rem) {
-  .grid {
-    display: grid;
-    grid-template-rows: auto 1fr;
-    max-height: 100vh;
-    overflow: hidden;
-  }
-}

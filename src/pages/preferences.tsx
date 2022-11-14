@@ -1,5 +1,5 @@
 import DocumentHead from '@components/DocumentHead'
-import Layout from '@components/Layout'
+import Layout from '@components/PageTransition'
 
 const Preferences = () => {
   return (

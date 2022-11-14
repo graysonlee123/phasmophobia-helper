@@ -1,0 +1,14 @@
+.layout {
+  display: flex;
+  gap: 3rem;
+  padding: 3rem 1.5rem 3rem;
+}
+
+@media (min-width: 62rem) {
+  .layout {
+    align-items: flex-start;
+    justify-content: center;
+    margin-inline: auto;
+    flex-wrap: wrap;
+  }
+}

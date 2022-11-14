@@ -1,9 +1,12 @@
 .block {
   display: grid;
   gap: 0.25rem;
-  margin-bottom: 2rem;
 }
 
 .nogap {
   gap: 0;
+}
+
+.margin {
+  margin-bottom: 2rem;
 }

@@ -1,5 +1,5 @@
-import { ReactNode } from 'react'
-import styles from './Layout.module.css'
+import { ReactNode, useState } from 'react'
+import styles from './PageTransition.module.css'
 import { motion } from 'framer-motion'
 
 const variants = {
@@ -13,15 +13,18 @@ interface LayoutProps {
 }
 
 export default function Layout({ children }: LayoutProps) {
+  const [contain, setContain] = useState(false)
+
   return (
-    <div className={styles.wrapper}>
+    <div className={contain ? styles.contain : undefined}>
       <motion.div
         variants={variants}
         initial="hidden"
         animate="enter"
         exit="exit"
         transition={{ type: 'spring' }}
-        className={styles.motion}
+        onAnimationStart={() => setContain(true)}
+        onAnimationComplete={() => setContain(false)}
       >
         {children}
       </motion.div>

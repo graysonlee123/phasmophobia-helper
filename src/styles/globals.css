@@ -75,12 +75,6 @@ select {
   font: inherit;
 }
 
-.subtitle {
-  font-size: var(--fs--lg);
-  font-weight: 700;
-  line-height: 1.2;
-}
-
 .button-reset {
   display: inline-flex;
   align-items: center;
