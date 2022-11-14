@@ -1,18 +1,13 @@
 /** Evidence */
-type EvidenceId =
-  | 'dots'
-  | 'emf'
-  | 'fingerprints'
-  | 'freezing'
-  | 'orbs'
-  | 'writing'
-  | 'box'
+type EvidenceId = 'dots' | 'emf' | 'fingerprints' | 'freezing' | 'orbs' | 'writing' | 'box'
 type EvidenceIds = EvidenceId[]
 type SetEvidenceState = (evidences: EvidenceIds) => void
 
 interface Evidence {
   id: EvidenceId
   name: string
+  shortName?: string
+  tip?: string
   ghosts?: GhostId[]
   url: string
 }

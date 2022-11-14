@@ -11,6 +11,7 @@ import { MAX_EVIDENCE } from '@lib/constants'
 import Checkbox from '@components/Checkbox'
 import styles from './Evidence.module.css'
 import cn from 'classnames'
+import Hint from '@components/Hint'
 
 interface EvidenceProps {
   evidence: Evidence
@@ -90,7 +91,10 @@ export default function Evidence({ evidence }: EvidenceProps) {
         disabled={locked}
       >
         <Checkbox state={getCheckboxState()} />
-        <span className={styles.label}>{evidence.name}</span>
+        <div className={styles.text}>
+          <span className={styles.label}>{evidence.name}</span>
+          {evidence.tip && <Hint>{evidence.tip}</Hint>}
+        </div>
       </button>
     </span>
   )

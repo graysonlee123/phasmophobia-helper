@@ -2,39 +2,50 @@
   {
     "id": "dots",
     "name": "D.O.T.S.",
+    "tip": "D.O.T.S. Projector",
     "ghosts": ["goryo"],
     "url": "https://phasmophobia.fandom.com/wiki/D.O.T.S_Projector_(Evidence)"
   },
   {
     "id": "emf",
-    "name": "EMF 5",
+    "name": "EMF Level 5",
+    "shortName": "EMF 5",
+    "tip": "EMF Reader",
     "url": "https://phasmophobia.fandom.com/wiki/EMF_Level_5"
   },
   {
     "id": "fingerprints",
     "name": "Fingerprints",
+    "tip": "UV Flashlight, Glowstick",
     "ghosts": ["obake"],
     "url": "https://phasmophobia.fandom.com/wiki/Fingerprints"
   },
   {
     "id": "freezing",
-    "name": "Freezing",
+    "name": "Freezing Temperatures",
+    "shortName": "Freezing",
+    "tip": "Freezing breath, Thermometor",
     "ghosts": ["hantu"],
     "url": "https://phasmophobia.fandom.com/wiki/Freezing_Temperatures"
   },
   {
     "id": "orbs",
     "name": "Ghost Orbs",
+    "tip": "Night vision camera",
     "url": "https://phasmophobia.fandom.com/wiki/Ghost_Orb"
   },
   {
     "id": "writing",
-    "name": "Writing",
+    "name": "Ghost Writing",
+    "shortName": "Writing",
+    "tip": "Ghost Writing Book",
     "url": "https://phasmophobia.fandom.com/wiki/Ghost_Writing"
   },
   {
     "id": "box",
-    "name": "Spirit Box",
+    "name": "Spirit Box Response",
+    "shortName": "Spirit Box",
+    "tip": "Spirit Box",
     "ghosts": ["deogen", "moroi"],
     "url": "https://phasmophobia.fandom.com/wiki/Spirit_Box_(Evidence)"
   }

@@ -21,7 +21,16 @@
 }
 
 .label {
-  font-size: var(--fs--md);
+  font-size: var(--fs--sm);
+}
+
+.label + * {
+  margin-top: -2px;
+}
+
+.text {
+  display: grid;
+  text-align: left;
 }
 
 .locked {
