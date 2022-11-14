@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   useCheckedEvidences,
   useDisabledEvidences,
@@ -28,11 +28,20 @@ export default function EvidenceCheckbox({ evidence }: EvidenceCheckboxProps) {
     (checkedEvidences.length >= MAX_EVIDENCE && !arrayContains(evidence.id, checkedEvidences)) ||
     !arrayContains(evidence.id, possibleEvidences)
 
+  useEffect(() => {
+    if (arrayContains(evidence.id, disabledEvidences)) {
+      setState(false)
+    } else if (arrayContains(evidence.id, checkedEvidences)) {
+      setState(true)
+    } else {
+      setState(null)
+    }
+  }, [evidence.id, disabledEvidences, checkedEvidences])
+
   function onClick() {
     switch (state) {
       /** From false to neutral. */
       case false:
-        setState(null)
         setDisabledEvidences(arrayRemoveAll(evidence.id, disabledEvidences) as EvidenceIds)
 
         eventDebounce({
@@ -45,7 +54,6 @@ export default function EvidenceCheckbox({ evidence }: EvidenceCheckboxProps) {
 
       /** From neutral to true. */
       case null:
-        setState(true)
         setCheckedEvidences(arrayAddUnique(evidence.id, checkedEvidences) as EvidenceIds)
 
         eventDebounce({
@@ -58,7 +66,6 @@ export default function EvidenceCheckbox({ evidence }: EvidenceCheckboxProps) {
 
       /** From true to false. */
       case true:
-        setState(false)
         setCheckedEvidences(arrayRemoveAll(evidence.id, checkedEvidences) as EvidenceIds)
         setDisabledEvidences(arrayAddUnique(evidence.id, disabledEvidences) as EvidenceIds)
 
