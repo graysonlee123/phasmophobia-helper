@@ -1,15 +1,15 @@
+import { ComponentPropsWithoutRef } from 'react'
 import { useEliminatedGhosts, useSetEliminatedGhosts } from '@store/index'
 import useGhostEvidences from '@hooks/useGhostEvidences'
-import { arrayContains, arrayAddUnique, arrayRemoveAll } from '@lib/arrays'
 import Tags from '@components/Tags'
 import Sanity from '@components/Sanity'
 import Minimize from '@components/Minimize'
 import HoverLink from '@components/HoverLink'
 import Header from '@components/Header'
+import { arrayContains, arrayAddUnique, arrayRemoveAll } from '@lib/arrays'
 import { sendGtagEvent } from '@lib/analytics'
 import styles from './Ghost.module.css'
 import { motion } from 'framer-motion'
-import { ComponentPropsWithoutRef } from 'react'
 
 interface GhostProps extends ComponentPropsWithoutRef<'article'> {
   ghost: Ghost
@@ -52,6 +52,8 @@ export default function Ghost({ ghost, first = false, last = false }: GhostProps
     slug: evidence.id,
     label: evidence.shortName ?? evidence.name,
     link: evidence.url,
+    important:
+      evidence.ghosts !== undefined && evidence.ghosts.indexOf(ghost.id) > -1 ? true : false,
   }))
 
   return (
