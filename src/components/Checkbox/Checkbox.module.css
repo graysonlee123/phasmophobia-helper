@@ -35,7 +35,6 @@
 
 .button[disabled] {
   cursor: not-allowed;
-  opacity: 60%;
   outline-width: 0 !important;
   background-color: transparent !important;
 }

@@ -1,27 +1,31 @@
 .checkbox {
-  display: inline-block;
+  display: block;
+  box-sizing: content-box;
   width: 1.5rem;
   height: 1.5rem;
   border-radius: 4px;
-  border: 2px solid hsl(var(--clr--white));
+  border-width: 2px;
+  border-style: solid;
+  border-color: hsl(var(--clr--white));
   cursor: pointer;
+  overflow: hidden;
+  transition-property: background-color, border-color;
+  transition-duration: 300ms;
+  transition-timing-function: ease-out;
 }
 
 .true {
-  color: hsl(var(--clr--dots--700));
   background-color: hsl(var(--clr--dots--100));
-  border-width: 0;
+  border-color: hsl(var(--clr--dots--100));
 }
 
 .false {
-  color: hsl(var(--clr--emf--700));
   background-color: hsl(var(--clr--emf--100));
-  border-width: 0;
+  border-color: hsl(var(--clr--emf--100));
 }
 
 .disabled {
-  color: hsl(var(--clr--orbs--700));
   background-color: hsl(var(--clr--orbs--100));
-  border-width: 0;
+  border-color: hsl(var(--clr--orbs--100));
   cursor: not-allowed;
 }
