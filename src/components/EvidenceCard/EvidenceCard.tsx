@@ -12,11 +12,6 @@ export default function EvidenceCard() {
       />
       <Divider />
       <Evidences />
-      <Divider />
-      <Intro
-        primary="Most likely"
-        secondary="Based on your selection, we can show you what evidence is most likely left to be found."
-      />
     </Card>
   )
 }
