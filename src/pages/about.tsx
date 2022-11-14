@@ -1,15 +1,16 @@
 import DocumentHead from '@components/DocumentHead'
 import Layout from '@components/Layout'
+import About from '@components/About'
 
-const About = () => {
+const AboutPage = () => {
   return (
     <>
       <DocumentHead pageTitle="About" />
       <Layout>
-        <p>About</p>
+        <About />
       </Layout>
     </>
   )
 }
 
-export default About
+export default AboutPage
