@@ -4,8 +4,8 @@ import Card from '@components/Card'
 import Divider from '@components/Divider'
 import Intro from '@components/Intro'
 import Tags from '@components/Tags'
-import styles from './EvidenceGlossaryCard.module.css'
 import Writing from '@components/Writing'
+import styles from './EvidenceGlossaryCard.module.css'
 
 interface EvidenceGlossaryCardProps {
   evidence: Evidence
@@ -31,13 +31,11 @@ export default function EvidenceGlossaryCard({ evidence }: EvidenceGlossaryCardP
                 slug: evidence.id,
               },
             ]}
-          ></Tags>
+          />
         </div>
       </div>
       <Divider />
-      <Writing>
-        <p>Writing here...</p>
-      </Writing>
+      <Writing markdown>{evidence.about ?? 'No description provided.'}</Writing>
     </Card>
   )
 }

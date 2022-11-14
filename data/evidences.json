@@ -4,21 +4,24 @@
     "name": "D.O.T.S.",
     "tip": "D.O.T.S. Projector",
     "ghosts": ["goryo"],
-    "url": "https://phasmophobia.fandom.com/wiki/D.O.T.S_Projector_(Evidence)"
+    "url": "https://phasmophobia.fandom.com/wiki/D.O.T.S_Projector_(Evidence)",
+    "about": "[D.O.T.S.](https://phasmophobia.fandom.com/wiki/D.O.T.S_Projector_(Evidence)) are detected using [D.O.T.S. Projectors](https://phasmophobia.fandom.com/wiki/D.O.T.S._Projector). The evidence appears as a ghostly silhouette or hologram in the light of the projector when a ghost passes through it.\n- The figure seen does not indicate where the ghost is headed, it is just a visual effect.\n- You can see this figure through a [video camera](https://phasmophobia.fandom.com/wiki/Video_Camera). \n- If you have a Goryo, the effect will only appear through a [video camera](https://phasmophobia.fandom.com/wiki/Video_Camera) while nobody is in the room."
   },
   {
     "id": "emf",
     "name": "EMF Level 5",
     "shortName": "EMF 5",
     "tip": "EMF Reader",
-    "url": "https://phasmophobia.fandom.com/wiki/EMF_Level_5"
+    "url": "https://phasmophobia.fandom.com/wiki/EMF_Level_5",
+    "about": "[EMF Level 5](https://phasmophobia.fandom.com/wiki/EMF_Level_5) is detected using an [EMF Reader](https://phasmophobia.fandom.com/wiki/EMF_Reader). An activity that would normally leave an EMF Level 2 or 3 reading has a 25% chance to leave an EMF Level 5 reading instead.\n- EMF Level 2 indicates an interaction has happened, EMF Level 3 indicates an object was thrown, and EMF Level 4 indicates the ghost manifested.\n- The EMF Reader must be within about 1.5 meters of an activity to display a reading."
   },
   {
     "id": "fingerprints",
     "name": "Fingerprints",
     "tip": "UV Flashlight, Glowstick",
     "ghosts": ["obake"],
-    "url": "https://phasmophobia.fandom.com/wiki/Fingerprints"
+    "url": "https://phasmophobia.fandom.com/wiki/Fingerprints",
+    "about": "[Fingerprints](https://phasmophobia.fandom.com/wiki/Fingerprints) are detected using [UV Flashlights](https://phasmophobia.fandom.com/wiki/UV_Flashlight) or [Glowsticks](https://phasmophobia.fandom.com/wiki/Glowstick). They appear after a ghost intereacts with certain surfaces, mostly being doors and light switches.\n- Each interaction with a surface will always leave a fingerprint.\n- The exception is the [Obake](https://phasmophobia.fandom.com/wiki/Obake), who has a chance to leave fingerprints (75%), which can also be unique (~17%).\n- It is possible to detect fingerprints with a [photo camera](https://phasmophobia.fandom.com/wiki/Photo_Camera).\n- Footprints, although visually similar, do not count."
   },
   {
     "id": "freezing",
@@ -26,20 +29,23 @@
     "shortName": "Freezing",
     "tip": "Freezing breath, Thermometor",
     "ghosts": ["hantu"],
-    "url": "https://phasmophobia.fandom.com/wiki/Freezing_Temperatures"
+    "url": "https://phasmophobia.fandom.com/wiki/Freezing_Temperatures",
+    "about": "[Freezing Temperatrues](https://phasmophobia.fandom.com/wiki/Freezing_Temperatures) are detecting by using a [thermometer](https://phasmophobia.fandom.com/wiki/Thermometer) or seeing visible breath. The presence of a ghost in a room will cause the room's temperature to drop over time.\n- Temperatures will adjust over time, and therefore do not necessarily guarantee a ghost is in the room.\n- The thermometer fluctuates by -2 / +4 degrees.\n- Make sure not to confuse the “airball” ghost event with freezing temperatures. The “airball” from a ghost event will move towards a player."
   },
   {
     "id": "orbs",
     "name": "Ghost Orbs",
     "tip": "Night vision camera",
-    "url": "https://phasmophobia.fandom.com/wiki/Ghost_Orb"
+    "url": "https://phasmophobia.fandom.com/wiki/Ghost_Orb",
+    "about": "[Ghost Orbs](https://phasmophobia.fandom.com/wiki/Ghost_Orb) are detected using night vision on a [Video Camera](https://phasmophobia.fandom.com/wiki/Video_Camera), [Security Cameras](https://phasmophobia.fandom.com/wiki/Video_Feed) (CCTVs), or [Head Mounted Cameras](https://phasmophobia.fandom.com/wiki/Head_Mounted_Camera). They appear as small, faint, spherical orbs.\n- They will appear in the ghost's favorite room.\n- [The Mimic](https://phasmophobia.fandom.com/wiki/The_Mimic) has Ghost Orbs as a “false flag” evidence.\n- A hand-held [Video Camera](https://phasmophobia.fandom.com/wiki/Video_Camera) is often better than relying on stationary cameras, since Ghost Orbs can move.\n- It is best to check for Ghost Orbs when lights are off."
   },
   {
     "id": "writing",
     "name": "Ghost Writing",
     "shortName": "Writing",
     "tip": "Ghost Writing Book",
-    "url": "https://phasmophobia.fandom.com/wiki/Ghost_Writing"
+    "url": "https://phasmophobia.fandom.com/wiki/Ghost_Writing",
+    "about": "[Ghost Writing](https://phasmophobia.fandom.com/wiki/Ghost_Writing) is detected when a ghost writes in a [Ghost Writing Book](https://phasmophobia.fandom.com/wiki/Ghost_Writing_Book). The ghost can draw a random image in the ghost book, which has no relation to the ghost's type.\n- There are six different drawings the ghost can produce.\n- Ghosts will prioritize writing in the book rather than throwing it.\n- Ghosts cannot write in books that are closed, but they can throw the book."
   },
   {
     "id": "box",
@@ -47,6 +53,7 @@
     "shortName": "Spirit Box",
     "tip": "Spirit Box",
     "ghosts": ["deogen", "moroi"],
-    "url": "https://phasmophobia.fandom.com/wiki/Spirit_Box_(Evidence)"
+    "url": "https://phasmophobia.fandom.com/wiki/Spirit_Box_(Evidence)",
+    "about": "[Spirit Box evidence](https://phasmophobia.fandom.com/wiki/Spirit_Box_(Evidence)) can be obtained by using the [Spirit Box equipment](https://phasmophobia.fandom.com/wiki/Spirit_Box). A ghost will audibly speak back to the player and the Spirit Box equipment's ghost icon will light up.\n- The player must either be in the same room as the ghost, or within 3 meters of it.\n- All ambient lighting in the said room must be off.\n- Some ghosts only respond to people who are alone.\n- The player must ask specific [pre-determined questions](https://phasmophobia.fandom.com/wiki/Spirit_Box).\n- If you are not seeing the “X” icon light up shortly after asking a question, the game may not be detecting your microphone properly, or you are asking an invalid question.\n- If all conditions are met, the ghost will have a 2/3 chance to respond, and the ghost icon will light up, confirming the evidence."
   }
 ]

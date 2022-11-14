@@ -1,3 +1,15 @@
-.writing * + p {
+.writing * + p,
+.writing * + ul,
+.writing * + ol {
   margin-top: 1rem;
+}
+
+.writing > ul,
+.writing > ol {
+  padding-left: 1.5rem;
+}
+
+.writing a:not([class]) {
+  text-decoration: underline;
+  color: inherit;
 }

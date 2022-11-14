@@ -10,6 +10,7 @@ interface Evidence {
   tip?: string
   ghosts?: GhostId[]
   url: string
+  about?: string
 }
 type Evidences = Evidence[]
 
