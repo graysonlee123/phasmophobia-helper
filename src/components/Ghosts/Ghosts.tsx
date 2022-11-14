@@ -33,9 +33,9 @@ export default function Ghosts({}: GhostsProps) {
     <AnimatePresence initial={false}>
       {possibleGhosts.map((ghost, index) => (
         <motion.div
-          initial={{ opacity: 0, height: 0 }}
+          initial={{ opacity: 0, height: 0, overflow: 'hidden' }}
           animate={{ opacity: 1, height: 'auto' }}
-          exit={{ opacity: 0, height: 0 }}
+          exit={{ opacity: 0, height: 0, overflow: 'hidden' }}
           key={ghost.id}
         >
           <Ghost ghost={ghost} first={index === 0} last={index === possibleGhosts.length - 1} />
