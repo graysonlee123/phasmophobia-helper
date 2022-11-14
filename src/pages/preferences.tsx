@@ -1,13 +1,27 @@
+import Card from '@components/Card'
+import CardLayout from '@components/CardLayout'
+import Checkbox from '@components/Checkbox'
 import DocumentHead from '@components/DocumentHead'
-import Layout from '@components/PageTransition'
+import Intro from '@components/Intro'
+import PageTransition from '@components/PageTransition'
 
 const Preferences = () => {
   return (
     <>
       <DocumentHead pageTitle="Preferences" />
-      <Layout>
-        <p>Preferences</p>
-      </Layout>
+      <PageTransition>
+        <CardLayout>
+          <Card>
+            <Intro primary="Website preferences" secondary="Change how the website behaves here." />
+            <Checkbox
+              state={null}
+              disabled
+              primary="Nightmare difficulty"
+              secondary="For when you're playing in Nightmare difficulty (coming soon)"
+            />
+          </Card>
+        </CardLayout>
+      </PageTransition>
     </>
   )
 }
