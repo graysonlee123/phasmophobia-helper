@@ -1,9 +1,12 @@
-import { ComponentPropsWithoutRef } from 'react'
+import { ReactNode } from 'react'
 import styles from './Button.module.css'
 import cn from 'classnames'
+import { motion } from 'framer-motion'
 
-interface ButtonProps extends ComponentPropsWithoutRef<'button'> {
+interface ButtonProps {
   variant?: 'contained' | 'outlined'
+  children?: ReactNode
+  className?: string
 }
 
 export default function Button({
@@ -13,8 +16,13 @@ export default function Button({
   ...props
 }: ButtonProps) {
   return (
-    <button {...props} className={cn([styles.base, styles[variant], className])}>
+    <motion.button
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      {...props}
+      className={cn([styles.base, styles[variant], className])}
+    >
       {children}
-    </button>
+    </motion.button>
   )
 }
