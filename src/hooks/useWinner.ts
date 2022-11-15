@@ -4,7 +4,7 @@ import usePossibleGhosts from '@hooks/usePossibleGhosts'
 
 export default function useWinner(): GhostId | null {
   const possibleGhosts = usePossibleGhosts()
-  const elminiatedGhosts = useEliminatedGhosts()
+  const eliminatedGhosts = useEliminatedGhosts()
 
   return useMemo(() => {
     /**
@@ -18,7 +18,7 @@ export default function useWinner(): GhostId | null {
     }
 
     const ghostsNotEliminated = possibleGhosts.filter(
-      ({ id }) => elminiatedGhosts.indexOf(id) === -1
+      ({ id }) => eliminatedGhosts.indexOf(id) === -1
     )
 
     if (ghostsNotEliminated.length === 1) {
@@ -26,5 +26,5 @@ export default function useWinner(): GhostId | null {
     }
 
     return null
-  }, [possibleGhosts, elminiatedGhosts])
+  }, [possibleGhosts, eliminatedGhosts])
 }
