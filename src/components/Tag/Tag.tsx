@@ -8,7 +8,7 @@ interface TagProps {
 }
 
 export default function Tag({ tag }: TagProps) {
-  const { slug, label, link, important } = tag
+  const { slug, label, link, important = false } = tag
 
   return (
     <li>
