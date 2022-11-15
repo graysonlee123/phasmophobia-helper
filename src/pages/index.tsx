@@ -29,8 +29,8 @@ const Home = ({ ghosts, evidences }: InferGetStaticPropsType<typeof getStaticPro
       <DocumentHead />
       <GhostsContextProvider ghosts={ghosts}>
         <EvidencesContextProvider evidences={evidences}>
+          <Confetti />
           <PageTransition>
-            <Confetti />
             <CardLayout>
               <EvidenceCard />
               <GhostsCard />
