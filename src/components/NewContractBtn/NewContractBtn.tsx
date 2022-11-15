@@ -4,6 +4,7 @@ import {
   useSetDisabledEvidences,
   useSetEliminatedGhosts,
 } from '@store/index'
+import Router from 'next/router'
 
 export default function NewContractBtn() {
   const setCheckedEvidences = useSetCheckedEvidences()
@@ -14,6 +15,8 @@ export default function NewContractBtn() {
     setCheckedEvidences([])
     setDisabledEvidences([])
     setEliminatedGhosts([])
+
+    Router.push('/')
   }
 
   return (
