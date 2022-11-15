@@ -34,7 +34,7 @@ export default function Ghosts({}: GhostsProps) {
       {possibleGhosts.map((ghost, index) => (
         <motion.div
           initial={{ opacity: 0, height: 0, overflow: 'hidden' }}
-          animate={{ opacity: 1, height: 'auto' }}
+          animate={{ opacity: 1, height: 'auto', overflow: 'visible' }}
           exit={{ opacity: 0, height: 0, overflow: 'hidden' }}
           key={ghost.id}
         >
