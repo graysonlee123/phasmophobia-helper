@@ -21,7 +21,7 @@ export const getStaticProps = async () => {
   }
 }
 
-const EvidenceGlossary = ({
+const EvidenceGlossaryPage = ({
   ghosts,
   evidences,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
@@ -43,4 +43,4 @@ const EvidenceGlossary = ({
   )
 }
 
-export default EvidenceGlossary
+export default EvidenceGlossaryPage

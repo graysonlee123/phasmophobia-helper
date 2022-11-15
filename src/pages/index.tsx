@@ -23,7 +23,7 @@ export const getStaticProps = async () => {
   }
 }
 
-const Home = ({ ghosts, evidences }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const HomePage = ({ ghosts, evidences }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
       <DocumentHead />
@@ -42,4 +42,4 @@ const Home = ({ ghosts, evidences }: InferGetStaticPropsType<typeof getStaticPro
   )
 }
 
-export default Home
+export default HomePage
