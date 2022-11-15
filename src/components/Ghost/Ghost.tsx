@@ -1,7 +1,6 @@
 import { ComponentPropsWithoutRef } from 'react'
 import { useEliminatedGhosts, useSetEliminatedGhosts } from '@store/index'
 import useGhostEvidences from '@hooks/useGhostEvidences'
-import useWinner from '@hooks/useWinner'
 import Tags from '@components/Tags'
 import Sanity from '@components/Sanity'
 import Minimize from '@components/Minimize'
@@ -12,8 +11,6 @@ import { arrayContains, arrayAddUnique, arrayRemoveAll } from '@lib/arrays'
 import { sendGtagEvent } from '@lib/analytics'
 import styles from './Ghost.module.css'
 import { motion } from 'framer-motion'
-import Confetti from 'react-confetti'
-import { useWindowSize } from 'react-use'
 
 interface GhostProps extends ComponentPropsWithoutRef<'article'> {
   ghost: Ghost
@@ -24,7 +21,6 @@ interface GhostProps extends ComponentPropsWithoutRef<'article'> {
 export default function Ghost({ ghost, first = false, last = false }: GhostProps) {
   const eliminatedGhosts = useEliminatedGhosts()
   const setEliminatedGhosts = useSetEliminatedGhosts()
-  const { width, height } = useWindowSize()
 
   /**
    * Handles the click logic for minimizing the ghost.
@@ -60,7 +56,6 @@ export default function Ghost({ ghost, first = false, last = false }: GhostProps
     link: evidence.url,
     important: evidence.ghosts !== undefined && evidence.ghosts.indexOf(ghost.id) > -1,
   }))
-  const winner = useWinner(ghost.id)
 
   return (
     <motion.article
@@ -76,15 +71,6 @@ export default function Ghost({ ghost, first = false, last = false }: GhostProps
       }}
     >
       <header className={styles.header}>
-        {winner && (
-          <Confetti
-            width={width}
-            height={height}
-            numberOfPieces={400}
-            gravity={0.2}
-            recycle={false}
-          />
-        )}
         <Header>
           <HoverLink
             href={ghost.url}

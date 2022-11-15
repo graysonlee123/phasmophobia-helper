@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 import { useEliminatedGhosts } from '@store/index'
 import usePossibleGhosts from '@hooks/usePossibleGhosts'
 
-export default function useWinner(ghostId: GhostId) {
+export default function useWinner(): GhostId | null {
   const possibleGhosts = usePossibleGhosts()
   const elminiatedGhosts = useEliminatedGhosts()
 
@@ -13,13 +13,18 @@ export default function useWinner(ghostId: GhostId) {
      * 1. It is the only possible ghost left, or...
      * 2. ...it is the only possible ghost that is not minimized.
      */
-    const isPossible = possibleGhosts.some(({ id }) => id === ghostId)
-    const isLastPossible = possibleGhosts.length === 1 && isPossible
-    const ghostsNotElim = possibleGhosts
-      .filter(({ id }) => elminiatedGhosts.indexOf(id) === -1)
-      .map(({ id }) => id)
-    const isOnlyNotElim = ghostsNotElim.length === 1 && ghostsNotElim.indexOf(ghostId) > -1
+    if (possibleGhosts.length === 1) {
+      return possibleGhosts[0].id
+    }
 
-    return isLastPossible || isOnlyNotElim
-  }, [ghostId, possibleGhosts, elminiatedGhosts])
+    const ghostsNotEliminated = possibleGhosts.filter(
+      ({ id }) => elminiatedGhosts.indexOf(id) === -1
+    )
+
+    if (ghostsNotEliminated.length === 1) {
+      return ghostsNotEliminated[0].id
+    }
+
+    return null
+  }, [possibleGhosts, elminiatedGhosts])
 }

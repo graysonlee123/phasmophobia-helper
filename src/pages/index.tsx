@@ -8,6 +8,7 @@ import DocumentHead from '@components/DocumentHead'
 import CardLayout from '@components/CardLayout'
 import EvidenceCard from '@components/EvidenceCard'
 import GhostsCard from '@components/GhostsCard'
+import Confetti from '@components/Confetti'
 
 export const getStaticProps = async () => {
   const dataDir = path.join(process.cwd(), 'data')
@@ -29,6 +30,7 @@ const Home = ({ ghosts, evidences }: InferGetStaticPropsType<typeof getStaticPro
       <GhostsContextProvider ghosts={ghosts}>
         <EvidencesContextProvider evidences={evidences}>
           <PageTransition>
+            <Confetti />
             <CardLayout>
               <EvidenceCard />
               <GhostsCard />
