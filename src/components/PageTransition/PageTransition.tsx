@@ -8,11 +8,11 @@ const variants = {
   exit: { opacity: 0, x: 0, y: -100 },
 }
 
-interface LayoutProps {
+interface PageTransitionProps {
   children?: ReactNode
 }
 
-export default function Layout({ children }: LayoutProps) {
+export default function PageTransition({ children }: PageTransitionProps) {
   const [contain, setContain] = useState(false)
 
   return (
