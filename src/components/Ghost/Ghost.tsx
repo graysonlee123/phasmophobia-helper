@@ -48,13 +48,13 @@ export default function Ghost({ ghost, first = false, last = false }: GhostProps
   }
 
   const minimized = arrayContains(ghost.id, eliminatedGhosts)
-  const ghostEvidences = useGhostEvidences(ghost)
-  const tags = ghostEvidences.map<Tag>((evidence) => ({
+  const { evidences, falseEvidences } = useGhostEvidences(ghost)
+  const possibleEvidences = [...evidences, ...(falseEvidences ?? [])]
+  const evidenceTags = possibleEvidences.map<Tag>((evidence) => ({
     slug: evidence.id,
     label: evidence.shortName ?? evidence.name,
     link: evidence.url,
-    important:
-      evidence.ghosts !== undefined && evidence.ghosts.indexOf(ghost.id) > -1 ? true : false,
+    important: evidence.ghosts !== undefined && evidence.ghosts.indexOf(ghost.id) > -1,
   }))
 
   return (
@@ -98,7 +98,7 @@ export default function Ghost({ ghost, first = false, last = false }: GhostProps
             `There is no description for this ghost. But, you can visit its [Wiki page](${ghost.url}).`}
         </Writing>
       </motion.div>
-      <Tags tags={tags} />
+      <Tags tags={evidenceTags} />
     </motion.article>
   )
 }

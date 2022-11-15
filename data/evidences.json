@@ -36,6 +36,7 @@
     "id": "orbs",
     "name": "Ghost Orbs",
     "tip": "Night vision camera",
+    "ghosts": ["mimic"],
     "url": "https://phasmophobia.fandom.com/wiki/Ghost_Orb",
     "about": "[Ghost Orbs](https://phasmophobia.fandom.com/wiki/Ghost_Orb) are detected using night vision on a [Video Camera](https://phasmophobia.fandom.com/wiki/Video_Camera), [Security Cameras](https://phasmophobia.fandom.com/wiki/Video_Feed) (CCTVs), or [Head Mounted Cameras](https://phasmophobia.fandom.com/wiki/Head_Mounted_Camera). They appear as small, faint, spherical orbs.\n- They will appear in the ghost's favorite room.\n- [The Mimic](https://phasmophobia.fandom.com/wiki/The_Mimic) has Ghost Orbs as a “false flag” evidence.\n- A hand-held [Video Camera](https://phasmophobia.fandom.com/wiki/Video_Camera) is often better than relying on stationary cameras, since Ghost Orbs can move.\n- It is best to check for Ghost Orbs when lights are off."
   },

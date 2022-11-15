@@ -10,26 +10,27 @@ const usePossibleGhosts = () => {
 
   return useMemo(() => {
     return ghosts.filter((ghost) => {
+      /**
+       * All ghosts pass by default. Criteria to fail a ghost:
+       *
+       * 1. The ghost does not have one of the checked evidences.
+       * 2. The ghost has one of the disabled evidences.
+       */
       let passed = true
+      const ghostEvidences = [...ghost.evidences, ...(ghost.falseEvidences ?? [])]
 
       /**
-       * Don't show the ghost if it doesn't
-       * have a checked evidence as a possibility.
+       * Fail the ghost if it does not have one of the checked evidence as a possibility.
        */
       checkedEvidences.forEach((evidence) => {
-        if (!arrayContains(evidence, ghost.evidences)) {
-          passed = false
-        }
+        if (!arrayContains(evidence, ghostEvidences)) passed = false
       })
 
       /**
-       * Don't show the ghost if it does
-       * have a disabled evidence as a possibility.
+       * Fail the ghost if it has one of the disabled evidence as a possibility.
        */
       disabledEvidences.forEach((evidence) => {
-        if (arrayContains(evidence, ghost.evidences)) {
-          passed = false
-        }
+        if (arrayContains(evidence, ghostEvidences)) passed = false
       })
 
       return passed

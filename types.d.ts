@@ -49,6 +49,7 @@ interface Ghost {
   id: GhostId
   name: string
   evidences: GhostEvidences
+  falseEvidences?: GhostEvidences
   url: string
   hunt?: number
   about?: string

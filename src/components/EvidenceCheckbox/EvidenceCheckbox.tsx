@@ -9,7 +9,6 @@ import useAnalyticsDebounce from '@hooks/useAnalyticsDebounce'
 import usePossibleEvidences from '@hooks/usePossibleEvidences'
 import Checkbox from '@components/Checkbox'
 import { arrayAddUnique, arrayContains, arrayRemoveAll } from '@lib/arrays'
-import { MAX_EVIDENCE } from '@lib/constants'
 
 interface EvidenceCheckboxProps {
   evidence: Evidence
@@ -24,9 +23,7 @@ export default function EvidenceCheckbox({ evidence }: EvidenceCheckboxProps) {
   const possibleEvidences = usePossibleEvidences()
   const eventDebounce = useAnalyticsDebounce()
 
-  const isDisabled =
-    (checkedEvidences.length >= MAX_EVIDENCE && !arrayContains(evidence.id, checkedEvidences)) ||
-    !arrayContains(evidence.id, possibleEvidences)
+  const isDisabled = !arrayContains(evidence.id, possibleEvidences)
 
   useEffect(() => {
     if (arrayContains(evidence.id, disabledEvidences)) {

@@ -9,23 +9,21 @@ const usePossibleEvidences = () => {
   const checkedEvidences = useCheckedEvidences()
 
   return useMemo(() => {
-    const data: GhostEvidences[] = []
+    const data = new Set<EvidenceId>()
 
     /**
-     * Loop through each checked evidence and test for ghosts that
-     * have all checked evidences in their evidences list.
+     * Loop through every ghost and test that the ghost has all of the checked evidences.
      */
     ghosts.forEach((ghost) => {
-      const check = checkedEvidences.every((evidence) => ghost.evidences.includes(evidence))
+      const ghostEvidences = [...ghost.evidences, ...(ghost.falseEvidences ?? [])]
+      const check = checkedEvidences.every((evidence) => ghostEvidences.includes(evidence))
 
       if (check) {
-        data.push(ghost.evidences)
+        ghostEvidences.forEach((evidence) => data.add(evidence))
       }
     })
 
-    /** Use a set here to make an array with unique values. */
-    const flat = Array.from(new Set(data.flat()))
-    return evidences.filter(({ id: slug }) => flat.indexOf(slug) > -1).map(({ id: slug }) => slug)
+    return evidences.filter((evidence) => data.has(evidence.id)).map((evidence) => evidence.id)
   }, [ghosts, evidences, checkedEvidences])
 }
 

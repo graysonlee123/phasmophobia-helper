@@ -55,6 +55,7 @@
     "id": "mimic",
     "name": "The Mimic",
     "evidences": ["box", "fingerprints", "freezing"],
+    "falseEvidences": ["orbs"],
     "url": "https://phasmophobia.fandom.com/wiki/The_Mimic",
     "about": "Mimics other ghost types for a brief period of time before mimicking to a new ghost type. Includes [Ghost Orbs](https://phasmophobia.fandom.com/wiki/Ghost_Orb) as fourth false evidence. Can mimic evidence properties if the ghost it is mimicking shares the evidence. For example, the [Obake](https://phasmophobia.fandom.com/wiki/Obake)'s fingerprints."
   },

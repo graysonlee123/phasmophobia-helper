@@ -1,12 +1,25 @@
 import { useContext } from 'react'
 import { EvidencesContext } from '@contexts/Evidences'
 
-const useGhostEvidences = (ghost: Ghost): Evidences => {
-  const evidences = useContext(EvidencesContext)
+export type UseGhostEvidencesHook = (ghost: Ghost) => {
+  evidences: Evidences
+  falseEvidences?: Evidences
+}
 
-  return evidences.filter((evidence) => {
-    return ghost.evidences.indexOf(evidence.id) > -1
-  })
+const useGhostEvidences: UseGhostEvidencesHook = (ghost) => {
+  const allEvidences = useContext(EvidencesContext)
+
+  const evidences = allEvidences.filter((evidence) => ghost.evidences.indexOf(evidence.id) > -1)
+
+  if (undefined !== ghost.falseEvidences) {
+    const falseEvidences = allEvidences.filter(
+      (evidence) => ghost.falseEvidences!.indexOf(evidence.id) > -1
+    )
+
+    return { evidences, falseEvidences }
+  }
+
+  return { evidences }
 }
 
 export default useGhostEvidences
