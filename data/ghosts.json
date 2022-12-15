@@ -27,14 +27,14 @@
     "name": "Goryo",
     "evidences": ["emf", "fingerprints", "dots"],
     "url": "https://phasmophobia.fandom.com/wiki/Goryo",
-    "about": "Appears in [D.O.T.S.](https://phasmophobia.fandom.com/wiki/D.O.T.S_Projector_(Evidence)) only when viewed through a video camera and no players are in the same room as it. When not [hunting](https://phasmophobia.fandom.com/wiki/Hunt), its wandering distance will be shorter."
+    "about": "Appears in [D.O.T.S.](https://phasmophobia.fandom.com/wiki/D.O.T.S_Projector_(Evidence)) only when viewed through a video camera and no players are in the same room as it. Can not change its favorite room or roam long distances."
   },
   {
     "id": "hantu",
     "name": "Hantu",
     "evidences": ["fingerprints", "orbs", "freezing"],
     "url": "https://phasmophobia.fandom.com/wiki/Hantu",
-    "about": "Increased speed in colder areas during [hunts](https://phasmophobia.fandom.com/wiki/Hunt). Emits frosty breath in freezing rooms. Moves slower in warmer areas during hunts. Twice as likely to turn off the [fuse box](https://phasmophobia.fandom.com/wiki/Fuse_Box)."
+    "about": "Increased speed in colder areas during [hunts](https://phasmophobia.fandom.com/wiki/Hunt). Occasionally emits frosty breath in its favorite room, and can appear in any room during a hunt. Moves slower in warmer areas during hunts. Twice as likely to turn off the [fuse box](https://phasmophobia.fandom.com/wiki/Fuse_Box)."
   },
   {
     "id": "jinn",
@@ -78,7 +78,7 @@
     "name": "Obake",
     "evidences": ["emf", "fingerprints", "orbs"],
     "url": "https://phasmophobia.fandom.com/wiki/Obake",
-    "about": "[Fingerprints](https://phasmophobia.fandom.com/wiki/Fingerprints) disappear faster than other ghost types. Does not always leave fingerprints **(75%)**, and can leave unique fingerprints **(~17%)**. It can use its ability to half the lifespan of fingerprints on the map."
+    "about": "[Fingerprints](https://phasmophobia.fandom.com/wiki/Fingerprints) disappear faster than other ghost types. Does not always leave fingerprints **(75%)**, and can leave unique fingerprints **(~17%)**. It can use its ability to half the lifespan of fingerprints on the map. During hunts, it has a 6.66% chance each time it flickers to shapeshift into a different ghost model for the duration of that flicker, but it is guaranteed to happen at least once per hunt."
   },
   {
     "id": "oni",
@@ -122,7 +122,7 @@
     "name": "Revenant",
     "evidences": ["orbs", "writing", "freezing"],
     "url": "https://phasmophobia.fandom.com/wiki/Revenant",
-    "about": "During a [hunt](https://phasmophobia.fandom.com/wiki/Hunt), travels very slowly **(1m/s)** until it has line-of-sight of a player **(3m/s)**. This makes it crucial to hide as soon as possible when a hunt starts."
+    "about": "During a [hunt](https://phasmophobia.fandom.com/wiki/Hunt), travels very slowly **(1m/s)** until it has line-of-sight of a player **(3m/s)**. This makes it crucial to hide as soon as possible when a hunt starts. When losing line-of-sight, it will keep its speed until reaching the last known position of the player it saw. The speed of the ghost gradually decreases after losing line-of-sight."
   },
   {
     "id": "shade",
@@ -159,7 +159,7 @@
     "name": "Wraith",
     "evidences": ["emf", "box", "dots"],
     "url": "https://phasmophobia.fandom.com/wiki/Wraith",
-    "about": "Can teleport to players randomly. Doesn't leave UV footprints after stepping in [salt](https://phasmophobia.fandom.com/wiki/Salt_Shaker). Stepping in salt temporarily makes it more active, and salt it steps in will not provide photo evidence."
+    "about": "Can teleport to players randomly when not hunting. Doesn't step in [salt](https://phasmophobia.fandom.com/wiki/Salt_Shaker), and therefore cannot leave UV [Footprints](https://phasmophobia.fandom.com/wiki/Footprints)."
   },
   {
     "id": "yokai",
