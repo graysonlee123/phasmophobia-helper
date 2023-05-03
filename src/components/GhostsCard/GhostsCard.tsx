@@ -8,7 +8,7 @@ export default function GhostsCard() {
     <Card>
       <Intro
         primary="Possible ghosts"
-        secondary="All of the possible ghost types you could be encountering, based on the evidence you've selected to the left. You can eliminate ghost types as well."
+        secondary="All of the possible ghost types you could be encountering, which are filtered based on the evidence you've marked to the left."
       />
       <Divider />
       <Ghosts />

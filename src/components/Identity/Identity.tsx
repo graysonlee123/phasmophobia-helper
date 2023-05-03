@@ -10,7 +10,7 @@ export default function Identity() {
       </div>
       <Intro
         primary="Phasmophobia Helper"
-        secondary="Could it be a Myling?"
+        secondary="Your Phasmophobia Companion"
         nogap
         style={{ marginBottom: 0 }}
       />
