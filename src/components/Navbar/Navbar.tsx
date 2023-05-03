@@ -8,7 +8,7 @@ export default function Navbar() {
     <div className={styles.bar}>
       <Identity />
       <NavigationLinks />
-      <div style={{ justifySelf: 'flex-end' }}>
+      <div className={styles.button}>
         <NewContractBtn />
       </div>
     </div>

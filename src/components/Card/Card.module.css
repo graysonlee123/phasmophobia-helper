@@ -7,15 +7,15 @@
   padding: 2rem;
 }
 
-.sm {
-  max-width: 20rem;
-}
+@media (min-width: 48rem) {
+  .sm {
+    max-width: 20rem;
+  }
 
-.md {
-  max-width: 30rem;
-}
+  .md {
+    max-width: 30rem;
+  }
 
-@media (min-width: 62rem) {
   .sticky {
     position: sticky;
     top: 3rem;
