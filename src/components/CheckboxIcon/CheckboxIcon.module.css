@@ -7,6 +7,7 @@
   border-width: 2px;
   border-style: solid;
   border-color: hsl(var(--clr--white));
+  flex-shrink: 0;
   cursor: pointer;
   overflow: hidden;
   transition-property: background-color, border-color;
