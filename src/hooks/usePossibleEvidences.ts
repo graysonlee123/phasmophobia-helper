@@ -1,11 +1,11 @@
-import { useContext, useMemo } from 'react'
-import { EvidencesContext } from '@contexts/Evidences'
-import { GhostsContext } from '@contexts/Ghosts'
+import evidenceData from '@data/evidences.json'
+import ghostData from '@data/ghosts.json'
 import { useCheckedEvidences } from '@store/index'
+import { useMemo } from 'react'
 
-const usePossibleEvidences = () => {
-  const ghosts = useContext(GhostsContext)
-  const evidences = useContext(EvidencesContext)
+export default function usePossibleEvidences() {
+  const ghosts = ghostData as Ghost[]
+  const evidences = evidenceData as Evidence[]
   const checkedEvidences = useCheckedEvidences()
 
   return useMemo(() => {
@@ -26,5 +26,3 @@ const usePossibleEvidences = () => {
     return evidences.filter((evidence) => data.has(evidence.id)).map((evidence) => evidence.id)
   }, [ghosts, evidences, checkedEvidences])
 }
-
-export default usePossibleEvidences

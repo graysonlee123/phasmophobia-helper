@@ -1,18 +1,16 @@
-import { useContext } from 'react'
-import { EvidencesContext } from '@contexts/Evidences'
+import evidenceData from '@data/evidences.json'
+import arrayContains from '@utils/arrayContains'
 
-export type UseGhostEvidencesHook = (ghost: Ghost) => {
-  evidences: Evidences
-  falseEvidences?: Evidences
-}
+export default function useGhostEvidences(ghost: Ghost) {
+  const evidences = (evidenceData as Evidence[]).filter((evidence) =>
+    arrayContains(evidence.id, ghost.evidences)
+  )
 
-const useGhostEvidences: UseGhostEvidencesHook = (ghost) => {
-  const allEvidences = useContext(EvidencesContext)
-
-  const evidences = allEvidences.filter((evidence) => ghost.evidences.indexOf(evidence.id) > -1)
-
-  if (undefined !== ghost.falseEvidences) {
-    const falseEvidences = allEvidences.filter(
+  /**
+   * Special treatment for ghosts with false evidences.
+   */
+  if (ghost.falseEvidences !== undefined) {
+    const falseEvidences = (evidenceData as Evidence[]).filter(
       (evidence) => ghost.falseEvidences!.indexOf(evidence.id) > -1
     )
 
@@ -21,5 +19,3 @@ const useGhostEvidences: UseGhostEvidencesHook = (ghost) => {
 
   return { evidences }
 }
-
-export default useGhostEvidences

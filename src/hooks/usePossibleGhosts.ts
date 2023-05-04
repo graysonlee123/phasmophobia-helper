@@ -1,10 +1,10 @@
-import { useContext, useMemo } from 'react'
-import { GhostsContext } from '@contexts/Ghosts'
+import ghostData from '@data/ghosts.json'
 import { useCheckedEvidences, useDisabledEvidences } from '@store/index'
 import arrayContains from '@utils/arrayContains'
+import { useMemo } from 'react'
 
-const usePossibleGhosts = () => {
-  const ghosts = useContext(GhostsContext)
+export default function usePossibleGhosts() {
+  const ghosts = ghostData as Ghost[]
   const checkedEvidences = useCheckedEvidences()
   const disabledEvidences = useDisabledEvidences()
 
@@ -37,5 +37,3 @@ const usePossibleGhosts = () => {
     })
   }, [ghosts, checkedEvidences, disabledEvidences])
 }
-
-export default usePossibleGhosts

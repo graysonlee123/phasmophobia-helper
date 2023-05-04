@@ -1,41 +1,46 @@
-import { InferGetStaticPropsType } from 'next'
-import ghostsData from '@data/ghosts.json'
-import evidencesData from '@data/evidences.json'
-import { GhostsContextProvider } from '@contexts/Ghosts'
-import { EvidencesContextProvider } from '@contexts/Evidences'
-import PageTransition from '@components/PageTransition'
-import DocumentHead from '@components/DocumentHead'
-import CardLayout from '@components/CardLayout'
-import EvidenceCard from '@components/EvidenceCard'
-import GhostsCard from '@components/GhostsCard'
-import Confetti from '@components/Confetti'
+import CardLayout from '@components/layout/CardLayout'
+import Divider from '@components/ui/Divider'
+import PageView from '@components/layout/PageView'
+import Card from '@components/ui/Card'
+import Evidences from '@components/surfaces/Evidences'
+import GhostList from '@components/surfaces/GhostList'
+import Intro from '@components/typography/Intro'
+import Confetti from '@components/effects/Confetti'
+import useReportWinner from '@hooks/useReportWinner'
 
-export const getStaticProps = async () => {
-  return {
-    props: {
-      ghosts: ghostsData as Ghost[],
-      evidences: evidencesData as Evidence[],
-    },
-  }
-}
+export default function HomePage() {
+  useReportWinner()
 
-const HomePage = ({ ghosts, evidences }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
-    <>
-      <DocumentHead />
-      <GhostsContextProvider ghosts={ghosts}>
-        <EvidencesContextProvider evidences={evidences}>
-          <Confetti />
-          <PageTransition>
-            <CardLayout>
-              <EvidenceCard />
-              <GhostsCard />
-            </CardLayout>
-          </PageTransition>
-        </EvidencesContextProvider>
-      </GhostsContextProvider>
-    </>
+    <PageView>
+      <Confetti />
+      <CardLayout>
+        <Card maxWidth="sm" sticky>
+          <Intro
+            title={<Intro.Title>Evidence selector</Intro.Title>}
+            subtitle={
+              <Intro.Subtitle>
+                As you play through a contract, mark the evidence you find (or rule out) here.
+              </Intro.Subtitle>
+            }
+          />
+          <Divider />
+          <Evidences />
+        </Card>
+        <Card maxWidth="md">
+          <Intro
+            title={<Intro.Title>Possible ghosts</Intro.Title>}
+            subtitle={
+              <Intro.Subtitle>
+                All of the possible ghost types you could be encountering, which are filtered based
+                on the evidence you&apos;ve marked.
+              </Intro.Subtitle>
+            }
+          />
+          <Divider />
+          <GhostList />
+        </Card>
+      </CardLayout>
+    </PageView>
   )
 }
-
-export default HomePage

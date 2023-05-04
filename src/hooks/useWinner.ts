@@ -1,8 +1,8 @@
-import { useMemo } from 'react'
-import { useEliminatedGhosts } from '@store/index'
 import usePossibleGhosts from '@hooks/usePossibleGhosts'
+import { useEliminatedGhosts } from '@store/index'
+import { useMemo } from 'react'
 
-export default function useWinner(): GhostId | null {
+export default function useWinner() {
   const possibleGhosts = usePossibleGhosts()
   const eliminatedGhosts = useEliminatedGhosts()
 

@@ -1,7 +1,7 @@
 import create from 'zustand'
-import { createPreferencesSlice, PreferencesSlice } from './preferences'
-import { createGhostsSlice, GhostsSlice } from './ghosts'
 import { createEvidencesSlice, EvidencesSlice } from './evidences'
+import { createGhostsSlice, GhostsSlice } from './ghosts'
+import { createPreferencesSlice, PreferencesSlice } from './preferences'
 
 export const useStore = create<PreferencesSlice & GhostsSlice & EvidencesSlice>()((...a) => ({
   ...createPreferencesSlice(...a),

@@ -1,0 +1,16 @@
+.button {
+  display: block;
+  padding: 0;
+  cursor: pointer;
+}
+
+.icon {
+  transition-property: transform;
+  transition-duration: 300ms;
+  transition-timing-function: ease-out;
+}
+
+.open {
+  transition-delay: 100ms;
+  transform: rotate(45deg);
+}

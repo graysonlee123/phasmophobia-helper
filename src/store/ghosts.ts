@@ -1,6 +1,6 @@
 import { StateCreator } from 'zustand'
 
-export interface GhostsSlice {
+export type GhostsSlice = {
   eliminatedGhosts: GhostIds
   setEliminatedGhosts: (payload: GhostIds) => void
 }

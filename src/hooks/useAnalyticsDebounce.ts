@@ -1,8 +1,8 @@
-import { useRef } from 'react'
-import sendAnalyticsEvent from '@lib/sendAnalyticsEvents'
 import { ANALYTICS_DEBOUNCE } from '@data/constants'
+import sendAnalyticsEvent from '@lib/sendAnalyticsEvents'
+import { useRef } from 'react'
 
-const useAnalyticsDebounce = () => {
+export default function useAnalyticsDebounce(debounce = ANALYTICS_DEBOUNCE) {
   const timeoutRef = useRef<null | ReturnType<typeof setTimeout>>(null)
 
   return (data: GtagEvent) => {
@@ -10,8 +10,6 @@ const useAnalyticsDebounce = () => {
 
     timeoutRef.current = setTimeout(() => {
       sendAnalyticsEvent(data)
-    }, ANALYTICS_DEBOUNCE)
+    }, debounce)
   }
 }
-
-export default useAnalyticsDebounce

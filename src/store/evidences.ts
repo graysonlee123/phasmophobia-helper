@@ -1,6 +1,6 @@
 import { StateCreator } from 'zustand'
 
-export interface EvidencesSlice {
+export type EvidencesSlice = {
   checkedEvidences: EvidenceIds
   setCheckedEvidences: (payload: EvidenceIds) => void
   disabledEvidences: EvidenceIds

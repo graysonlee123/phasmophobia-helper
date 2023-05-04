@@ -1,6 +1,6 @@
 import { StateCreator } from 'zustand'
 
-export interface PreferencesSlice {
+export type PreferencesSlice = {
   showConfetti: boolean
   setShowConfetti: (payload: boolean) => void
 }

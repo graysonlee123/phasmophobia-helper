@@ -3,7 +3,7 @@ type EvidenceId = 'dots' | 'emf' | 'fingerprints' | 'freezing' | 'orbs' | 'writi
 type EvidenceIds = EvidenceId[]
 type SetEvidenceState = (evidences: EvidenceIds) => void
 
-interface Evidence {
+type Evidence = {
   id: EvidenceId
   name: string
   url: string
@@ -45,7 +45,7 @@ type GhostIds = GhostId[]
 type SetGhostState = (ghosts: GhostState) => void
 type GhostEvidences = [EvidenceId, EvidenceId, EvidenceId]
 
-interface Ghost {
+type Ghost = {
   id: GhostId
   name: string
   evidences: GhostEvidences
@@ -62,14 +62,14 @@ type StorageKeys = 'checkedEvidences' | 'disabledEvidences' | 'minimizedGhosts'
 type CheckboxState = boolean | null
 type Tags = Tag[]
 
-interface GtagEvent {
+type GtagEvent = {
   name: string
   params?: {
     [index: string]: string | number
   }
 }
 
-interface Tag {
+type Tag = {
   slug: string
   label: string
   link: string
