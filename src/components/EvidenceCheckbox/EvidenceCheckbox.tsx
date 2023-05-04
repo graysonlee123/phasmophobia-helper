@@ -8,7 +8,9 @@ import {
 import useAnalyticsDebounce from '@hooks/useAnalyticsDebounce'
 import usePossibleEvidences from '@hooks/usePossibleEvidences'
 import Checkbox from '@components/Checkbox'
-import { arrayAddUnique, arrayContains, arrayRemoveAll } from '@lib/arrays'
+import arrayContains from '@utils/arrayContains'
+import filterValueOut from '@utils/filterValueOut'
+import pushUnique from '@utils/pushUnique'
 
 interface EvidenceCheckboxProps {
   evidence: Evidence
@@ -39,7 +41,7 @@ export default function EvidenceCheckbox({ evidence }: EvidenceCheckboxProps) {
     switch (state) {
       /** From false to neutral. */
       case false:
-        setDisabledEvidences(arrayRemoveAll(evidence.id, disabledEvidences) as EvidenceIds)
+        setDisabledEvidences(filterValueOut(evidence.id, disabledEvidences) as EvidenceIds)
 
         eventDebounce({
           name: 'evidence_unchecked',
@@ -51,7 +53,7 @@ export default function EvidenceCheckbox({ evidence }: EvidenceCheckboxProps) {
 
       /** From neutral to true. */
       case null:
-        setCheckedEvidences(arrayAddUnique(evidence.id, checkedEvidences) as EvidenceIds)
+        setCheckedEvidences(pushUnique(evidence.id, checkedEvidences) as EvidenceIds)
 
         eventDebounce({
           name: 'evidence_checked',
@@ -63,8 +65,8 @@ export default function EvidenceCheckbox({ evidence }: EvidenceCheckboxProps) {
 
       /** From true to false. */
       case true:
-        setCheckedEvidences(arrayRemoveAll(evidence.id, checkedEvidences) as EvidenceIds)
-        setDisabledEvidences(arrayAddUnique(evidence.id, disabledEvidences) as EvidenceIds)
+        setCheckedEvidences(filterValueOut(evidence.id, checkedEvidences) as EvidenceIds)
+        setDisabledEvidences(pushUnique(evidence.id, disabledEvidences) as EvidenceIds)
 
         eventDebounce({
           name: 'evidence_disabled',

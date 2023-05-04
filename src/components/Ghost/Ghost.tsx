@@ -7,10 +7,12 @@ import Minimize from '@components/Minimize'
 import HoverLink from '@components/HoverLink'
 import Header from '@components/Header'
 import Writing from '@components/Writing'
-import { arrayContains, arrayAddUnique, arrayRemoveAll } from '@lib/arrays'
-import { sendGtagEvent } from '@lib/analytics'
+import sendAnalyticsEvent from '@lib/sendAnalyticsEvents'
 import styles from './Ghost.module.css'
 import { motion } from 'framer-motion'
+import arrayContains from '@utils/arrayContains'
+import filterValueOut from '@utils/filterValueOut'
+import pushUnique from '@utils/pushUnique'
 
 interface GhostProps extends ComponentPropsWithoutRef<'article'> {
   ghost: Ghost
@@ -27,18 +29,18 @@ export default function Ghost({ ghost, first = false, last = false }: GhostProps
    */
   function handleClick() {
     if (arrayContains(ghost.id, eliminatedGhosts)) {
-      setEliminatedGhosts(arrayRemoveAll(ghost.id, eliminatedGhosts))
+      setEliminatedGhosts(filterValueOut(ghost.id, eliminatedGhosts))
 
-      sendGtagEvent({
+      sendAnalyticsEvent({
         name: 'ghost_maximized',
         params: {
           ghost_slug: ghost.id,
         },
       })
     } else {
-      setEliminatedGhosts(arrayAddUnique(ghost.id, eliminatedGhosts))
+      setEliminatedGhosts(pushUnique(ghost.id, eliminatedGhosts))
 
-      sendGtagEvent({
+      sendAnalyticsEvent({
         name: 'ghost_minimized',
         params: {
           ghost_slug: ghost.id,

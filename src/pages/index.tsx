@@ -1,6 +1,6 @@
-import path from 'path'
-import { promises as fs } from 'fs'
 import { InferGetStaticPropsType } from 'next'
+import ghostsData from '@data/ghosts.json'
+import evidencesData from '@data/evidences.json'
 import { GhostsContextProvider } from '@contexts/Ghosts'
 import { EvidencesContextProvider } from '@contexts/Evidences'
 import PageTransition from '@components/PageTransition'
@@ -11,14 +11,10 @@ import GhostsCard from '@components/GhostsCard'
 import Confetti from '@components/Confetti'
 
 export const getStaticProps = async () => {
-  const dataDir = path.join(process.cwd(), 'data')
-
   return {
     props: {
-      ghosts: JSON.parse(await fs.readFile(path.join(dataDir, `ghosts.json`), 'utf-8')) as Ghosts,
-      evidences: JSON.parse(
-        await fs.readFile(path.join(dataDir, `evidences.json`), 'utf-8')
-      ) as Evidences,
+      ghosts: ghostsData as Ghost[],
+      evidences: evidencesData as Evidence[],
     },
   }
 }

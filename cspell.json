@@ -5,10 +5,10 @@
   "dictionaryDefinitions": [
     {
       "name": "project-words",
-      "path": "./project-words.txt",
+      "path": "./src/data/project-words.txt",
       "addWords": true
     }
   ],
   "dictionaries": ["project-words"],
-  "ignorePaths": ["node_modules", ".next", "/project-words.txt"]
+  "ignorePaths": ["node_modules", ".next"]
 }

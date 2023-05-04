@@ -1,6 +1,6 @@
 import type { AppProps } from 'next/app'
 import App from '@components/App'
-import '@styles/globals.css'
+import '@assets/globals.css'
 import { GoogleAnalytics } from 'nextjs-google-analytics'
 
 export default function MyApp({ Component, pageProps }: AppProps) {

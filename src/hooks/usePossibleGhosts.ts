@@ -1,7 +1,7 @@
 import { useContext, useMemo } from 'react'
 import { GhostsContext } from '@contexts/Ghosts'
 import { useCheckedEvidences, useDisabledEvidences } from '@store/index'
-import { arrayContains } from '@lib/arrays'
+import arrayContains from '@utils/arrayContains'
 
 const usePossibleGhosts = () => {
   const ghosts = useContext(GhostsContext)
