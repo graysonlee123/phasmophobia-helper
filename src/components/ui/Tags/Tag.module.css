@@ -1,14 +1,15 @@
 .tag {
   position: relative;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 0.25rem;
   padding: 0.125rem 0.5rem;
   border-radius: 2px;
+  font-size: var(--fs--sm);
   white-space: nowrap;
 }
 
-.important::before {
+.special::before {
   --size: 0.25rem;
 
   content: '';
@@ -17,6 +18,10 @@
   height: var(--size);
   border-radius: 100%;
   background-color: currentColor;
+}
+
+.sm {
+  font-size: var(--fs--xs);
 }
 
 .dots {
@@ -52,4 +57,14 @@
 .box {
   color: hsl(var(--clr--box--700));
   background-color: hsl(var(--clr--box--100));
+}
+
+.success {
+  color: hsl(var(--clr--dots--700));
+  background-color: hsl(var(--clr--dots--100));
+}
+
+.danger {
+  color: hsl(var(--clr--emf--700));
+  background-color: hsl(var(--clr--emf--100));
 }

@@ -1,16 +1,10 @@
-import Tag from './Tag'
+import { ReactNode } from 'react'
 import styles from './Tags.module.css'
 
 type TagsProps = {
-  tags: Tags
+  children: ReactNode
 }
 
-export default function Tags({ tags }: TagsProps) {
-  return (
-    <ul className={styles.tags}>
-      {tags.map((tag) => (
-        <Tag tag={tag} key={tag.slug} />
-      ))}
-    </ul>
-  )
+export default function Tags({ children }: TagsProps) {
+  return <div className={styles.tags}>{children}</div>
 }

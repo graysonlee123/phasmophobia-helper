@@ -57,7 +57,7 @@ export default function GhostHeader({ sanity }: GhostHeaderProps) {
               title={`View ${ghost.name} wiki page`}
             >
               {ghost.name}
-            </HoverLink>
+            </HoverLink>{' '}
             {sanity}
           </Intro.Title>
         </>

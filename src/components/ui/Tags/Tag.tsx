@@ -1,34 +1,51 @@
 import Anchor from '@components/ui/Anchor'
 import cn from 'classnames'
 import { motion } from 'framer-motion'
+import { ReactNode } from 'react'
 import styles from './Tag.module.css'
 
 type TagProps = {
-  tag: Tag
+  variant: EvidenceId | 'success' | 'danger'
+  size?: 'sm' | 'md'
+  title?: string
+  href?: string
+  target?: string
+  rel?: string
+  special?: boolean
+  children?: ReactNode
 }
 
-export default function Tag({ tag }: TagProps) {
-  const { slug, label, link, important = false } = tag
-
-  return (
-    <li>
-      <Anchor
-        href={link}
-        target="_blank"
-        rel="noopener noreferrer"
-        title={`Visit ${label} wiki page`}
+export default function Tag({
+  variant,
+  size = 'md',
+  title,
+  href,
+  target,
+  rel,
+  special,
+  children,
+}: TagProps) {
+  return href ? (
+    <Anchor href={href} target={target} rel={rel} title={title}>
+      <motion.span
+        whileHover={{
+          scale: 1.1,
+        }}
+        className={cn([styles.tag, styles[variant], styles[size]], {
+          [styles.special]: special,
+        })}
       >
-        <motion.span
-          whileHover={{
-            scale: 1.1,
-          }}
-          className={cn([styles.tag, styles[slug]], {
-            [styles.important]: important,
-          })}
-        >
-          {label}
-        </motion.span>
-      </Anchor>
-    </li>
+        {children}
+      </motion.span>
+    </Anchor>
+  ) : (
+    <span
+      className={cn([styles.tag, styles[variant], styles[size]], {
+        [styles.special]: special,
+      })}
+      title={title}
+    >
+      {children}
+    </span>
   )
 }
