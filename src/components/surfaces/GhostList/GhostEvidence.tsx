@@ -16,9 +16,11 @@ export default function GhostEvidence() {
         return (
           <Tag
             variant={evidence.id}
-            title={`${guaranteed ? '(Guaranteed Evidence) Click to v' : 'V'}isit the ${
-              evidence.name
-            } Wiki`}
+            title={`${
+              guaranteed
+                ? 'Guaranteed on limited evidence games'
+                : `Visit the ${evidence.name} Wiki`
+            }`}
             href={evidence.url}
             target="_blank"
             rel="noopener noreferrer"
