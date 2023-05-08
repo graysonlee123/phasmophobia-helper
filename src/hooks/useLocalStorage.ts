@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
+import useMounted from './useMounted'
 
 /**
  * Interacts with a browser's local storage.
@@ -8,7 +9,7 @@ import { useCallback, useEffect, useState } from 'react'
  */
 export default function useLocalStorage<T>(key: string, fallback: T) {
   const [value, setValue] = useState<T>(fallback)
-  const [mounted, setMounted] = useState(false)
+  const mounted = useMounted()
 
   /**
    * A wrapper for setting the value in local storage.
@@ -24,14 +25,6 @@ export default function useLocalStorage<T>(key: string, fallback: T) {
     },
     [key]
   )
-
-  /**
-   * Detects when the component is mounted.
-   * When it is mounted, it will have access to the storage.
-   */
-  useEffect(() => {
-    setMounted(true)
-  }, [])
 
   /**
    * Access the storage and set it in the state when the components mounts.
