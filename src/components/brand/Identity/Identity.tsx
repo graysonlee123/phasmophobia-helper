@@ -1,6 +1,7 @@
 import Logo from '@components/brand/Logo'
 import Intro from '@components/typography/Intro'
 import styles from './Identity.module.css'
+import GhostReel from '@components/effects/GhostReel'
 
 export default function Identity() {
   return (
@@ -10,7 +11,11 @@ export default function Identity() {
       </div>
       <Intro
         title={<Intro.Title>Phasmophobia Helper</Intro.Title>}
-        subtitle={<Intro.Subtitle>Your Phasmophobia Companion</Intro.Subtitle>}
+        subtitle={
+          <Intro.Subtitle>
+            <GhostReel />
+          </Intro.Subtitle>
+        }
         nogap
       />
     </div>
