@@ -1,5 +1,5 @@
 import Hint from '@components/typography/Hint'
-import Subtitle from '@components/typography/Header'
+import Header from '@components/typography/Header'
 import cn from 'classnames'
 import { ReactNode } from 'react'
 import styles from './Intro.module.css'
@@ -36,5 +36,5 @@ export default function Intro({
   )
 }
 
-Intro.Title = Subtitle
+Intro.Title = Header
 Intro.Subtitle = Hint

@@ -1,3 +1,3 @@
-import Subtitle from './Header'
+import Header from './Header'
 
-export default Subtitle
+export default Header
