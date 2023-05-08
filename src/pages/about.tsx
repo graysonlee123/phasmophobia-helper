@@ -4,6 +4,7 @@ import PageView from '@components/layout/PageView'
 import Card from '@components/ui/Card'
 import Intro from '@components/typography/Intro'
 import Writing from '@components/typography/Writing'
+import Link from 'next/link'
 
 export default function AboutPage() {
   return (
@@ -82,6 +83,18 @@ export default function AboutPage() {
                 bug report
               </a>
               . Your help keeps everything up-to-date and accurate!
+            </p>
+          </Writing>
+          <Divider />
+          <Intro
+            title={<Intro.Title>Your Privacy</Intro.Title>}
+            subtitle={<Intro.Subtitle>TL;DR: some anonymous usage data is tracked.</Intro.Subtitle>}
+            gutterBottom
+          />
+          <Writing>
+            <p>
+              This website uses a very basic configuration of Google Analytics 4. Read more on the{' '}
+              <Link href="/privacy-policy">Privacy Policy page</Link>.
             </p>
           </Writing>
         </Card>
