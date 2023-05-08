@@ -3,11 +3,17 @@ import CardLayout from '@components/layout/CardLayout'
 import PageView from '@components/layout/PageView'
 import Intro from '@components/typography/Intro'
 import Card from '@components/ui/Card'
-import { useSetShowConfetti, useShowConfetti } from '@store/index'
+import usePreferences from '@hooks/usePreferences'
 
 export default function PreferencesPage() {
-  const showConfetti = useShowConfetti()
-  const setShowConfetti = useSetShowConfetti()
+  const { preferences, setPreferences } = usePreferences()
+
+  function handleChange(key: keyof Preferences, value: boolean) {
+    setPreferences({
+      ...preferences,
+      [key]: value,
+    })
+  }
 
   return (
     <PageView pageTitle="Preferences">
@@ -19,8 +25,15 @@ export default function PreferencesPage() {
             gutterBottom
           />
           <Checkbox
-            state={showConfetti}
-            onClick={() => setShowConfetti(!showConfetti)}
+            state={preferences?.limitedEvidence ?? true}
+            onClick={() => handleChange('limitedEvidence', !preferences?.limitedEvidence ?? false)}
+            primary="Limited Evidence Mode"
+            secondary="Have this checked if your game mode has limited evidence."
+            gutterBottom
+          />
+          <Checkbox
+            state={preferences?.confetti ?? true}
+            onClick={() => handleChange('confetti', !preferences?.confetti ?? false)}
             primary="Confetti"
             secondary="Shows confetti when you discover your ghost type"
           />

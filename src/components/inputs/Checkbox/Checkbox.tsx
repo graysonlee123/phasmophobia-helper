@@ -15,13 +15,21 @@ type CheckboxProps = {
   primary?: string
   secondary?: string
   disabled?: boolean
+  gutterBottom?: boolean
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void
 }
 
-export default function Checkbox({ state, primary, secondary, disabled, onClick }: CheckboxProps) {
+export default function Checkbox({
+  state,
+  primary,
+  secondary,
+  disabled,
+  gutterBottom,
+  onClick,
+}: CheckboxProps) {
   return (
     <motion.button
-      className={cn(['button-reset', styles.button])}
+      className={cn(['button-reset', styles.button, gutterBottom && styles.gutterBottom])}
       disabled={disabled}
       variants={variants}
       animate={disabled ? 'disabled' : 'default'}

@@ -13,6 +13,10 @@
   transition-timing-function: var(--transition--ease--quick);
 }
 
+.gutterBottom {
+  margin-bottom: 0.75rem;
+}
+
 .button:focus,
 .button:hover {
   outline-width: 0.5rem;

@@ -75,3 +75,8 @@ type Tag = {
   link: string
   important?: boolean
 }
+
+type Preferences = {
+  confetti?: boolean
+  limitedEvidence?: boolean
+}

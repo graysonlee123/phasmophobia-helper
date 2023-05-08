@@ -1,14 +1,14 @@
+import usePreferences from '@hooks/usePreferences'
 import useWinner from '@hooks/useWinner'
-import { useShowConfetti } from '@store/index'
 import ReactConfetti from 'react-confetti'
 import { useWindowSize } from 'react-use'
 
 export default function Confetti() {
-  const showConfetti = useShowConfetti()
   const winner = useWinner()
   const { width, height } = useWindowSize()
+  const { preferences } = usePreferences()
 
-  if (!winner || !showConfetti) return null
+  if (!winner || preferences.confetti === false) return null
 
   return (
     <ReactConfetti

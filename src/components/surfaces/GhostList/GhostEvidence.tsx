@@ -2,16 +2,21 @@ import Tags from '@components/ui/Tags'
 import Tag from '@components/ui/Tags/Tag'
 import useGhostEvidences from '@hooks/useGhostEvidences'
 import { useGhostContext } from './GhostContext'
+import usePreferences from '@hooks/usePreferences'
 
 export default function GhostEvidence() {
   const { ghost } = useGhostContext()
   const { evidences, falseEvidences } = useGhostEvidences(ghost)
   const ghostEvidences = [...evidences, ...(falseEvidences ?? [])]
+  const { preferences } = usePreferences()
 
   return (
     <Tags>
       {ghostEvidences.map((evidence) => {
-        const guaranteed = Array.isArray(evidence.ghosts) && evidence.ghosts.indexOf(ghost.id) > -1
+        const guaranteed =
+          preferences.limitedEvidence === true &&
+          Array.isArray(evidence.ghosts) &&
+          evidence.ghosts.indexOf(ghost.id) > -1
 
         return (
           <Tag
