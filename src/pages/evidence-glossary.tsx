@@ -7,6 +7,7 @@ import Intro from '@components/typography/Intro'
 import Writing from '@components/typography/Writing'
 import evidenceData from '@data/evidences.json'
 import ghostsData from '@data/ghosts.json'
+import Tag from '@components/ui/Tags/Tag'
 
 export default function EvidenceGlossaryPage() {
   return (
@@ -25,15 +26,11 @@ export default function EvidenceGlossaryPage() {
                 </Intro.Subtitle>
               }
               after={
-                <Tags
-                  tags={[
-                    {
-                      label: evidence.shortName ?? evidence.name,
-                      link: evidence.url,
-                      slug: evidence.id,
-                    },
-                  ]}
-                />
+                <Tags>
+                  <Tag variant={evidence.id} title={evidence.name}>
+                    {evidence.shortName ?? evidence.name}
+                  </Tag>
+                </Tags>
               }
             />
             <Divider />
