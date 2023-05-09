@@ -1,4 +1,9 @@
 import Checkbox from '@components/inputs/Checkbox'
+import {
+  ANALYTICS_EVENT_EVIDENCE_CHECKED,
+  ANALYTICS_EVENT_EVIDENCE_DISABLED,
+  ANALYTICS_EVENT_EVIDENCE_UNCHECKED,
+} from '@data/constants'
 import useAnalyticsDebounce from '@hooks/useAnalyticsDebounce'
 import usePossibleEvidences from '@hooks/usePossibleEvidences'
 import {
@@ -23,7 +28,7 @@ export default function EvidenceCheckbox({ evidence }: EvidenceCheckboxProps) {
   const disabledEvidences = useDisabledEvidences()
   const setDisabledEvidences = useSetDisabledEvidences()
   const possibleEvidences = usePossibleEvidences()
-  const eventDebounce = useAnalyticsDebounce()
+  const { debouncer: eventDebouncer } = useAnalyticsDebounce()
   const isDisabled = !arrayContains(evidence.id, possibleEvidences)
 
   useEffect(() => {
@@ -42,8 +47,8 @@ export default function EvidenceCheckbox({ evidence }: EvidenceCheckboxProps) {
       case false:
         setDisabledEvidences(filterValueOut(evidence.id, disabledEvidences) as EvidenceIds)
 
-        eventDebounce({
-          name: 'evidence_unchecked',
+        eventDebouncer({
+          name: ANALYTICS_EVENT_EVIDENCE_UNCHECKED,
           params: {
             evidence_slug: evidence.id,
           },
@@ -54,8 +59,8 @@ export default function EvidenceCheckbox({ evidence }: EvidenceCheckboxProps) {
       case null:
         setCheckedEvidences(pushUnique(evidence.id, checkedEvidences) as EvidenceIds)
 
-        eventDebounce({
-          name: 'evidence_checked',
+        eventDebouncer({
+          name: ANALYTICS_EVENT_EVIDENCE_CHECKED,
           params: {
             evidence_slug: evidence.id,
           },
@@ -67,8 +72,8 @@ export default function EvidenceCheckbox({ evidence }: EvidenceCheckboxProps) {
         setCheckedEvidences(filterValueOut(evidence.id, checkedEvidences) as EvidenceIds)
         setDisabledEvidences(pushUnique(evidence.id, disabledEvidences) as EvidenceIds)
 
-        eventDebounce({
-          name: 'evidence_disabled',
+        eventDebouncer({
+          name: ANALYTICS_EVENT_EVIDENCE_DISABLED,
           params: {
             evidence_slug: evidence.id,
           },
