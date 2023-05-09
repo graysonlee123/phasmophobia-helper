@@ -87,7 +87,7 @@ export default function AboutPage() {
           </Writing>
           <Divider />
           <Intro
-            title={<Intro.Title>Your Privacy</Intro.Title>}
+            title={<Intro.Title>Your privacy</Intro.Title>}
             subtitle={<Intro.Subtitle>TL;DR: some anonymous usage data is tracked.</Intro.Subtitle>}
             gutterBottom
           />
