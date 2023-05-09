@@ -22,7 +22,7 @@ export default function PageTransition({ children }: PageTransitionProps) {
         initial="hidden"
         animate="enter"
         exit="exit"
-        transition={{ type: 'spring' }}
+        transition={{ duration: 0.3 }}
         onAnimationStart={() => setContain(true)}
         onAnimationComplete={() => setContain(false)}
       >
