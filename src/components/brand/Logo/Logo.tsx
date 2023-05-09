@@ -1,8 +1,18 @@
 import { ComponentPropsWithoutRef } from 'react'
+import styles from './Logo.module.css'
+import cn from 'classnames'
 
-type LogoProps = {} & ComponentPropsWithoutRef<'svg'>
+type LogoProps = {
+  gutterRight?: boolean
+} & ComponentPropsWithoutRef<'svg'>
 
-export default function Logo({ width = 36, height = 36, ...props }: LogoProps) {
+export default function Logo({
+  gutterRight,
+  className,
+  width = 36,
+  height = 36,
+  ...props
+}: LogoProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11,6 +21,7 @@ export default function Logo({ width = 36, height = 36, ...props }: LogoProps) {
       height={height}
       viewBox={`0 0 36 36`}
       preserveAspectRatio="none"
+      className={cn([className, gutterRight && styles.gutterRight])}
       {...props}
     >
       <path

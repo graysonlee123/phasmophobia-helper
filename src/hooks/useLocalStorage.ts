@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import useMounted from './useMounted'
+import useNotice from './useNotice'
 
 /**
  * Interacts with a browser's local storage.
@@ -10,6 +11,7 @@ import useMounted from './useMounted'
 export default function useLocalStorage<T>(key: string, fallback: T) {
   const [value, setValue] = useState<T>(fallback)
   const mounted = useMounted()
+  const { notice } = useNotice()
 
   /**
    * A wrapper for setting the value in local storage.
@@ -21,9 +23,10 @@ export default function useLocalStorage<T>(key: string, fallback: T) {
         setValue(value)
       } catch (error) {
         console.error(error)
+        notice("There was an issue using your browser's local storage.", { variant: 'error' })
       }
     },
-    [key]
+    [key, notice]
   )
 
   /**
@@ -37,10 +40,11 @@ export default function useLocalStorage<T>(key: string, fallback: T) {
         if (storage) setValue(JSON.parse(storage))
         else setStorage(fallback)
       } catch (error) {
-        console.error("There was an issue reading from your browser's storage.", error)
+        console.error(error)
+        notice("There was an issue loading your browser's local storage.", { variant: 'error' })
       }
     }
-  }, [key, fallback, mounted, setStorage])
+  }, [key, fallback, mounted, setStorage, notice])
 
   return [value, setStorage] as const
 }
