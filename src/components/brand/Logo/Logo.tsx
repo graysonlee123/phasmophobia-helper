@@ -1,6 +1,18 @@
-export default function Logo() {
+import { ComponentPropsWithoutRef } from 'react'
+
+type LogoProps = {} & ComponentPropsWithoutRef<'svg'>
+
+export default function Logo({ width = 36, height = 36, ...props }: LogoProps) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="none">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      width={width}
+      height={height}
+      viewBox={`0 0 36 36`}
+      preserveAspectRatio="none"
+      {...props}
+    >
       <path
         fill="#fff"
         fillRule="evenodd"

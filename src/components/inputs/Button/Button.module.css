@@ -11,6 +11,10 @@
   cursor: pointer;
 }
 
+.anchor {
+  text-decoration: none;
+}
+
 .contained {
   background-color: hsl(var(--clr--white));
   color: hsl(var(--clr--slate--900));
