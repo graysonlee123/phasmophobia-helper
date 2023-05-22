@@ -1,9 +1,10 @@
 import usePossibleGhosts from '@hooks/usePossibleGhosts'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import Ghost from './Ghost'
 
 export default function GhostList() {
   const possibleGhosts = usePossibleGhosts()
+  const prefersReducedMotion = useReducedMotion()
 
   return possibleGhosts.length === 0 ? (
     <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
@@ -16,6 +17,7 @@ export default function GhostList() {
           initial={{ opacity: 0, height: 0, overflow: 'hidden' }}
           animate={{ opacity: 1, height: 'auto', overflow: 'visible' }}
           exit={{ opacity: 0, height: 0, overflow: 'hidden' }}
+          transition={prefersReducedMotion ? { duration: 0 } : {}}
           key={ghost.id}
         >
           <Ghost

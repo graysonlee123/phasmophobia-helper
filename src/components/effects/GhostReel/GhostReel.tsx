@@ -2,7 +2,7 @@ import { VOWELS } from '@data/constants'
 import ghostData from '@data/ghosts.json'
 import useMounted from '@hooks/useMounted'
 import usePossibleGhosts from '@hooks/usePossibleGhosts'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { useCallback, useEffect, useRef, useState } from 'react'
 
 export default function GhostReel() {
@@ -12,6 +12,7 @@ export default function GhostReel() {
   const [ghost, setGhost] = useState({ data: ghosts[0] })
   const [nextGhost, setNextGhost] = useState({ data: ghosts[1] })
   const timeout = useRef<NodeJS.Timeout | null>(null)
+  const prefersReducedMotion = useReducedMotion()
 
   /** Finds a new ghost based on the evidence state. */
   const setPossibleNextGhost = useCallback(() => {
@@ -71,9 +72,9 @@ export default function GhostReel() {
           <AnimatePresence mode="wait">
             <motion.span
               style={{ display: 'inline-block' }}
-              initial={{ opacity: 0, translateY: 3 }}
+              initial={{ opacity: 0, translateY: prefersReducedMotion ? 0 : 3 }}
               animate={{ opacity: 1, translateY: 0 }}
-              exit={{ opacity: 0, translateY: -3 }}
+              exit={{ opacity: 0, translateY: prefersReducedMotion ? 0 : -3 }}
               transition={{
                 duration: 0.5,
               }}

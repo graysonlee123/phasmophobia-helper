@@ -4,6 +4,11 @@ Phasmophobia Helper is a tool that can help you identify ghost types during your
 
 # Changelog
 
+## 0.2.6 - May 22, 2023
+
+- Added support for reduced motion
+- Fixed a z-index issue with the confetti appearing above some stuff and below others
+
 ## 0.2.5 - May 22, 2023
 
 - The notices now don't require the window to be focues to auto dismiss
