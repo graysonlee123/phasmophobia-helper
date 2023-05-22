@@ -8,6 +8,7 @@ export default function AlertProvider() {
         default: <Logo width={24} height={24} gutterRight />,
         success: <Logo width={24} height={24} gutterRight />,
       }}
+      disableWindowBlurListener={true}
     />
   )
 }
