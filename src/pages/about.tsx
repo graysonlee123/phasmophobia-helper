@@ -20,7 +20,11 @@ export default function AboutPage() {
             <p>
               Welcome to the Phasmophobia Helper website! My main mission is to make identifying
               ghost types in the thrilling video game{' '}
-              <a href="https://kineticgames.co.uk/" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://www.kineticgames.co.uk/phasmophobia"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Phasmophobia
               </a>{' '}
               a breeze for players like you.

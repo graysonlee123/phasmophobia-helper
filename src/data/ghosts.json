@@ -20,28 +20,28 @@
     "evidences": ["box", "writing", "dots"],
     "hunt": 40,
     "url": "https://phasmophobia.fandom.com/wiki/Deogen",
-    "about": "Always knows player locations, making hiding useless during [hunts](https://phasmophobia.fandom.com/wiki/Hunt). Greatly slows down when close to a player **(0.4m/s)**. Kiting this ghost is the best method to survive a hunt. Can produce a unique [Spirit Box](https://phasmophobia.fandom.com/wiki/Spirit_Box) response."
+    "about": "Always knows player locations, making hiding useless during [hunts](https://phasmophobia.fandom.com/wiki/Hunt). Fast when isolated, but greatly slows down when close to a player **(0.4m/s)**. Kiting this ghost is the best method to survive a hunt. Can produce a unique [Spirit Box](https://phasmophobia.fandom.com/wiki/Spirit_Box) response."
   },
   {
     "id": "goryo",
     "name": "Goryo",
     "evidences": ["emf", "fingerprints", "dots"],
     "url": "https://phasmophobia.fandom.com/wiki/Goryo",
-    "about": "Appears in [D.O.T.S.](https://phasmophobia.fandom.com/wiki/D.O.T.S_Projector_(Evidence)) only when viewed through a video camera and no players are in the same room as it. Can not change its favorite room or roam long distances."
+    "about": "Appears in [D.O.T.S.](https://phasmophobia.fandom.com/wiki/D.O.T.S_Projector_(Evidence)) only when viewed through a video camera and no players are in the same room as it. Cannot change its favorite room, and is less likely to wander."
   },
   {
     "id": "hantu",
     "name": "Hantu",
     "evidences": ["fingerprints", "orbs", "freezing"],
     "url": "https://phasmophobia.fandom.com/wiki/Hantu",
-    "about": "Increased speed in colder areas during [hunts](https://phasmophobia.fandom.com/wiki/Hunt). Occasionally emits frosty breath in its favorite room, and can appear in any room during a hunt. Moves slower in warmer areas during hunts. Twice as likely to turn off the [fuse box](https://phasmophobia.fandom.com/wiki/Fuse_Box)."
+    "about": "Increased speed in colder rooms during [hunts](https://phasmophobia.fandom.com/wiki/Hunt). Moves slower in warmer areas during hunts. Occasionally emits frosty breath when hunting with the breaker off. Cannot turn on the [fuse box](https://phasmophobia.fandom.com/wiki/Fuse_Box), and is twice as likely to turn it off."
   },
   {
     "id": "jinn",
     "name": "Jinn",
     "evidences": ["emf", "freezing", "fingerprints"],
     "url": "https://phasmophobia.fandom.com/wiki/Jinn",
-    "about": "During a hunt, it has a higher speed if a target it can see is far away **(2.5m/s)**. Its ability will deduct nearby players' sanity **(25%)**. Turning off the [fuse box](https://phasmophobia.fandom.com/wiki/Fuse_Box) will prevent it from using its ability."
+    "about": "During a hunt, it has a higher speed if a target it can see is far away **(2.5m/s)**. Its ability will deduct nearby players' sanity **(25%)**. Turning off the [fuse box](https://phasmophobia.fandom.com/wiki/Fuse_Box) will prevent it from using its ability. Cannot turn off the fuse box."
   },
   {
     "id": "mare",
@@ -93,7 +93,7 @@
     "evidences": ["box", "orbs", "freezing"],
     "hunt": 60,
     "url": "https://phasmophobia.fandom.com/wiki/Onryo",
-    "about": "Chance to hunt at any sanity when blowing out flames **(50%, +25% / dead player)**. Blows out flames more often than other ghost types. Presence of flames prevents the ghost from [hunting](https://phasmophobia.fandom.com/wiki/Hunt) naturally **(4m)**."
+    "about": "Chance to hunt when blowing out flames. Presence of flames prevents the ghost from [hunting](https://phasmophobia.fandom.com/wiki/Hunt) naturally **(4m)**. Blows out flames more often than other ghost types. Every third flame will cause it to attempt to initiate a hunt, which can be blocked by a crucifix or more flames."
   },
   {
     "id": "phantom",
@@ -167,7 +167,7 @@
     "evidences": ["box", "orbs", "dots"],
     "hunt": 80,
     "url": "https://phasmophobia.fandom.com/wiki/Yokai",
-    "about": "When at least one player talks within a certain range of it, its [hunt](https://phasmophobia.fandom.com/wiki/Hunt) sanity threshold is increased **(80%)**. During hunts, it can only hear or sense electronics that are very close to it **(2m)**."
+    "about": "When at least one player talks within a certain range of it, its [hunt](https://phasmophobia.fandom.com/wiki/Hunt) sanity threshold is increased **(80%)**. During hunts, it can only hear or sense electronics that are very close to it **(2.5m)**."
   },
   {
     "id": "yurei",
