@@ -4,6 +4,10 @@ Phasmophobia Helper is a tool that can help you identify ghost types during your
 
 # Changelog
 
+## 0.3.0 - Sept 4, 2023
+
+- Wording now reflects the Ascension update
+
 ## 0.2.7 - Sept 4, 2023
 
 - Updated many packages
