@@ -17,7 +17,7 @@ Phasmophobia Helper is a tool that can help you identify ghost types during your
 
 ## 0.2.5 - May 22, 2023
 
-- The notices now don't require the window to be focues to auto dismiss
+- The notices now don't require the window to be focused to auto dismiss
 
 ## 0.2.4 - May 9, 2023
 

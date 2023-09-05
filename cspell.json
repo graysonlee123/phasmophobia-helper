@@ -4,11 +4,16 @@
   "language": "en",
   "dictionaryDefinitions": [
     {
-      "name": "project-words",
-      "path": "./src/data/project-words.txt",
+      "name": "phasmophobia",
+      "path": "./src/data/dictionaries/phasmophobia.txt",
+      "addWords": true
+    },
+    {
+      "name": "project",
+      "path": "./src/data/dictionaries/project.txt",
       "addWords": true
     }
   ],
-  "dictionaries": ["project-words"],
-  "ignorePaths": ["node_modules", ".next"]
+  "dictionaries": ["phasmophobia", "project"],
+  "ignorePaths": ["node_modules", ".next", "package.json", "package-lock.json"]
 }

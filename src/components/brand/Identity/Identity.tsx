@@ -16,7 +16,7 @@ export default function Identity() {
             <GhostReel />
           </Intro.Subtitle>
         }
-        nogap
+        noGap
       />
     </div>
   )

@@ -18,7 +18,7 @@
   grid-column: 2 / -1;
 }
 
-.nogap {
+.noGap {
   row-gap: 0;
 }
 

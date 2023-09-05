@@ -1,0 +1,21 @@
+# General
+airball
+glowstick
+glowsticks
+lightbulbs
+Phasmophobia
+!Phasmaphobia
+
+# Ghosts
+
+Deogen
+Goryo
+Hantu
+Moroi
+Myling
+Obake
+Onryo
+Raiju
+Thaye
+Yokai
+Yurei

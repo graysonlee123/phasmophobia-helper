@@ -1,0 +1,10 @@
+# General
+Grayson
+Gantek
+debouncer
+snackbars
+
+# Packages
+nextjs
+Zustand
+notistack

@@ -27,7 +27,7 @@
     "id": "freezing",
     "name": "Freezing Temperatures",
     "shortName": "Freezing",
-    "tip": "Freezing breath, Thermometor",
+    "tip": "Freezing breath, Thermometer",
     "ghosts": ["hantu"],
     "url": "https://phasmophobia.fandom.com/wiki/Freezing_Temperatures",
     "about": "[Freezing Temperatures](https://phasmophobia.fandom.com/wiki/Freezing_Temperatures) are detecting by using a [thermometer](https://phasmophobia.fandom.com/wiki/Thermometer) or seeing visible breath. The presence of a ghost in a room will cause the room's temperature to drop over time.\n- Temperatures will adjust over time, and therefore do not necessarily guarantee a ghost is in the room.\n- The thermometer fluctuates by -2 / +4 degrees.\n- Make sure not to confuse the “airball” ghost event with freezing temperatures. The “airball” from a ghost event will move towards a player."

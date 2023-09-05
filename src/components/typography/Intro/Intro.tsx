@@ -8,7 +8,7 @@ type IntroProps = {
   title: ReactNode
   subtitle?: ReactNode
   after?: ReactNode
-  nogap?: boolean
+  noGap?: boolean
   gutterBottom?: boolean
 }
 
@@ -16,7 +16,7 @@ export default function Intro({
   title,
   subtitle,
   after,
-  nogap = false,
+  noGap = false,
   gutterBottom = false,
 }: IntroProps) {
   return (
@@ -25,7 +25,7 @@ export default function Intro({
         styles.block,
         subtitle && styles.hasSubtitle,
         after && styles.hasAfter,
-        nogap && styles.nogap,
+        noGap && styles.noGap,
         gutterBottom && styles.gutterBottom,
       ])}
     >
