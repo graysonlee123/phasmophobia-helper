@@ -1,4 +1,4 @@
-import create from 'zustand'
+import { create } from 'zustand'
 import { createEvidencesSlice, EvidencesSlice } from './evidences'
 import { createGhostsSlice, GhostsSlice } from './ghosts'
 
