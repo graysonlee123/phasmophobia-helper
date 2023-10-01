@@ -1,5 +1,5 @@
 /** Evidence */
-type EvidenceId = 'dots' | 'emf' | 'fingerprints' | 'freezing' | 'orbs' | 'writing' | 'box'
+type EvidenceId = 'dots' | 'emf' | 'ultraviolet' | 'freezing' | 'orbs' | 'writing' | 'box'
 type EvidenceIds = EvidenceId[]
 type SetEvidenceState = (evidences: EvidenceIds) => void
 

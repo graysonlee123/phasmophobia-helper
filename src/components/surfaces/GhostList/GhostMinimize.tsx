@@ -8,7 +8,11 @@ type GhostMinimizeProps = {
 
 export default function GhostMinimize({ onClick, minimized }: GhostMinimizeProps) {
   return (
-    <button className={cn(['button-reset', styles.button])} onClick={onClick}>
+    <button
+      className={cn(['button-reset', styles.button])}
+      onClick={onClick}
+      title="Minimize this ghost"
+    >
       <svg
         className={cn([styles.icon, minimized && styles.open])}
         fill="none"

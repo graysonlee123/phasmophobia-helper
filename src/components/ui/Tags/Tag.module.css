@@ -34,9 +34,9 @@
   background-color: hsl(var(--clr--emf--100));
 }
 
-.fingerprints {
-  color: hsl(var(--clr--fingerprints--700));
-  background-color: hsl(var(--clr--fingerprints--100));
+.ultraviolet {
+  color: hsl(var(--clr--ultraviolet--700));
+  background-color: hsl(var(--clr--ultraviolet--100));
 }
 
 .freezing {

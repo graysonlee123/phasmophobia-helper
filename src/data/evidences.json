@@ -1,7 +1,7 @@
 [
   {
     "id": "box",
-    "name": "Spirit Box Response",
+    "name": "Spirit Box",
     "shortName": "Spirit Boxes",
     "tip": "Spirit Box",
     "ghosts": ["deogen", "moroi"],
@@ -18,20 +18,20 @@
     "about": "[Freezing Temperatures](https://phasmophobia.fandom.com/wiki/Freezing_Temperatures) are detecting by using a [thermometer](https://phasmophobia.fandom.com/wiki/Thermometer).\n- The presence of player breath does not indicate freezing temperatures. A reading of 32°F or below is required.\n- Temperatures will adjust over time, and therefore multiple rooms can be freezing and a freezing room does not guarantee a ghost is in that room.\n- The thermometer fluctuates by -2 / +4 degrees.\n- Any ghost type's presence in a room will cause the room's [temperature](https://phasmophobia.fandom.com/wiki/Temperature) to drop over time."
   },
   {
-    "id": "fingerprints",
-    "name": "Fingerprints",
+    "id": "ultraviolet",
+    "name": "Ultraviolet",
     "tip": "UV Lights",
     "ghosts": ["obake"],
-    "url": "https://phasmophobia.fandom.com/wiki/Fingerprints",
-    "about": "[Fingerprints](https://phasmophobia.fandom.com/wiki/Fingerprints) are detected using [UV Flashlights](https://phasmophobia.fandom.com/wiki/UV_Flashlight) or [Glowsticks](https://phasmophobia.fandom.com/wiki/Glowstick). They appear after a ghost interacts with certain surfaces, mostly being doors and light switches.\n- Each interaction with a surface will always leave a fingerprint.\n- The exception is the [Obake](https://phasmophobia.fandom.com/wiki/Obake), who has a chance to leave fingerprints (75%), which can also be unique (~17%).\n- Fingerprints must be \"charged\" with [UV Light](https://phasmophobia.fandom.com/wiki/UV_Light) before collecting [photo rewards](https://phasmophobia.fandom.com/wiki/Photo_Rewards).\n- Footprints, although visually similar, do not count."
+    "url": "https://phasmophobia.fandom.com/wiki/Ultraviolet",
+    "about": "[Ultraviolet](https://phasmophobia.fandom.com/wiki/Ultraviolet) are detected using a [UV Light](https://phasmophobia.fandom.com/wiki/UV_Light) to reveal fingerprints or footprints. Fingerprints appear after a ghost interacts with certain surfaces, mostly being doors and light switches.\n- The exception is the [Obake](https://phasmophobia.fandom.com/wiki/Obake), who has a chance to leave fingerprints (75%), which can also be unique (~17%).\nFootprints appear after a ghost has stepped in salt pile.\n- Fingerprints and footprints must be \"charged\" with [UV Light](https://phasmophobia.fandom.com/wiki/UV_Light) before collecting [photo rewards](https://phasmophobia.fandom.com/wiki/Photo_Rewards)."
   },
   {
     "id": "dots",
-    "name": "D.O.T.S.",
+    "name": "D.O.T.S. Projector",
     "tip": "D.O.T.S. Projectors",
     "ghosts": ["goryo"],
     "url": "https://phasmophobia.fandom.com/wiki/D.O.T.S_Projector_(Evidence)",
-    "about": "[D.O.T.S.](https://phasmophobia.fandom.com/wiki/D.O.T.S_Projector_(Evidence)) are detected using [D.O.T.S. Projectors](https://phasmophobia.fandom.com/wiki/D.O.T.S._Projector). The evidence appears as a ghostly silhouette or hologram in the light of the projector when a ghost passes through it.\n- You can see this figure through a [video camera](https://phasmophobia.fandom.com/wiki/Video_Camera). With a video camera in night vision mode, visibility of the figure may be much better. \n- If you have a Goryo, the effect will only appear through a [video camera](https://phasmophobia.fandom.com/wiki/Video_Camera) while nobody is in the room."
+    "about": "[D.O.T.S. Projector](https://phasmophobia.fandom.com/wiki/D.O.T.S_Projector_(Evidence)) evidence is detected using a [D.O.T.S. Projector](https://phasmophobia.fandom.com/wiki/D.O.T.S._Projector). The evidence appears as a ghostly silhouette or hologram in the light of the projector when a ghost passes through it.\n- You can see this figure through a [video camera](https://phasmophobia.fandom.com/wiki/Video_Camera). With a video camera in night vision mode, visibility of the figure may be much better. \n- If you have a Goryo, the effect will only appear through a [video camera](https://phasmophobia.fandom.com/wiki/Video_Camera) while nobody is in the room."
   },
   {
     "id": "emf",
