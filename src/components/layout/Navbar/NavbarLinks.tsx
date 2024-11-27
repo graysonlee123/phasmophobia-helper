@@ -31,22 +31,22 @@ export default function NavbarLinks() {
   }
 
   return (
-    <ul className={styles.list}>
+    (<ul className={styles.list}>
       {links.map(({ href, label }) => {
         const isActive = pathname === href
 
         return (
-          <Fragment key={href}>
+          (<Fragment key={href}>
             <li className={styles.item}>
               <motion.span variants={variants} animate={isActive ? 'active' : 'inactive'}>
-                <Link href={href}>
-                  <a className={styles.anchor}>{label}</a>
+                <Link href={href} className={styles.anchor}>
+                  {label}
                 </Link>
               </motion.span>
             </li>
-          </Fragment>
-        )
+          </Fragment>)
+        );
       })}
-    </ul>
-  )
+    </ul>)
+  );
 }

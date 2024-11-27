@@ -26,14 +26,14 @@ export default function PreferencesPage() {
           />
           <Checkbox
             state={preferences?.limitedEvidence ?? true}
-            onClick={() => handleChange('limitedEvidence', !preferences?.limitedEvidence ?? false)}
+            onClick={() => handleChange('limitedEvidence', !preferences?.limitedEvidence)}
             primary="Limited Evidence Mode"
             secondary="Have this checked if your game mode has limited evidence."
             gutterBottom
           />
           <Checkbox
             state={preferences?.confetti ?? true}
-            onClick={() => handleChange('confetti', !preferences?.confetti ?? false)}
+            onClick={() => handleChange('confetti', !preferences?.confetti)}
             primary="Confetti"
             secondary="Shows confetti when you discover your ghost type"
           />
