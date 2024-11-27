@@ -11,7 +11,7 @@ export default function Writing({ children, markdown = false }: WritingProps) {
   return (
     <div className={styles.writing}>
       {typeof children === 'string' && markdown ? (
-        <ReactMarkdown linkTarget="_blank">{children}</ReactMarkdown>
+        <ReactMarkdown>{children}</ReactMarkdown>
       ) : (
         children
       )}
