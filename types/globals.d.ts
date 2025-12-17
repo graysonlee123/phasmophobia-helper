@@ -18,8 +18,10 @@ type Evidences = Evidence[]
 
 type GhostId =
   | 'banshee'
+  | 'dayan'
   | 'demon'
   | 'deogen'
+  | 'gallu'
   | 'goryo'
   | 'hantu'
   | 'jinn'
@@ -27,6 +29,7 @@ type GhostId =
   | 'moroi'
   | 'myling'
   | 'obake'
+  | 'obambo'
   | 'oni'
   | 'onryo'
   | 'phantom'
