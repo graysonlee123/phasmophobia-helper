@@ -14,7 +14,7 @@
   "dependencies": {
     "classnames": "^2.5.1",
     "framer-motion": "^11.11.17",
-    "next": "^15.0.3",
+    "next": "^16.0.10",
     "nextjs-google-analytics": "^2.3.7",
     "notistack": "^3.0.1",
     "react": "^18.3.1",
